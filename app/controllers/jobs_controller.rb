@@ -1,10 +1,12 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
+  before_action :authenticate_user!
+
   # GET /jobs
   # GET /jobs.json
   def index
     @jobs = Job.all
+    puts "current user is #{current_user.inspect}"
   end
 
   # GET /jobs/1

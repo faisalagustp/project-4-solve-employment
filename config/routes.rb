@@ -2,8 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :controllers
   resources :job_applications
-  resources :jobs
+
   devise_for  :users, :controllers => {:registrations => "users/registrations"}
+  resources :jobs
   # devise_for :employers, :controllers => {:registrations => "users/registrations"}
   # devise_for :employees
   resources :employers
