@@ -1,37 +1,33 @@
-<%= form_for(job) do |f| %>
-  <% if job.errors.any? %>
+<% if current_user.role == 'employer' %>
+<%= bootstrap_form_for(@job) do |f| %>
+  <% if @job.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(job.errors.count, "error") %> prohibited this job from being saved:</h2>
+      <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
 
       <ul>
-      <% job.errors.full_messages.each do |message| %>
+      <% @job.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+  <div class="row">
+    <div class='col-xs-12 col-md-4'><%= f.text_field :title, label: 'Job title', placeholder: 'title' %></div>
   </div>
 
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description %>
+  <div class="row">
+    <div class='col-xs-12 col-md-6'><%= f.text_area :description, label: 'Description', placeholder: "Please provide details of the job scope" %></div>
   </div>
 
-  <div class="field">
-    <%= f.label :wage %>
-    <%= f.text_field :wage %>
+  <div class="row">
+    <div class='col-xs-12 col-md-4'><%= f.text_field :wage, label: 'Hourly wage', placeholder: "Enter numbers only" %></div>
   </div>
 
-  <div class="field">
-    <%= f.label :employer_id %>
-    <%= f.text_field :employer_id, value: current_user.employer_id %>
-  </div>
+  <%= f.hidden_field :employer_id, value: current_user.employer_id %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.submit "Submit", class: 'btn btn-success' %>
+<% end %>
+<% else %>
+  <p>You must be an employer to view this page</p>
 <% end %>
