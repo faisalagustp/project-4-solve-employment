@@ -12,13 +12,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
     if resource.persisted?
       if resource.role == 'employer'
-        @employer = Employer.new(employer_params)
-        @employer.user_id = resource.id
-        @employer.save
+        @employer = Employer.create(employer_params)
+        resource.update(employer_id: @employer.id)
       elsif resource.role == 'employee'
-        @employee = Employee.new(employee_params)
-        @employee.user_id = resource.id
-        @employee.save
+        @employee = Employee.create(employee_params)
+        resource.update(employee_id: @employee.id)
       end
     end
   end
