@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   # GET /jobs
   # GET /jobs.json
   def index
@@ -14,6 +14,7 @@ class JobsController < ApplicationController
 
   # GET /jobs/new
   def new
+    p current_user
     @job = Job.new
   end
 
