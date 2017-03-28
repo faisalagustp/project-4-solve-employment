@@ -13,11 +13,12 @@
     <%= text_field_tag :name%>
   </div>
 
+  <% if params[:role] == 'employer' %>
   <div class="field">
     <%= label_tag :company %><br />
     <%= text_field_tag :company%>
   </div>
-
+  <%end%>
 
   <div class="field">
     <%= f.label :password %>

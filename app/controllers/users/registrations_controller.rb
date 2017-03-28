@@ -10,10 +10,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    puts resource.inspect + "this is the resource"
-    p params
     if resource.persisted?
-      @employer = Employer.create!(employer_params)
+      if resource.role == 'employer'
+        @employer = Employer.new(employer_params)
+        @employer.user_id = resource.id
+        @employer.save
+      elsif resource.role == 'employee'
+        @employee = Employee.new(employee_params)
+        @employee.user_id = resource.id
+        @employee.save
+      end
     end
   end
 
@@ -72,5 +78,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params.permit(:name,:company)
   end
 
+  def employee_params
+    params.permit(:name)
+  end
 
 end
