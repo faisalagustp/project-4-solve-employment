@@ -40,6 +40,7 @@ GEM
       tzinfo (~> 1.1)
     arel (7.1.4)
     bcrypt (3.1.11)
+    bcrypt (3.1.11-x64-mingw32)
     builder (3.2.3)
     byebug (9.0.6)
     choice (0.2.0)
@@ -62,6 +63,7 @@ GEM
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.18)
+    ffi (1.9.18-x64-mingw32)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     i18n (0.8.1)
@@ -89,8 +91,11 @@ GEM
     nio4r (2.0.0)
     nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
+    nokogiri (1.7.1-x64-mingw32)
+      mini_portile2 (~> 2.1.0)
     orm_adapter (0.5.0)
     pg (0.20.0)
+    pg (0.20.0-x64-mingw32)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -162,6 +167,8 @@ GEM
     turbolinks-source (5.0.0)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2017.2)
+      tzinfo (>= 1.0.0)
     uglifier (3.1.10)
       execjs (>= 0.3.0, < 3)
     warden (1.2.7)
@@ -177,6 +184,7 @@ GEM
 
 PLATFORMS
   ruby
+  x64-mingw32
 
 DEPENDENCIES
   byebug
@@ -199,4 +207,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.13.7
+   1.14.5
