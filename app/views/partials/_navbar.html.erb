@@ -13,7 +13,9 @@
   </div>
 </nav>
 <span class="navbar-text container-fluid">
-  <% if user_signed_in? %>
-  Welcome <strong><%=current_user.email%></strong>
+  <% if user_signed_in? && current_user.role == "employer"%>
+  Welcome <strong><%=current_user.employer.name%></strong>
+  <% elsif user_signed_in? && current_user.role == "employee" %>
+  Welcome <strong><%=current_user.employee.name%></strong>
   <% end %>
 </span>
