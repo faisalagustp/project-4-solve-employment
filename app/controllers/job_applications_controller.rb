@@ -1,5 +1,10 @@
 class JobApplicationsController < ApplicationController
   before_action :set_job_application, only: [:show, :edit, :update, :destroy]
+  # user needs to be signed in
+  before_action :authenticate_user!
+  # only employees can create job applications
+  before_action :employee?, only: [:new, :create]
+
 
   # GET /job_applications
   # GET /job_applications.json
@@ -18,8 +23,9 @@ class JobApplicationsController < ApplicationController
   end
 
   # GET /job_applications/1/edit
-  def edit
-  end
+  # employees cannot edit their job applications
+  # def edit
+  # end
 
   # POST /job_applications
   # POST /job_applications.json
@@ -68,4 +74,10 @@ class JobApplicationsController < ApplicationController
     def job_application_params
       params.require(:job_application).permit(:coverletter, :job_id, :employee_id)
     end
+
+    def employee?
+    if !current_user.employee
+      redirect_to :jobs, :alert => "Hi there, it seems that you might be lost!"
+  end
+end
 end

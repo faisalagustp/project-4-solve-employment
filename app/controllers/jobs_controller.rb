@@ -1,6 +1,8 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :employer?, only: [:new]
+  before_action :own_job?, only: [:edit, :update, :destroy]
 
   # GET /jobs
   # GET /jobs.json
@@ -75,6 +77,18 @@ class JobsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_job
       @job = Job.find(params[:id])
+    end
+
+    def employer?
+    if !current_user.employer
+      redirect_to :jobs, :alert => "Hi there, it seems that you might be lost!"
+      end
+    end
+
+    def own_job?
+    if @job.employer_id != current_user.employer_id
+      redirect_to :jobs, :alert => "Hi there, it seems that you might be lost!"
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
