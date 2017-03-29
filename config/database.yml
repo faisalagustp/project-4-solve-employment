@@ -20,7 +20,7 @@ default: &default
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  
+
 development:
   <<: *default
   database: project-4-solve-employment_development
@@ -78,8 +78,8 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: project-4-solve-employment_production
-  username: project-4-solve-employment
-  password: <%= ENV['PROJECT-4-SOLVE-EMPLOYMENT_DATABASE_PASSWORD'] %>
+
+  production:
+  adapter: postgresql
+  database: dj0jouoeeo1th
+  url: <%= ENV['HEROKU_POSTGRESQL_NAVY_URL'] %>
