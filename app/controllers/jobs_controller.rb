@@ -5,12 +5,19 @@ class JobsController < ApplicationController
   # GET /jobs.json
   def index
     @jobs = Job.all
+    if current_user.role == 'employee'
+      @jobs = Job.all
+    else
+      @jobs = current_user.employer.jobs
+    end
     puts "current user is #{current_user.inspect}"
+    puts "job is #{@jobs.inspect}"
   end
 
   # GET /jobs/1
   # GET /jobs/1.json
   def show
+    @job = Job.find(params[:id])
   end
 
   # GET /jobs/new

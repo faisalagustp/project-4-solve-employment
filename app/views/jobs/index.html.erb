@@ -1,24 +1,43 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Jobs List</h1>
-<%= @current_user %>
+<%= @current_user.inspect %>
+  <% @jobs.each do |job|%>
+    <%if current_user.role == 'employer'%>
+      <div class="container">
+      <%= link_to job.title, job_path(job) %>
+      </div>
+    <%else%>
+      <div id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="card">
+          <div class="card-header" role="tab" id="headingOne">
+            <h5 class="mb-0">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <%= job.title %>
+              </a>
+            </h5>
+          </div>
 
-  <tbody>
-    <% @jobs.each do |job| %>
-      <tr>
-        <td><%= job.title %></td>
-        <td><%= job.description %></td>
-        <td><%= job.wage %></td>
-        <td><%= job.employer %></td>
-        <td><%= job.employee_id %></td>
-        <td><%= link_to 'Show', job %></td>
-        <td><%= link_to 'Edit', edit_job_path(job) %></td>
-        <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="card-block">
+              <ul style="list-style: none">
+                <li>Description: <%= job.description %></li>
+                <li>Salary: <%= job.wage %></li>
+                <%= form_for :job_application, url: job_applications_path do |f| %>
+                <%= f.text_field :coverletter %>
+                <%= f.number_field :job_id, value: job.id %>
+                <%= f.number_field :employee_id, value: current_user.employee_id %>
+                <%= f.submit 'Apply'%>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  <%end%>
 
 <br>
-
-<%= link_to 'New Job', new_job_path %>
+<%= link_to new_job_path, class: "btn btn-default" do %>
+  <span class="glyphicon glyphicon-plus">New Job</span>
+<% end %>
