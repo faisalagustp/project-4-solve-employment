@@ -1,19 +1,17 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Jobs List</h1>
 
   <div id="jobs">
-  <div v-for="(job, index) in jobs">
-    <%if current_user.role == 'employer'%>
-    <div id="accordion" role="tablist" aria-multiselectable="true">
-      <div class="card">
-        <div class="card-header" role="tab" id="headingOne">
-          <h5 class="mb-0">
-            <a data-toggle="collapse" data-parent="#accordion" :href="'#collapseOne' + index" aria-expanded="true" aria-controls="collapseOne">
-              {{job.title }}
-            </a>
-          </h5>
-        </div>
+    <%if current_user.role == 'employer' %>
+    <div v-for="(job, index) in jobs" v-if="job.employer_id == <%=current_user.employer_id%>">
+      <div id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="card">
+          <div class="card-header" role="tab" id="headingOne">
+            <h5 class="mb-0">
+              <a data-toggle="collapse" data-parent="#accordion" :href="'#collapseOne' + index" aria-expanded="true" aria-controls="collapseOne">
+                {{job.title }}
+              </a>
+            </h5>
+          </div>
 
         <div :id="'collapseOne' + index" class="collapse" role="tabpanel" aria-labelledby="headingOne">
           <div class="card-block">
@@ -31,8 +29,10 @@
         </div>
       </div>
     </div>
-    
+
     <%elsif current_user.role == 'employee'%>
+
+    <div v-for="(job, index) in jobs">
     <div id="accordion" role="tablist" aria-multiselectable="true">
       <div class="card">
         <div class="card-header" role="tab" id="headingOne">
