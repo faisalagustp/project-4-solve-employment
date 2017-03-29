@@ -72,7 +72,7 @@ class JobApplicationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_application_params
-      params.require(:job_application).permit(:coverletter, :job_id, :employee_id)
+      params.require(:job_application).permit(:coverletter, :job_id, :employee_id, :status)
     end
 
     def employee?

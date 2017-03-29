@@ -87,4 +87,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params.permit(:name)
   end
 
+  def after_sign_up_path_for(resource)
+   '/jobs'
+  end
+
 end
