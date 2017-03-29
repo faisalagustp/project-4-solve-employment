@@ -1,9 +1,22 @@
 <p id="notice"><%= notice %></p>
-<div id="jobs">
-  {{message}}
-</div>
 
 <h1>Jobs List</h1>
+
+<div id="jobs">
+  <div v-for="job in jobs">
+    <ul>
+      <li>{{ job.id }}</li>
+    </ul>
+    <%if current_user.role == 'employer'%>
+    <div class="container">
+      <a :href="'/jobs/' + job.id">{{ job.title }}</a>
+    </div>
+    <%end%>
+
+  </div>
+</div>
+
+
     <%= @current_user.inspect %>
     <% @jobs.each_with_index do |job,index|%>
     <%if current_user.role == 'employer'%>

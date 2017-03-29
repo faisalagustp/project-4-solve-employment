@@ -1,15 +1,23 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  respond_to :js, :html
 
   # GET /jobs
   # GET /jobs.json
   def index
-    @jobs = Job.all
     if current_user.role == 'employee'
       @jobs = Job.all
+      respond_to do |format|
+        format.html
+        format.json{render :json => @jobs}
+      end
     else
       @jobs = current_user.employer.jobs
+      respond_to do |format|
+        format.html
+        format.json{render :json => @jobs}
+      end
     end
     puts "current user is #{current_user.inspect}"
     puts "job is #{@jobs.inspect}"

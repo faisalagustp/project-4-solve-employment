@@ -12,12 +12,23 @@
 //
 // = require jquery
 // = require jquery_ujs
-// = require_tree .
 // = require vue
+// = require_tree .
 
-var job = new Vue({
+var jobs = new Vue({
   el: '#jobs',
   data: {
-    message: 'HELLO WORLD!'
+    jobs: []
+  },
+  mounted: function () {
+    var that
+    that = this
+    $.ajax({
+      url: '/jobs.json'
+    }).done(function (data) {
+      that.jobs = data
+    }).fail(function (data) {
+
+    })
   }
 })
