@@ -26,8 +26,14 @@
 
   <%= f.hidden_field :employer_id, value: current_user.employer_id %>
 
+<<<<<<< HEAD
   <%= f.submit "Submit", class: 'btn btn-success' %>
 <% end %>
 <% else %>
   <p>You must be an employer to view this page</p>
+=======
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+>>>>>>> 5fa12ed3a58146dc8495db5d0d72ae54a27aa6ea
 <% end %>

@@ -24,17 +24,14 @@ class JobApplicationsController < ApplicationController
   # POST /job_applications
   # POST /job_applications.json
   def create
-    @job_application = JobApplication.new(job_application_params)
+    @job_application = JobApplication.create!(job_application_params)
+  end
 
-    respond_to do |format|
-      if @job_application.save
-        format.html { redirect_to @job_application, notice: 'Job application was successfully created.' }
-        format.json { render :show, status: :created, location: @job_application }
-      else
-        format.html { render :new }
-        format.json { render json: @job_application.errors, status: :unprocessable_entity }
-      end
-    end
+  def upload
+  uploaded_io = params[:job_application][:coverletter]
+  File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+    file.write(uploaded_io.read)
+  end
   end
 
   # PATCH/PUT /job_applications/1
