@@ -5,9 +5,33 @@
   <div id="jobs">
   <div v-for="(job, index) in jobs">
     <%if current_user.role == 'employer'%>
-    <div class="container">
-      <a :href="'/jobs/' + job.id">{{ job.title }}</a>
+    <div id="accordion" role="tablist" aria-multiselectable="true">
+      <div class="card">
+        <div class="card-header" role="tab" id="headingOne">
+          <h5 class="mb-0">
+            <a data-toggle="collapse" data-parent="#accordion" :href="'#collapseOne' + index" aria-expanded="true" aria-controls="collapseOne">
+              {{job.title }}
+            </a>
+          </h5>
+        </div>
+
+        <div :id="'collapseOne' + index" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="card-block">
+            <ul style="list-style: none">
+              <li>Description: {{ job.description }} </li>
+              <li>Salary: {{ job.wage }}</li>
+              <%= form_for :job_application, url: job_applications_path do |f| %>
+              <%= f.text_field :coverletter %>
+              <input type="number" name="job_application[job_id]" v-bind:value="job.id" >
+              <%= f.number_field :employee_id, value: current_user.employee_id %>
+              <%= f.submit 'Apply'%>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
+    
     <%elsif current_user.role == 'employee'%>
     <div id="accordion" role="tablist" aria-multiselectable="true">
       <div class="card">
