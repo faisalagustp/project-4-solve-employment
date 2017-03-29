@@ -5,9 +5,7 @@ Rails.application.routes.draw do
 
   devise_for  :users, :controllers => {:registrations => "users/registrations"}
   resources :jobs
-  resources :job_applications do
-    get 'update_status'
-  end
+  resources :job_applications
   # devise_for :employers, :controllers => {:registrations => "users/registrations"}
   # devise_for :employees
   resources :employers
