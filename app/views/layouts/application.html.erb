@@ -10,9 +10,23 @@
   </head>
 
   <body>
-    <%= yield %>
-    <%= link_to "logout", destroy_user_session_path, method: :delete %>
+    <%= render "partials/navbar" %>
 
+    <div class="container">
+      <% if notice %>
+      <!-- show the notice -->
+      <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+
+      <% if alert %>
+      <!-- show the alert -->
+      <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+
+      <%= yield %>
+    </div>
+
+    <%= render "partials/footer" %>
 
   </body>
 </html>

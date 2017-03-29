@@ -1,0 +1,21 @@
+<nav class="navbar navbar-toggleable-xl navbar-light bg-faded">
+
+  <a class="navbar-brand" href="/"><%= image_tag "SEmp_v2.png", :height => "70" %></a>
+
+  <div class="navbar-collapse">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <% if user_signed_in? %>
+        <%= link_to "logout", destroy_user_session_path, method: :delete, class:"nav-link" %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>
+<span class="navbar-text container-fluid">
+  <% if user_signed_in? && current_user.role == "employer"%>
+  Welcome <strong><%=current_user.employer.name%></strong>
+  <% elsif user_signed_in? && current_user.role == "employee" %>
+  Welcome <strong><%=current_user.employee.name%></strong>
+  <% end %>
+</span>

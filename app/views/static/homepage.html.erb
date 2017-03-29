@@ -1,5 +1,7 @@
-<h1>Static#homepage</h1>
-<p>Find me in app/views/static/homepage.html.erb</p>
+<div class="container">
 
-<%= link_to "employer signup", new_user_registration_path({:role=>"employer"}), class: "btn green col-sm-6", style: "margin:0" %>
-<%= link_to "employee signup", new_user_registration_path({:role=>"employee"}), class: "btn green col-sm-6", style: "margin:0" %>
+<%= link_to "Sign up as Employer", new_user_registration_path({:role=>"employer"}), class: "btn btn-secondary btn-lg btn-block", style: "margin:0" %>
+<%= link_to "Sign up as Employee", new_user_registration_path({:role=>"employee"}), class: "btn btn-secondary btn-lg btn-block", style: "margin:0" %>
+<%= link_to "Login", new_user_session_path, class: "btn btn-secondary btn-lg btn-block", style: "margin:0" %>
+
+</div>
