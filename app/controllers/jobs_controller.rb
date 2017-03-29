@@ -1,8 +1,11 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  # only employers can create new jobs
   before_action :employer?, only: [:new]
+  # only employers who created the jobs can crud their jobs
   before_action :own_job?, only: [:edit, :update, :destroy]
+
 
   # GET /jobs
   # GET /jobs.json

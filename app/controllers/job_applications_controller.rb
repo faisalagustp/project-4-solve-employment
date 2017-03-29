@@ -4,7 +4,10 @@ class JobApplicationsController < ApplicationController
   before_action :authenticate_user!
   # only employees can create job applications
   before_action :employee?, only: [:new, :create]
-
+  # employee can only create 1 application for each job
+  before_action :already_applied?, only: [:create]
+  # only employer of the job can change the status of the employee's job application
+  before_action :employers_job?, only: [:update]
 
   # GET /job_applications
   # GET /job_applications.json
@@ -77,7 +80,22 @@ class JobApplicationsController < ApplicationController
 
     def employee?
     if !current_user.employee
-      redirect_to :jobs, :alert => "Hi there, it seems that you might be lost!"
-  end
-end
+      redirect_to :jobs, :alert => "Sorry, access denied!"
+      end
+    end
+
+    def already_applied?
+      current_user.employee.job_applications.each do |app|
+        if app.job_id == params[:job_application][:job_id].to_i
+          # p "employee has already applied"
+          redirect_to :jobs, :alert => "Sorry, you can only apply for a job once!"
+        end
+      end
+    end
+
+    def employers_job?
+      if @job_application.job.employer != current_user.employer
+        redirect_to :jobs, :alert => "Sorry, access denied!"
+      end
+    end
 end
