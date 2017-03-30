@@ -1,6 +1,9 @@
 
   <%if current_user.role == 'employer'%>
-  <h1>Jobs List</h1>
+  <h1>Jobs List
+    <%= link_to new_job_path, class: "btn btn-default" do %>
+     <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
+    <% end %></h1>
   <div class="container">
   <% @jobs.each_with_index do |job|%>
       <div class="container">
