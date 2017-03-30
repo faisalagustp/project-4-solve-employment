@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   devise_for  :users, :controllers => {:registrations => "users/registrations"}
   resources :jobs
-  resources :job_applications
+  resources :job_applications, except: :edit
   # devise_for :employers, :controllers => {:registrations => "users/registrations"}
   # devise_for :employees
   resources :employers

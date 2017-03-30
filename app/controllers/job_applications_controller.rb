@@ -11,6 +11,7 @@ class JobApplicationsController < ApplicationController
   #employer can only hire one applicant for the job posting
   before_action :job_filled?, only: [:update]
 
+  before_action :job_filled?, only: [:update]
   # GET /job_applications
   # GET /job_applications.json
   def index
@@ -63,6 +64,11 @@ class JobApplicationsController < ApplicationController
       if @job_application.update(job_application_params)
          @job = Job.find(@job_application.job_id)
          @job.update(employee_id: @job_application.employee_id)
+         @job_apps_rejected = JobApplication.where(status: "In Progress")
+         puts @job_apps_rejected
+         @job_apps_rejected.each do |job_app_rej|
+           job_app_rej.update(status: "Unsuccessful")
+         end
         format.html { redirect_to @job_application, notice: 'Job application was successfully updated.' }
         format.json { render :show, status: :ok, location: @job_application }
       else
@@ -96,7 +102,7 @@ class JobApplicationsController < ApplicationController
     def employee?
     if !current_user.employee
       redirect_to :jobs, :alert => "Sorry, access denied!"
-      end
+    end
     end
 
     def already_applied?

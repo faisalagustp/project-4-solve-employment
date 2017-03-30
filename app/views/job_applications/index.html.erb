@@ -1,7 +1,7 @@
-<p id="notice"><%= notice %></p>
 
 <h1>Job Applications</h1>
 
+<% if current_user.role == 'employee'%>
 <table>
   <thead>
     <tr>
@@ -20,9 +20,8 @@
         <td><%= job_application.job.title %></td>
         <td><%= job_application.status %></td>
         <td><%= link_to 'Show', job_application %></td>
-        <td><%= link_to 'Edit', edit_job_application_path(job_application) %></td>
-        <td><%= link_to 'Destroy', job_application, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<% end %>
