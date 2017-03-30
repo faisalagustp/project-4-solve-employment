@@ -1,12 +1,13 @@
 
   <%if current_user.role == 'employer'%>
   <h1>Jobs List</h1>
-  <div class="container">
   <% @jobs.each_with_index do |job|%>
-      <div class="container">
-      <%= link_to job.title, job_path(job) %>
-      </div>
-      <%end%>
+    <div class="container">
+    <div class="card card-block">
+    <h4 class="card-title"><%= link_to job.title, job_path(job) %></h4>
+    </div>
+    </div>
+    <%end%>
     <%elsif current_user.role == 'employee'%>
     <h2>Jobs Applied</h2>
     <% @job_applications_made.each do |job_app| %>
