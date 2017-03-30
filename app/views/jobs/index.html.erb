@@ -16,6 +16,13 @@
             <h5 class="mb-0">
               <a data-toggle="collapse" data-parent="#accordion1" href="#collapseOne<%=job_app.job.id.to_s%>" aria-expanded="true" aria-controls="collapseOne">
                 <%= job_app.job.title %>
+                <% if job_app.status == "Successful" %>
+                <span class="badge badge-success">Hired</span>
+                <%elsif job_app.status == "In Progress" %>
+                <span class="badge badge-warning">Pending</span>
+                <%else%>
+                <span class="badge badge-danger">Unsuccessful</span>
+                <%end%>
               </a>
             </h5>
           </div>
