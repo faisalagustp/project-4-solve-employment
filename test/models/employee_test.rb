@@ -7,13 +7,6 @@ class EmployeeTest < ActiveSupport::TestCase
     @two = employees(:two)
     end
 
-    # one:
-    #   name: "Barack Obama"
-    #
-    # two:
-    #   name: ""
-
-
   test "name must be present" do
     assert_equal 'Barack Obama', @one.name,  'The expected user name is not found'
   end

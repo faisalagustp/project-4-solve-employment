@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+jobone:
   title: "Assistant"
   description: "I need an assistant to help me pick up calls"
   wage: 9.99
   employer: :one
   employee_id:
 
-two:
+jobtwo:
   title: "Driver"
   description: "I need a driver to drive my bicycle"
   wage: 9.99
-  employer: 
+  employer:
   employee_id:

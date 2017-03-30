@@ -1,58 +1,46 @@
-# README
+# SOLVE EMPLOYMENT
 
-Boss
-- create user (returns us a user id)
-- create employer (with user id) -> employer_id
-- create job (with employer id)
-- view jobs (with employer id)
-- edit job (w. job id)
-- delete job (w. job id)
+<img src="http://i.imgur.com/R8Fz2Tt.png" width="75%">
+[https://solve-employment.herokuapp.com](https://solve-employment.herokuapp.com)
 
-Worker
-- create another user
-- create employee (w user id) -> employee_id
-- view jobs
-- apply to job (w employee id)
-- view jobs (see application status change)
+Founded by parents Solve Education, Solve Employment is a human resource portal that offers users of the existing education platform to find employment which leverages on their new language capabilities.  
 
-Boss
-- view my jobs, see application count increase appropriately
-- accept application (w application id)
+## How It Works
 
-Worker
-- view jobs list (see application status change)
+<img src="http://i.imgur.com/Bz2w5fK.png" width="100%">
 
 
+##User Stories
 
+Employer
+- can create a job posting
+- can edit and delete a job posting
+- can view job applications
+- can hire an employee based on the job application
 
-Integrate devise
+Employee
+- can see all jobs posted
+- can apply for a job posting
+- can view his/her job applications
+- can see the status of his/her job application
 
-Add validations
+## ERD Diagram
 
-Figure out API authentication (so people can't just submit whatever ids they want)
+<img src="http://i.imgur.com/YxFvMbT.png">
 
-Deploy This
+## Wireframe Sketches
 
+<img src="http://i.imgur.com/EPeDD3R.png">
+<img src="http://i.imgur.com/Grm5e12.png">
 
+## Development
+* [Ruby 5.0.2](https://www.ruby-lang.org/en/)
+* [Ruby on Rails](https://rubyonrails.org/), [PostgreSQL](https://www.postgresql.org/)
+* User Authentication: [Devise](https://github.com/plataformatec/devise)
+* [Bootstrap](http://getbootstrap.com)
 
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+## Authors
+* [Tan Gek Teng](www.github.com/tgt87)
+* [Sruti Keerti](www.github.com/skeerti2)
+* [Wong Shimei](www.github.com/wshimei)
+* [Elaine Lim](www.github.com/lainelim)
