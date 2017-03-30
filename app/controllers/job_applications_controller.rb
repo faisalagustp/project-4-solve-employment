@@ -12,7 +12,11 @@ class JobApplicationsController < ApplicationController
   # GET /job_applications
   # GET /job_applications.json
   def index
+    if current_user.role == 'employee'
+    @job_applications_made = current_user.employee.job_applications
+    else
     @job_applications = JobApplication.all
+    end
   end
 
   # GET /job_applications/1
@@ -33,7 +37,14 @@ class JobApplicationsController < ApplicationController
   # POST /job_applications
   # POST /job_applications.json
   def create
-    @job_application = JobApplication.create!(job_application_params)
+    @job_application = JobApplication.new(job_application_params)
+    if @job_application.save
+      flash[:notice] = "Your application has been made successfully"
+      redirect_to jobs_path
+    else
+    flash[:error] = "Error saving your application"
+    redirect_to jobs_path
+    end
   end
 
   def upload
