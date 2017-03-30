@@ -9,6 +9,7 @@ class JobApplicationsController < ApplicationController
   # only employer of the job can change the status of the employee's job application
   before_action :employers_job?, only: [:update]
 
+  before_action :job_filled?, only: [:update]
   # GET /job_applications
   # GET /job_applications.json
   def index
@@ -94,7 +95,7 @@ class JobApplicationsController < ApplicationController
     def employee?
     if !current_user.employee
       redirect_to :jobs, :alert => "Sorry, access denied!"
-      end
+    end
     end
 
     def already_applied?
@@ -109,6 +110,12 @@ class JobApplicationsController < ApplicationController
     def employers_job?
       if @job_application.job.employer != current_user.employer
         redirect_to :jobs, :alert => "Sorry, access denied!"
+      end
+    end
+
+    def job_filled?
+      if @job_application.job.employee
+    redirect_to :jobs, :alert => "Sorry, you have already picked someone for this !"
       end
     end
 end

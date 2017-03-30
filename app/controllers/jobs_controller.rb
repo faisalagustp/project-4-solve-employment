@@ -94,13 +94,13 @@ class JobsController < ApplicationController
     def employer?
     if !current_user.employer
       redirect_to :jobs, :alert => "Hi there, it seems that you might be lost!"
-      end
+    end
     end
 
     def own_job?
     if @job.employer_id != current_user.employer_id
       redirect_to :jobs, :alert => "Hi there, it seems that you might be lost!"
-      end
+    end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

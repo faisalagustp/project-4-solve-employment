@@ -41,7 +41,9 @@
         <p><%=job_app.coverletter%></p>
         <p><strong>Email:</strong></p>
         <p><%=job_app.employee.user.email%></p>
-        <%=link_to "Hire", job_application_path(job_app.id, "job_application[status]"=>"successful"), method: :patch, class:"btn btn-success"%>
+        <%=link_to "Hire", job_application_path(job_app.id, "job_application[status]"=>"Successful"), method: :patch, class:"btn btn-success"%>
+        <%=link_to "Reject", job_application_path(job_app.id, "job_application[status]"=>"Unsuccessful"), method: :patch, class:"btn btn-danger"%>
+
       </div>
     </div>
   </div>
