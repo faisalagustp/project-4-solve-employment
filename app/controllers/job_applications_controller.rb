@@ -8,6 +8,8 @@ class JobApplicationsController < ApplicationController
   before_action :already_applied?, only: [:create]
   # only employer of the job can change the status of the employee's job application
   before_action :employers_job?, only: [:update]
+  #employer can only hire one applicant for the job posting
+  before_action :job_filled?, only: [:update]
 
   before_action :job_filled?, only: [:update]
   # GET /job_applications

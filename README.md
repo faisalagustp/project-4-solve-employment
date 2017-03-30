@@ -1,58 +1,42 @@
-# README
+# SOLVE EMPLOYMENT
 
-Boss
-- create user (returns us a user id)
-- create employer (with user id) -> employer_id
-- create job (with employer id)
-- view jobs (with employer id)
-- edit job (w. job id)
-- delete job (w. job id)
+<img src="http://i.imgur.com/R8Fz2Tt.png" width="50%">
 
-Worker
-- create another user
-- create employee (w user id) -> employee_id
-- view jobs
-- apply to job (w employee id)
-- view jobs (see application status change)
+[https://solve-employment.herokuapp.com](https://solve-employment.herokuapp.com)
 
-Boss
-- view my jobs, see application count increase appropriately
-- accept application (w application id)
+Founded by parents Solve Education, Solve Employment is a human resource portal that offers users of the existing education platform to find employment which leverages on their new language capabilities.  
 
-Worker
-- view jobs list (see application status change)
+## User Stories
 
+Employer
+- can create a job posting
+- can edit and delete a job posting
+- can view job applications
+- can hire an employee based on the job application
 
+Employee
+- can see all jobs posted
+- can apply for a job posting
+- can view his/her job applications
+- can see the status of his/her job application
 
+## ERD Diagram
 
-Integrate devise
+<img src="http://i.imgur.com/YxFvMbT.png">
 
-Add validations
+## Wireframe Sketches
 
-Figure out API authentication (so people can't just submit whatever ids they want)
+<img src="http://i.imgur.com/EPeDD3R.png" width="50%">
+<img src="http://i.imgur.com/Grm5e12.png" width="50%">
 
-Deploy This
+## Development
+* [Ruby 5.0.2](https://www.ruby-lang.org/en/)
+* [Ruby on Rails](https://rubyonrails.org/), [PostgreSQL](https://www.postgresql.org/)
+* User Authentication: [Devise](https://github.com/plataformatec/devise)
+* [Bootstrap](http://getbootstrap.com)
 
-
-
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+## Authors
+* [Tan Gek Teng](www.github.com/tgt87)
+* [Sruti Keerti](www.github.com/skeerti2)
+* [Wong Shimei](www.github.com/wshimei)
+* [Elaine Lim](www.github.com/lainelim)
