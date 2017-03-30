@@ -7,7 +7,15 @@ class JobsController < ApplicationController
   def index
     @jobs = Job.all
     if current_user.role == 'employee'
-      @jobs = Job.all
+      @job_applications_made = current_user.employee.job_applications
+      @jobs_applied = @job_applications_made.map {|application_made| application_made.job}
+      @jobs_not_applied = []
+      @jobs.each do |job|
+        if(@jobs_applied.include?(job)==false)
+          @jobs_not_applied << job
+        end
+      end
+      puts "jobs not applied is #{@jobs_not_applied}"
     else
       @jobs = current_user.employer.jobs
     end
