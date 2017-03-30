@@ -18,7 +18,18 @@
     </div>
     <%end%>
     <%elsif current_user.role == 'employee'%>
-    <h2>Jobs Applied</h2>
+        <h2>Jobs Applied</h2>
+        <%= form_tag jobs_path, :method => 'get' do %>
+        <p>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", :title => nil %>
+      </p>
+      <% end %>
+      
+      <% @jobs_searched.each do |result| %>
+        <%=result.title%>
+        <%end%>
+
     <% @job_applications_made.each do |job_app| %>
       <div id="accordion1" role="tablist" aria-multiselectable="true">
         <div class="card">
