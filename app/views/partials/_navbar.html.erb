@@ -1,24 +1,30 @@
-<nav class="navbar navbar-toggleable-xl navbar-light bg-faded">
+  <nav id="topNav" class="navbar fixed-top navbar-toggleable-xl">
+      <div class="container">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+              <span>☰</span>
+          </button>
+          <a class="navbar-brand page-scroll" href="/jobs"><%= image_tag "SEmp_v2.png", :height => "70" %></a>
 
-  <a class="navbar-brand" href="/"><%= image_tag "SEmp_v2.png", :height => "70" %></a>
+          <div class="collapse navbar-collapse" id="collapsingNavbar">
+              <ul class="navbar-nav">
+                <% if user_signed_in? && current_user.role == "employer" %>
+                <li class="nav-item">
+                  <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"nav-link" %>
+                </li>
+                  <% elsif user_signed_in? && current_user.role == "employee" %>
+                <li class="nav-item">
+                  <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"nav-link" %>
+                </li>
+                  <% end %>
+              </ul>
+          </div>
+      </div>
+  </nav>
 
-  <div class="navbar-collapse">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <% if user_signed_in? && current_user.role == "employer" %>
-        <%= link_to "New Job", new_job_path, class:"nav-link" %>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"nav-link" %>
-        <% elsif user_signed_in? && current_user.role == "employee" %>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"nav-link" %>
-        <% end %>
-      </li>
-    </ul>
+  <div class="container">
+    <% if user_signed_in? && current_user.role == "employer"%>
+    Welcome <strong><%=current_user.employer.name%></strong>
+    <% elsif user_signed_in? && current_user.role == "employee" %>
+    Welcome <strong><%=current_user.employee.name%></strong>
+    <% end %>
   </div>
-</nav>
-<span class="navbar-text container-fluid">
-  <% if user_signed_in? && current_user.role == "employer"%>
-  Welcome <strong><%=current_user.employer.name%></strong>
-  <% elsif user_signed_in? && current_user.role == "employee" %>
-  Welcome <strong><%=current_user.employee.name%></strong>
-  <% end %>
-</span>
