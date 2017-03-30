@@ -1,7 +1,7 @@
 // Place all the styles related to the static controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One|Lato');
 
 html,
 body {
@@ -15,7 +15,7 @@ body {
     color: #001A33;
     webkit-tap-highlight-color: #222;
     top:0;
-    padding-top: 100px;
+    padding-top: 60px;
     margin-bottom: 60px;
 }
 
@@ -59,7 +59,7 @@ p {
     font-size: 17px;
     line-height: 1.7;
     margin-bottom: 20px;
-    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-family:'Lato', 'Helvetica Neue',Arial,sans-serif;
 }
 
 .text-normal {
