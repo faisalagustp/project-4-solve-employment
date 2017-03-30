@@ -1,14 +1,10 @@
 # SOLVE EMPLOYMENT
 
-<img src="http://i.imgur.com/R8Fz2Tt.png" width="75%">
+<img src="http://i.imgur.com/R8Fz2Tt.png" width="50%">
+
 [https://solve-employment.herokuapp.com](https://solve-employment.herokuapp.com)
 
 Founded by parents Solve Education, Solve Employment is a human resource portal that offers users of the existing education platform to find employment which leverages on their new language capabilities.  
-
-## How It Works
-
-<img src="http://i.imgur.com/Bz2w5fK.png" width="100%">
-
 
 ##User Stories
 
@@ -30,8 +26,8 @@ Employee
 
 ## Wireframe Sketches
 
-<img src="http://i.imgur.com/EPeDD3R.png">
-<img src="http://i.imgur.com/Grm5e12.png">
+<img src="http://i.imgur.com/EPeDD3R.png" width="50%">
+<img src="http://i.imgur.com/Grm5e12.png" width="50%">
 
 ## Development
 * [Ruby 5.0.2](https://www.ruby-lang.org/en/)
