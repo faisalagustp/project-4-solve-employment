@@ -6,7 +6,7 @@
 
 Founded by parents Solve Education, Solve Employment is a human resource portal that offers users of the existing education platform to find employment which leverages on their new language capabilities.  
 
-##User Stories
+## User Stories
 
 Employer
 - can create a job posting
