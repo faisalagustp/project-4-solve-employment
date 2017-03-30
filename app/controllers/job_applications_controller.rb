@@ -59,10 +59,12 @@ class JobApplicationsController < ApplicationController
   # PATCH/PUT /job_applications/1.json
   def update
     respond_to do |format|
+      @job_applications = JobApplication.all
       if @job_application.update(job_application_params)
          @job = Job.find(@job_application.job_id)
          @job.update(employee_id: @job_application.employee_id)
-         @job_apps_rejected = JobApplication.where(status: "In Progress")
+         @job_apps_rejected = JobApplication.where(status: "In Progress", job_id: @job.id)
+         puts "job app rejected #{@job_apps_rejected}"
          @job_apps_rejected.each do |job_app_rej|
            job_app_rej.update(status: "Unsuccessful")
          end
