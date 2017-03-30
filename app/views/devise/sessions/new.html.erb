@@ -1,15 +1,15 @@
 <div class="container" style="padding: 20px;">
   <div class = "col-xs-12 col-sm-6 col-lg-8">
-<h2>Login</h2>
+<h2>LOGIN</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %>
     <%= f.email_field :email, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label :password %>
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
@@ -21,7 +21,7 @@
   <% end -%>
 
   <div class="actions">
-    <%= f.submit "Log in", class:"btn btn-primary" %>
+    <%= f.submit "LOGIN", class:"btn btn-primary" %>
   </div>
 <% end %>
 

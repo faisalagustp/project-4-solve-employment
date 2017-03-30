@@ -113,7 +113,7 @@ aside {
 }
 
 footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
@@ -307,6 +307,7 @@ textarea {
 }
 
 .btn.btn-primary {
+    font-family: 'Fjalla One','Helvetica Neue',Arial,sans-serif;
     background-color: transparent;
     border:1px solid #007FFF;
     -webkit-transition: all .35s;

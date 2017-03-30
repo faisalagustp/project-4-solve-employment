@@ -18,6 +18,13 @@
     </ul>
     <span class="navbar-text">
       <% if user_signed_in? && current_user.role == "employer" %>
+      <%= link_to current_user.employer.name, edit_user_registration_path, class:"nav-link" %>
+      <% elsif user_signed_in? && current_user.role == "employee" %>
+      <%= link_to current_user.employee.name, edit_user_registration_path, class:"nav-link" %>
+      <% end %>
+    </span>
+    <span class="navbar-text">
+      <% if user_signed_in? && current_user.role == "employer" %>
       <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"nav-link" %>
       <% elsif user_signed_in? && current_user.role == "employee" %>
       <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"nav-link" %>
@@ -25,11 +32,3 @@
     </span>
   </div>
 </nav>
-
-<div class="container">
-  <% if user_signed_in? && current_user.role == "employer"%>
-  <h2>Welcome <strong><%=current_user.employer.name%></strong></h2>
-  <% elsif user_signed_in? && current_user.role == "employee" %>
-  Welcome <strong><%=current_user.employee.name%></strong>
-  <% end %>
-</div>

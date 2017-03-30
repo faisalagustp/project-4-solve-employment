@@ -1,14 +1,13 @@
 
   <%if current_user.role == 'employer'%>
-
-  <h1>Jobs List
+<div class="container-fluid">
+  <h4>JOB LIST
     <%= link_to new_job_path, class: "btn btn-default" do %>
      <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
-    <% end %></h1>
-  <div class="container">
-
+    <% end %>
+  </h4>
   <% @jobs.each_with_index do |job|%>
-    <div class="container">
+    <div class="container-fluid">
     <div class="card card-block">
     <h4 class="card-title">
       <span class="badge badge-pill badge-success"><%=job.job_applications.count%></span>
@@ -23,8 +22,10 @@
     </div>
     </div>
     <%end%>
+  </div>
     <%elsif current_user.role == 'employee'%>
-    <h2>Jobs Applied</h2>
+    <div class="container-fluid">
+    <h4>MY APPLICATIONS</h4>
     <% @job_applications_made.each do |job_app| %>
       <div id="accordion1" role="tablist" aria-multiselectable="true">
         <div class="card">
@@ -42,25 +43,26 @@
               </a>
             </h5>
           </div>
+        </div>
 
           <div id="collapseOne<%= job_app.job.id.to_s%>" class="collapse" role="tabpanel" aria-labelledby="headingOne">
             <div class="card-block">
-              <ul style="list-style: none">
-                <li>Company: <%= job_app.job.employer.company %></li>
-                <li>Description: <%= job_app.job.description %></li>
-                <li>Salary: <%= job_app.job.wage %></li>
-                <li>Status: <%= job_app.status%> </li>
-                <%= link_to "View Job Application", job_application_path(job_app.id), class: "btn btn-primary" %>
-                </ul>
+                <p>Company: <%= job_app.job.employer.company %></p>
+                <p>Description: <%= job_app.job.description %></p>
+                <p>Salary: <%= job_app.job.wage %></p>
+                <p>Status: <%= job_app.status%> </p>
+                <p><%= link_to "View Job Application", job_application_path(job_app.id), class: "btn btn-primary" %></p>
                 </div>
               </div>
             </div>
-          </div>
         <% end %>
       </div>
-
-        <div class="container">
-          <h3>Browse Jobs</h3>
+        <br/>
+      <div class="container-fluid">
+          <h4>BROWSE JOBS</h4>
+          <%if @jobs_not_applied.length ==0%>
+          <h5>No jobs currently available</h5>
+          <%end%>
         <% @jobs_not_applied.each do |job_new| %>
         <div id="accordion2" role="tablist" aria-multiselectable="true">
           <div class="card">
@@ -74,17 +76,17 @@
 
             <div id="collapseTwo<%=job_new.id.to_s%>" class="collapse" role="tabpanel" aria-labelledby="headingOne">
               <div class="card-block">
-                <ul style="list-style: none">
-                  <li>Company: <%= job_new.employer.company %></li>
-                  <li>Description: <%= job_new.description %></li>
-                  <li>Salary: <%= job_new.wage %></li>
-                </ul>
+
+                  <p>Company: <%= job_new.employer.company %></p>
+                  <p>Description: <%= job_new.description %></p>
+                  <p>Salary: <%= job_new.wage %></p>
+
                 <%= form_for :job_application, url: job_applications_path do |f| %>
                 <%= f.text_field :coverletter %>
                 <%= f.hidden_field :job_id, value: job_new.id %>
                 <%= f.hidden_field :employee_id, value: current_user.employee_id %>
                 <%= f.hidden_field :status, value: "In Progress" %>
-                <%= f.submit 'Apply'%>
+                <p><%= f.submit 'Apply', class:"btn btn-primary" %></p>
                 <% end %>
                   </div>
                 </div>
