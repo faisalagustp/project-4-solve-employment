@@ -1,39 +1,35 @@
-  <nav id="topNav" class="navbar fixed-top navbar-toggleable-xl">
-      <div class="container">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
-              <span>☰</span>
-          </button>
-          <% if user_signed_in? %>
-          <a class="navbar-brand page-scroll" href="/jobs">
-            <%= image_tag "SEmp_v2.png", :height => "70" %>
-          </a>
-          <% else %>
-          <a class="navbar-brand page-scroll" href="/">
-            <%= image_tag "SEmp_v2.png", :height => "70" %>
-          </a>
-          <% end %>
+<nav class="navbar fixed-top navbar-toggleable-xl navbar-light bg-faded">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-          <div class="collapse navbar-collapse" id="collapsingNavbar">
-              <ul class="navbar-nav">
-                <% if user_signed_in? && current_user.role == "employer" %>
-                <li class="nav-item">
-                  <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"nav-link" %>
-                </li>
-                  <% elsif user_signed_in? && current_user.role == "employee" %>
-                <li class="nav-item">
-                  <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"nav-link" %>
-                </li>
-                  <% end %>
-              </ul>
-          </div>
-      </div>
-  </nav>
+  <% if user_signed_in? %>
+  <a class="navbar-brand" href="/jobs">
+    <%= image_tag "SEmp_v2.png", :height => "70" %>
+  </a>
+  <% else %>
+  <a class="navbar-brand" href="/">
+    <%= image_tag "SEmp_v2.png", :height => "70" %>
+  </a>
+  <% end %>
 
-  <div class="container">
-    <% if user_signed_in? && current_user.role == "employer"%>
-    <h2>Welcome <strong><%=current_user.employer.name%></strong></h2>
-    <% elsif user_signed_in? && current_user.role == "employee" %>
-    Welcome <strong><%=current_user.employee.name%></strong>
-    <% end %>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+    <span class="navbar-text">
+      <% if user_signed_in? && current_user.role == "employer" %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"nav-link" %>
+      <% elsif user_signed_in? && current_user.role == "employee" %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"nav-link" %>
+      <% end %>
+    </span>
   </div>
-  <br/>
+</nav>
+
+<div class="container">
+  <% if user_signed_in? && current_user.role == "employer"%>
+  <h2>Welcome <strong><%=current_user.employer.name%></strong></h2>
+  <% elsif user_signed_in? && current_user.role == "employee" %>
+  Welcome <strong><%=current_user.employee.name%></strong>
+  <% end %>
+</div>
