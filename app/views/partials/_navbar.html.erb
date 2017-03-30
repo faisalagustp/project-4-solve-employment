@@ -3,7 +3,15 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
               <span>☰</span>
           </button>
-          <a class="navbar-brand page-scroll" href="/jobs"><%= image_tag "SEmp_v2.png", :height => "70" %></a>
+          <% if user_signed_in? %>
+          <a class="navbar-brand page-scroll" href="/jobs">
+            <%= image_tag "SEmp_v2.png", :height => "70" %>
+          </a>
+          <% else %>
+          <a class="navbar-brand page-scroll" href="/">
+            <%= image_tag "SEmp_v2.png", :height => "70" %>
+          </a>
+          <% end %>
 
           <div class="collapse navbar-collapse" id="collapsingNavbar">
               <ul class="navbar-nav">
