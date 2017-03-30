@@ -7,13 +7,12 @@
 
 <p>
   <strong>Job:</strong>
-  <%= @job_application.job %>
+  <%= @job_application.job.title %>
 </p>
 
 <p>
   <strong>Employee:</strong>
-  <%= @job_application.employee %>
+  <%= @job_application.employee.name %>
 </p>
 
-<%= link_to 'Edit', edit_job_application_path(@job_application) %> |
-<%= link_to 'Back', job_applications_path %>
+<%= link_to 'Back to All Jobs', jobs_path %>
