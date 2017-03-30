@@ -20,12 +20,9 @@ class JobsController < ApplicationController
           @jobs_not_applied << job
         end
       end
-      puts "jobs not applied is #{@jobs_not_applied}"
     else
       @jobs = current_user.employer.jobs
     end
-    puts "current user is #{current_user.inspect}"
-    puts "job is #{@jobs.inspect}"
   end
 
   # GET /jobs/1
