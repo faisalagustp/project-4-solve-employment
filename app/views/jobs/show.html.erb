@@ -22,8 +22,29 @@
 
 <p>
   <strong>Applicants:</strong>
-  <%= @job.employee_id %>
 </p>
 
+<% @job_applications.each_with_index do |job_app,index|%>
+<div id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="card">
+    <div class="card-header" role="tab" id="headingOne">
+      <h5 class="mb-0">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index.to_s %>" aria-expanded="true" aria-controls="collapse<%= index.to_s %>">
+          <%= job_app.employee.name %>
+        </a>
+      </h5>
+    </div>
+
+    <div id="collapse<%= index.to_s %>" class="collapse" role="tabpanel" aria-labelledby="heading<%= index.to_s %>">
+      <div class="card-block">
+        <p><strong>Cover letter:</strong></p>
+        <p><%=job_app.coverletter%></p>
+        <p><strong>Email:</strong></p>
+        <p><%=job_app.employee.user.email%></p>
+        <%=link_to "Hire", job_application_path(job_app.id, "job_application[status]"=>"successful"), method: :patch, class:"btn btn-success"%>
+      </div>
+    </div>
+  </div>
+<% end %>
 <%= link_to 'Edit', edit_job_path(@job), class: 'btn btn-success' %> |
 <%= link_to 'Back', jobs_path, class: 'btn btn-primary' %>
