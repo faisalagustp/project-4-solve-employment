@@ -21,7 +21,11 @@
 
 <p>
   <strong>Applicants:</strong>
+  <%if @job_applications.length == 0%>
+  No applicants yet.
+  <%end%>
 </p>
+
 
 <% @job_applications.each_with_index do |job_app,index|%>
 <div id="accordion" role="tablist" aria-multiselectable="true">
@@ -56,5 +60,8 @@
   </div>
 <% end %>
 <br/>
-<%= link_to 'Edit', edit_job_path(@job), class: 'btn btn-success' %>
 <%= link_to 'Back', jobs_path, class: 'btn btn-primary' %>
+<%if !@job.employee%>
+<%= link_to 'Edit', edit_job_path(@job), class: 'btn btn-success' %>
+<%= link_to 'Delete', @job, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-warning" %>
+<%end%>
