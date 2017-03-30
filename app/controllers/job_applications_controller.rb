@@ -114,7 +114,7 @@ class JobApplicationsController < ApplicationController
       end
     end
 
-    def job_filled
+    def job_filled?
       if @job_application.job.employee
     redirect_to :jobs, :alert => "Sorry, you have already picked someone for this !"
       end
