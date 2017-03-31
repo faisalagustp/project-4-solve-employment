@@ -22,7 +22,7 @@ Employee
 
 ## ERD Diagram
 
-<img src="http://i.imgur.com/YxFvMbT.png">
+<img src="http://i.imgur.com/AMJsNPv.png">
 
 ## Wireframe Sketches
 
