@@ -61,7 +61,3 @@
 <% end %>
 <br/>
 <%= link_to 'Back', jobs_path, class: 'btn btn-primary' %>
-<%if !@job.employee%>
-<%= link_to 'Edit', edit_job_path(@job), class: 'btn btn-success' %>
-<%= link_to 'Delete', @job, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-warning" %>
-<%end%>

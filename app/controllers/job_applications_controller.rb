@@ -8,10 +8,8 @@ class JobApplicationsController < ApplicationController
   before_action :already_applied?, only: [:create]
   # only employer of the job can change the status of the employee's job application
   before_action :employers_job?, only: [:update]
-  #employer can only hire one applicant for the job posting
-  before_action :job_filled?, only: [:update]
 
-  before_action :job_filled?, only: [:update]
+
   # GET /job_applications
   # GET /job_applications.json
   def index
@@ -62,12 +60,7 @@ class JobApplicationsController < ApplicationController
   def update
     respond_to do |format|
       if @job_application.update(job_application_params)
-         @job = Job.find(@job_application.job_id)
-         @job.update(employee_id: @job_application.employee_id)
-         @job_apps_rejected = JobApplication.where(status: "In Progress", job_id: @job.id)
-         @job_apps_rejected.each do |job_app_rej|
-           job_app_rej.update(status: "Unsuccessful")
-         end
+
         format.html { redirect_to @job_application, notice: 'Job application was successfully updated.' }
         format.json { render :show, status: :ok, location: @job_application }
       else
@@ -119,9 +112,5 @@ class JobApplicationsController < ApplicationController
       end
     end
 
-    def job_filled?
-      if @job_application.job.employee
-    redirect_to :jobs, :alert => "Sorry, you have already picked someone for this !"
-      end
-    end
+    
 end

@@ -12,11 +12,6 @@
     <h4 class="card-title">
       <span class="badge badge-pill badge-success"><%=job.job_applications.count%></span>
         <%= link_to job.title, job_path(job) %>
-        <% if job.employee_id %>
-        <span class="badge badge-pill badge-success">Filled</span>
-        <%else%>
-        <span class="badge badge-pill badge-danger">Open</span>
-        <% end %>
     </h4>
 
     </div>
