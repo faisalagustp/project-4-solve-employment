@@ -6,13 +6,13 @@
      <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
     <% end %>
   </h4>
-  <% @jobs.each_with_index do |job|%>
+  <% @jobs.each_with_index do |job,i|%>
     <div class="container-fluid">
     <div class="card card-block">
     <h4 class="card-title">
       <span class="badge badge-pill badge-success"><%=job.job_applications.count%></span>
         <%= link_to job.title, job_path(job) %>
-        <span class="badge badge-pill badge-success"><%=job.positions%></span>
+        <span class="badge badge-pill badge-success"><%= "#{@job_positions_filled[i]} / #{job.positions} filled"%></span>
     </h4>
 
     </div>

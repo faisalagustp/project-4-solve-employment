@@ -23,6 +23,14 @@ class JobsController < ApplicationController
       end
     else
       @jobs = current_user.employer.jobs
+      @job_positions_filled = []
+      @jobs.each do |job|
+        #@job_positions_filled << JobApplication.where(status: "Successful", job: job).count
+        job_app_filled_count = JobApplication.where(status: "Successful", job_id: job.id).count
+        @job_positions_filled.push(job_app_filled_count)
+        puts "count = #{job_app_filled_count}"
+      end
+      puts "from jobs controller for job positions filled #{@job_positions_filled}"
     end
   end
 
@@ -62,7 +70,7 @@ class JobsController < ApplicationController
   # PATCH/PUT /jobs/1
   # PATCH/PUT /jobs/1.json
   def update
-    
+
     respond_to do |format|
       if @job.update(job_params)
         format.html { redirect_to @job, notice: 'Job was successfully updated.' }
