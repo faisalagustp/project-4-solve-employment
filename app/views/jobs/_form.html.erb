@@ -24,6 +24,57 @@
     <div class='col-xs-12 col-md-4'><%= f.text_field :wage, label: 'Hourly wage', placeholder: "Enter numbers only" %></div>
   </div>
 
+  <div class="row">
+    <div class='col-xs-12 col-md-4'><%= f.text_field :contact_person, label: 'Contact Person', placeholder: 'title' %></div>
+  </div>
+
+  <div class="row">
+    <div class='col-xs-12 col-md-4'><%= f.text_field :contact_number, label: 'Contact Number', placeholder: 'title' %></div>
+  </div>
+
+  <div class="row">
+    <div class='col-xs-12 col-md-4'><%= f.text_field :contact_email, label: 'Contact Email', placeholder: 'title' %></div>
+  </div>
+
+  <div class="row">
+    <div class='col-xs-12 col-md-4'><%= f.text_field :device, label: 'Device', placeholder: 'title' %></div>
+  </div>
+
+  <div class="row">
+    <div class='col-xs-12 col-md-4'><%= f.text_field :software, label: 'Software', placeholder: 'title' %></div>
+  </div>
+
+  <div class="row">
+    <div class='col-xs-12 col-md-4'><%= f.text_field :skills, label: 'Skills', placeholder: 'title' %></div>
+  </div>
+
+  <div class="row">
+    <div class='col-xs-12 col-md-4'><%= f.text_field :job_type, label: 'Job Type (Permanent/Contract)', placeholder: 'title' %></div>
+  </div>
+
+  <div class="row">
+    <div class='col-xs-12 col-md-4'><%= f.text_field :duration, label: 'Duration (months)', placeholder: 'title' %></div>
+  </div>
+
+  <div class="row">
+    <div class='col-xs-12 col-md-4'><%= f.text_field :time_commitment, label: 'Time Commitment (hrs/day)', placeholder: 'title' %></div>
+  </div>
+
+  <div class="row">
+    <div class='col-xs-12 col-md-4'><%= f.text_field :training, label: 'Training', placeholder: 'title' %></div>
+  </div>
+
+  <div class="row">
+    <div class='col-xs-12 col-md-4'><%= f.text_field :location, label: 'Location', placeholder: 'title' %></div>
+  </div>
+
+  <div class="row">
+    <div class='col-xs-12 col-md-4'><%= f.text_field :positions, label: 'Positions', placeholder: 'title' %></div>
+  </div>
+
+  <div class="row">
+    <div class='col-xs-12 col-md-4'><%= f.text_field :start_date, label: 'Start date', placeholder: 'title' %></div>
+  </div>
   <%= f.hidden_field :employer_id, value: current_user.employer_id %>
   <%= f.submit "Submit", class: 'btn btn-success' %>
 <% end %>
