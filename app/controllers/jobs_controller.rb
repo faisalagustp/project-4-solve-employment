@@ -13,6 +13,13 @@ class JobsController < ApplicationController
   def index
     @jobs = Job.all
     if current_user.role == 'employee'
+        @hired_list = []
+        @vacancies_list = []
+        @jobs.each do |job|
+          hired_count = JobApplication.where(job_id: job.id, status: 'Successful').count
+          @hired_list << hired_count
+          @vacancies_list << job.positions - hired_count
+        end
       @job_applications_made = current_user.employee.job_applications
       @jobs_applied = @job_applications_made.map {|application_made| application_made.job}
       @jobs_not_applied = []
@@ -23,6 +30,13 @@ class JobsController < ApplicationController
       end
     else
       @jobs = current_user.employer.jobs
+      @hired_list = []
+      @vacancies_list = []
+      @jobs.each do |job|
+        hired_count = JobApplication.where(job_id: job.id, status: 'Successful').count
+        @hired_list << hired_count
+        @vacancies_list << job.positions - hired_count
+      end
     end
   end
 
