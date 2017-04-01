@@ -6,12 +6,19 @@
      <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
     <% end %>
   </h4>
-  <% @jobs.each_with_index do |job|%>
+  <% @jobs.each do |job|%>
     <div class="container-fluid">
     <div class="card card-block">
     <h4 class="card-title">
       <span class="badge badge-pill badge-success"><%=job.job_applications.count%></span>
         <%= link_to job.title, job_path(job) %>
+        <% @hired = JobApplication.where(job_id: job.id, status: 'Successful') %>
+        <% @vacancies = job.positions - @hired.length %>
+        <% if @vacancies == 0 %>
+          <span class="badge badge-pill badge-success">Filled</span>
+        <%else%>
+          <span class="badge badge-pill badge-danger"><%= @hired.length %> / <%= job.positions %></span>
+        <% end %>
     </h4>
 
     </div>

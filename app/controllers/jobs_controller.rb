@@ -23,7 +23,6 @@ class JobsController < ApplicationController
       end
     else
       @jobs = current_user.employer.jobs
-
     end
   end
 
@@ -33,6 +32,7 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     @job_applications = JobApplication.where(job_id: params[:id])
     @hired = JobApplication.where(job_id: params[:id], status: 'Successful')
+    @vacancies = @job.positions - @hired.length
   end
 
   # GET /jobs/new
