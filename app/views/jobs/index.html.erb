@@ -12,6 +12,7 @@
     <h4 class="card-title">
       <span class="badge badge-pill badge-success"><%=job.job_applications.count%></span>
         <%= link_to job.title, job_path(job) %>
+        <span class="badge badge-pill badge-success"><%=job.positions%></span>
     </h4>
 
     </div>

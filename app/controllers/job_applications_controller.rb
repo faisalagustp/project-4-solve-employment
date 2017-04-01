@@ -58,6 +58,13 @@ class JobApplicationsController < ApplicationController
   # PATCH/PUT /job_applications/1
   # PATCH/PUT /job_applications/1.json
   def update
+    puts "the present positions are: #{@job_application.job.positions}"
+    if @job_application.job.positions != 0
+      @job_application.job.positions -= 1
+    end
+    puts "the present positions after hiring are: #{@job_application.job.positions}"
+
+
     respond_to do |format|
       if @job_application.update(job_application_params)
 
@@ -112,5 +119,5 @@ class JobApplicationsController < ApplicationController
       end
     end
 
-    
+
 end
