@@ -14,15 +14,16 @@ class JobApplicationsController < ApplicationController
   # GET /job_applications.json
   def index
     if current_user.role == 'employee'
-    @job_applications_made = current_user.employee.job_applications
+      @job_applications_made = current_user.employee.job_applications
     else
-    @job_applications = JobApplication.all
+      @job_applications = JobApplication.all
     end
   end
 
   # GET /job_applications/1
   # GET /job_applications/1.json
   def show
+
   end
 
   # GET /job_applications/new
@@ -60,7 +61,15 @@ class JobApplicationsController < ApplicationController
   def update
     respond_to do |format|
       if @job_application.update(job_application_params)
-
+        @job = Job.find(@job_application.job_id)
+        @hired = JobApplication.where(status: "Successful", job_id: @job.id)
+        @vacancies = @job.positions
+        if @hired.length == @vacancies
+          @job_apps_rejected = JobApplication.where(status: "In Progress", job_id: @job.id)
+          @job_apps_rejected.each do |job_app_rej|
+            job_app_rej.update(status: "Unsuccessful")
+          end
+        end
         format.html { redirect_to @job_application, notice: 'Job application was successfully updated.' }
         format.json { render :show, status: :ok, location: @job_application }
       else
@@ -112,5 +121,5 @@ class JobApplicationsController < ApplicationController
       end
     end
 
-    
+
 end

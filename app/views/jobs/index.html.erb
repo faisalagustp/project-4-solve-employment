@@ -76,6 +76,7 @@
                   <p>Company: <%= job_new.employer.company %></p>
                   <p>Description: <%= job_new.description %></p>
                   <p>Salary: <%= job_new.wage %></p>
+                  <p>No. of vacancies: <%= job_new.positions %></p>
 
                 <%= form_for :job_application, url: job_applications_path do |f| %>
                 <%= f.text_field :coverletter %>

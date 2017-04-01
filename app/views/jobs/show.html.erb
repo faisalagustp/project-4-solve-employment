@@ -20,6 +20,16 @@
 </p>
 
 <p>
+  <strong>No. of vacancies:</strong>
+  <%= @job.positions %>
+</p>
+
+<p>
+  <strong>No. hired:</strong>
+  <%= @hired.length %>
+</p>
+
+<p>
   <strong>Applicants:</strong>
   <%if @job_applications.length == 0%>
   No applicants yet.

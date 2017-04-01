@@ -6,7 +6,7 @@ class JobsController < ApplicationController
   # only employers who created the jobs can crud their jobs
   before_action :own_job?, only: [:edit, :update, :destroy]
   # employers cannot edit or delete the job after the job has been filled
-  before_action :job_filled?, only: [:edit, :update, :destroy]
+  #before_action :job_filled?, only: [:edit, :update, :destroy]
 
   # GET /jobs
   # GET /jobs.json
@@ -23,6 +23,7 @@ class JobsController < ApplicationController
       end
     else
       @jobs = current_user.employer.jobs
+
     end
   end
 
@@ -31,6 +32,7 @@ class JobsController < ApplicationController
   def show
     @job = Job.find(params[:id])
     @job_applications = JobApplication.where(job_id: params[:id])
+    @hired = JobApplication.where(job_id: params[:id], status: 'Successful')
   end
 
   # GET /jobs/new
@@ -103,12 +105,12 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:title, :description, :wage, :employer_id, :employee_id)
+      params.require(:job).permit(:title, :description, :wage, :employer_id, :employee_id, :positions)
     end
 
-    def job_filled?
-      if @job.employee
-        redirect_to :job, :alert => "Sorry, the job cannot be changed once post has been filled"
-      end
-    end
+    # def job_filled?
+    #   if @job.employee
+    #     redirect_to :job, :alert => "Sorry, the job cannot be changed once post has been filled"
+    #   end
+    # end
 end
