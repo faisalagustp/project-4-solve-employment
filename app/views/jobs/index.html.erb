@@ -47,7 +47,9 @@
                 <p>Salary: <%= job_app.job.wage %></p>
                 <p>Status: <%= job_app.status%> </p>
                 <p><%= link_to "View Job Application", job_application_path(job_app.id), class: "btn btn-primary" %></p>
+                <% if job_app.status == "Successful" %>
                 <p><%= link_to "Submit a Review", new_review_path, class: "btn btn-primary" %></p>
+                <% end %>
                 </div>
               </div>
             </div>
