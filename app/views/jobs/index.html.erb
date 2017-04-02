@@ -27,11 +27,11 @@
     <%= form_tag jobs_path, :method => 'get' do %>
         <p>
         <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Search", :title => nil %>
+        <%= submit_tag "Search Jobs", :title => nil %>
       </p>
       <% end %>
 
-      <%= render :partial => 'accordion', :collection => @jobs_searched %>
+      <%= render :partial => 'accordion-search', :collection => @jobs_searched %>
 
     <div class="container-fluid">
     <h4>MY APPLICATIONS</h4>
