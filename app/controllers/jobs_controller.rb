@@ -13,6 +13,12 @@ class JobsController < ApplicationController
   def index
     @jobs = Job.all
     if current_user.role == 'employee'
+      if params[:search] == '' || params[:search] == nil
+        @jobs_searched = []
+      else
+        @jobs_searched = search(params[:search])
+      end
+
       @job_applications_made = current_user.employee.job_applications
       @jobs_applied = @job_applications_made.map {|application_made| application_made.job}
       puts "the jobs applied array is #{@jobs_applied}"
@@ -123,6 +129,13 @@ class JobsController < ApplicationController
     def job_params
       params.require(:job).permit(:title, :description, :wage, :employer_id, :employee_id, :positions)
     end
+
+    def search(search)
+    if search
+      Job.where('title ILIKE ?', "%#{search}%")
+    end
+    end
+
 
     # def job_filled?
     #   if @job.employee
