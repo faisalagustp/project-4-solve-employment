@@ -70,8 +70,8 @@ class JobApplicationsController < ApplicationController
             job_app_rej.update(status: "Unsuccessful")
           end
         end
-        format.html { redirect_to @job_application, notice: 'Job application was successfully updated.' }
-        format.json { render :show, status: :ok, location: @job_application }
+        format.html { redirect_to job_path, notice: 'The employee was successfully hired' }
+        format.json { render :show, status: :ok, location: @job }
       else
         format.html { render :edit }
         format.json { render json: @job_application.errors, status: :unprocessable_entity }
