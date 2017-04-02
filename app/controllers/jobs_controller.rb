@@ -13,20 +13,22 @@ class JobsController < ApplicationController
   def index
     @jobs = Job.all
     if current_user.role == 'employee'
-        @hired_list = []
-        @vacancies_list = []
-        @jobs.each do |job|
-          hired_count = JobApplication.where(job_id: job.id, status: 'Successful').count
-          @hired_list << hired_count
-          @vacancies_list << job.positions - hired_count
-        end
       @job_applications_made = current_user.employee.job_applications
       @jobs_applied = @job_applications_made.map {|application_made| application_made.job}
+      puts "the jobs applied array is #{@jobs_applied}"
       @jobs_not_applied = []
       @jobs.each do |job|
         if(@jobs_applied.include?(job)==false)
           @jobs_not_applied << job
         end
+      end
+      @job_opportunities = []
+      @jobs_not_applied.each do |job|
+        hired_count = JobApplication.where(job_id: job.id, status: 'Successful').count
+        if (job.positions - hired_count > 0)
+          @job_opportunities << job
+        end
+      puts "the jobs not applied array is #{@jobs_not_applied}"
       end
     else
       @jobs = current_user.employer.jobs
