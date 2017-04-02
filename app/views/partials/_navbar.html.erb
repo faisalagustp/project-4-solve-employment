@@ -3,15 +3,9 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <% if user_signed_in? %>
-  <a class="navbar-brand" href="/jobs">
-    <%= image_tag "SEmp_v2.png", :height => "70" %>
-  </a>
-  <% else %>
   <a class="navbar-brand" href="/">
     <%= image_tag "SEmp_v2.png", :height => "70" %>
   </a>
-  <% end %>
 
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
