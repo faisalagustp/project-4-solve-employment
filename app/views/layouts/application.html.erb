@@ -5,7 +5,6 @@
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <script src="https://use.fontawesome.com/f959978fdd.js"></script>
 
@@ -13,6 +12,7 @@
     <link href="http://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
 
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application' %>
   </head>
 
@@ -29,7 +29,7 @@
       <% end %>
       <%= yield %>
     </div>
-    
+
     <%= render "partials/footer" %>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>

@@ -3,6 +3,11 @@
 <p>
   <strong>Rating:</strong>
   <%= @review.rating %>
+  <div class="star">
+
+    Rating: <%= rating_for @review, 'rating', star: 5 %>
+  </div>
+
 </p>
 
 <p>
