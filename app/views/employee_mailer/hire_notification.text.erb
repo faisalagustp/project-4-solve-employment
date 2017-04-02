@@ -1,0 +1,12 @@
+Your job application for the following job has been successful:
+
+Title: <%=@job.title%>
+Description: <%=@job.description%>
+Company: <%=@job.employer.company%>
+Duration: <%=@job.duration%>
+
+For more information on the job, just follow this link <%=@url+"/jobs/#{@job.id}"%>.
+
+<%=@job.contact_person%> will be contacting you via email shortly to provide more details your starting date.
+
+Congratulations again and great work!
