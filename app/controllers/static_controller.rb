@@ -5,7 +5,7 @@ class StaticController < ApplicationController
   end
 
   def logged_in?
-    if current_user.employer || current_user.employee
+    if current_user
       redirect_to :jobs
     end
   end

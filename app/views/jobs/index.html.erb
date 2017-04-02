@@ -48,7 +48,7 @@
                 <p>Status: <%= job_app.status%> </p>
                 <p><%= link_to "View Job Application", job_application_path(job_app.id), class: "btn btn-primary" %></p>
                 <% if job_app.status == "Successful" %>
-                <p><%= link_to "Submit a Review", new_review_path, class: "btn btn-primary" %></p>
+                  <p><%= link_to "Submit a Review", new_review_path({:employee_id=>current_user.employee_id, :employer_id=>job_app.job.employer.id}), class: "btn btn-primary" %></p>
                 <% end %>
                 </div>
               </div>
@@ -80,17 +80,19 @@
                   <p>Description: <%= job_new.description %></p>
                   <p>Salary: <%= job_new.wage %></p>
 
-                <%= form_for :job_application, url: job_applications_path do |f| %>
-                <%= f.text_field :coverletter %>
-                <%= f.hidden_field :job_id, value: job_new.id %>
-                <%= f.hidden_field :employee_id, value: current_user.employee_id %>
-                <%= f.hidden_field :status, value: "In Progress" %>
-                <p><%= f.submit 'Apply', class:"btn btn-primary" %></p>
-                <% end %>
-                  </div>
-                </div>
+                  <%= form_for :job_application, url: job_applications_path do |f| %>
+                  <p>Please provide a short Coverletter in the text box below: <br>
+                  <%= f.text_area :coverletter, size: "40x5" %></p>
+                  <%= f.hidden_field :job_id, value: job_new.id %>
+                  <%= f.hidden_field :employee_id, value: current_user.employee_id %>
+                  <%= f.hidden_field :status, value: "In Progress" %>
+                  <p><%= f.submit 'Apply', class:"btn btn-primary" %></p>
+                  <% end %>
               </div>
+
             </div>
-          <% end %>
           </div>
+        </div>
+      <% end %>
+      </div>
   <%end%>
