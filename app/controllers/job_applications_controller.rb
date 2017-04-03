@@ -7,7 +7,7 @@ class JobApplicationsController < ApplicationController
   # employee can only create 1 application for each job
   before_action :already_applied?, only: [:create]
   # only employer of the job can change the status of the employee's job application
-  before_action :employers_job?, only: [:update]
+  before_action :employee_employer?, only: [:edit, :update]
 
 
   # GET /job_applications
@@ -33,8 +33,8 @@ class JobApplicationsController < ApplicationController
 
   # GET /job_applications/1/edit
   # employees cannot edit their job applications
-  # def edit
-  # end
+  def edit
+  end
 
   # POST /job_applications
   # POST /job_applications.json
@@ -117,11 +117,11 @@ class JobApplicationsController < ApplicationController
       end
     end
 
-    def employers_job?
-      if @job_application.job.employer != current_user.employer
-        redirect_to :jobs, :alert => "Sorry, access denied!"
-      end
-    end
+    # def employers_job?
+    #   if @job_application.job.employer_id != current_user.employer.id
+    #     redirect_to :jobs, :alert => "Sorry, access denied!"
+    #   end
+    # end
 
 
 end
