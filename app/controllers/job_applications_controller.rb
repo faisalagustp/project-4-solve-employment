@@ -33,6 +33,7 @@ class JobApplicationsController < ApplicationController
   # GET /job_applications/1/edit
   # employees cannot edit their job applications
   def edit
+    @job_application.employee_rating
   end
 
   # POST /job_applications
