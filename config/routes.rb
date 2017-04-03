@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   resources :job_applications, except: :edit
   resources :employers
   resources :employees
-  resources :reviews
 
   root "static#homepage"
 
