@@ -33,12 +33,6 @@ class JobsController < ApplicationController
       puts "the jobs not applied array is #{@jobs_not_applied}"
       end
 
-      if params[:search] == '' || params[:search] == nil
-        @jobs_searched = []
-      else
-        @jobs_searched = search(params[:search])
-      end
-      puts "jobs searched are #{@jobs_searched.inspect}"
     else
       @jobs = current_user.employer.jobs
       @hired_list = []
@@ -49,6 +43,23 @@ class JobsController < ApplicationController
         @vacancies_list << job.positions - hired_count
       end
     end
+  end
+
+  def searched
+    if params[:search] == '' || params[:search] == nil
+      @jobs_searched = []
+      respond_to do |format|
+        format.html
+        format.js
+      end
+    else
+      @jobs_searched = search(params[:search])
+      respond_to do |format|
+        format.html
+        format.js
+      end
+    end
+    puts "jobs searched are #{@jobs_searched.inspect}"
   end
 
   # GET /jobs/1
