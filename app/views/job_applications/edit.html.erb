@@ -19,10 +19,14 @@
     <br>
     <%= f.text_area :review_employee %>
   </div>
-  <div class="field">
+  <div class="field star-rating">
     <%= f.label :rating_employee %>
     <br>
-    <%= f.text_area :rating_employee %>
+    <%= f.radio_button(:rating_employee, "1") %>
+    <%= f.radio_button(:rating_employee, "2") %>
+    <%= f.radio_button(:rating_employee, "3") %>
+    <%= f.radio_button(:rating_employee, "4") %>
+    <%= f.radio_button(:rating_employee, "5") %>
   </div>
   <%end%>
 
@@ -35,16 +39,21 @@
   <div class="field">
     <%= f.label :rating_employer %>
     <br>
-    <%= f.text_area :rating_employer %>
+    <%= f.radio_button(:rating_employer, "1") %>
+    <%= f.radio_button(:rating_employer, "2") %>
+    <%= f.radio_button(:rating_employer, "3") %>
+    <%= f.radio_button(:rating_employer, "4") %>
+    <%= f.radio_button(:rating_employer, "5") %>
   </div>
   <%end%>
 
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit Review", class: "btn btn-primary"%>
   </div>
 <% end %>
 
-
+<%if current_user.role == "employee"%>
 <%= link_to 'Show', @job_application %> |
+<% end %>
 <%= link_to 'Back to all Job Applications', job_applications_path %>
