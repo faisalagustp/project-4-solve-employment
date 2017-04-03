@@ -23,6 +23,7 @@ class JobsController < ApplicationController
           @jobs_not_applied << job
         end
       end
+      
       @job_opportunities = []
       @jobs_not_applied.each do |job|
         hired_count = JobApplication.where(job_id: job.id, status: 'Successful').count
