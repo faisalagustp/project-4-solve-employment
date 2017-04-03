@@ -32,7 +32,6 @@ class JobsController < ApplicationController
         end
       puts "the jobs not applied array is #{@jobs_not_applied}"
       end
-
     else
       @jobs = current_user.employer.jobs
       @hired_list = []
@@ -42,6 +41,10 @@ class JobsController < ApplicationController
         @hired_list << hired_count
         @vacancies_list << job.positions - hired_count
       end
+    end
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 

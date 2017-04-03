@@ -42,10 +42,16 @@ class JobApplicationsController < ApplicationController
     @job_application = JobApplication.new(job_application_params)
     if @job_application.save
       flash[:notice] = "Your application has been made successfully"
-      redirect_to jobs_path
+      respond_to do |format|
+        format.html {redirect_to jobs_path}
+        format.js
+      end
     else
     flash[:error] = "Error saving your application"
-    redirect_to jobs_path
+    respond_to do |format|
+      format.html
+      format.js
+    end
     end
   end
 
