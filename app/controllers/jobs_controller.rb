@@ -6,23 +6,48 @@ class JobsController < ApplicationController
   # only employers who created the jobs can crud their jobs
   before_action :own_job?, only: [:edit, :update, :destroy]
   # employers cannot edit or delete the job after the job has been filled
-  before_action :job_filled?, only: [:edit, :update, :destroy]
+  #before_action :job_filled?, only: [:edit, :update, :destroy]
 
   # GET /jobs
   # GET /jobs.json
   def index
     @jobs = Job.all
     if current_user.role == 'employee'
+
       @job_applications_made = current_user.employee.job_applications
       @jobs_applied = @job_applications_made.map {|application_made| application_made.job}
+      puts "the jobs applied array is #{@jobs_applied}"
       @jobs_not_applied = []
       @jobs.each do |job|
         if(@jobs_applied.include?(job)==false)
           @jobs_not_applied << job
         end
       end
+
+      @job_opportunities = []
+      @jobs_not_applied.each do |job|
+        hired_count = JobApplication.where(job_id: job.id, status: 'Successful').count
+        if (job.positions - hired_count > 0)
+          @job_opportunities << job
+        end
+      puts "the jobs not applied array is #{@jobs_not_applied}"
+      end
+
+      if params[:search] == '' || params[:search] == nil
+        @jobs_searched = []
+      else
+        @jobs_searched = search(params[:search])
+      end
+      puts "jobs searched are #{@jobs_searched.inspect}"
     else
       @jobs = current_user.employer.jobs
+      @hired_list = []
+      @vacancies_list = []
+      @jobs.each do |job|
+        hired_count = JobApplication.where(job_id: job.id, status: 'Successful').count
+        @hired_list << hired_count
+        @vacancies_list << job.positions - hired_count
+      end
     end
   end
 
@@ -31,6 +56,8 @@ class JobsController < ApplicationController
   def show
     @job = Job.find(params[:id])
     @job_applications = JobApplication.where(job_id: params[:id])
+    @hired = JobApplication.where(job_id: params[:id], status: 'Successful')
+    @vacancies = @job.positions - @hired.length
   end
 
   # GET /jobs/new
@@ -103,12 +130,19 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:title, :description, :wage, :employer_id, :employee_id)
+      params.require(:job).permit(:title, :description, :wage, :employer_id, :employee_id, :positions)
     end
 
-    def job_filled?
-      if @job.employee
-        redirect_to :job, :alert => "Sorry, the job cannot be changed once post has been filled"
-      end
+    def search(search)
+    if search
+      Job.where('title ILIKE ?', "%#{search}%")
     end
+    end
+
+
+    # def job_filled?
+    #   if @job.employee
+    #     redirect_to :job, :alert => "Sorry, the job cannot be changed once post has been filled"
+    #   end
+    # end
 end

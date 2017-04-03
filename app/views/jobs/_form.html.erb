@@ -24,6 +24,10 @@
     <div class='col-xs-12 col-md-4'><%= f.text_field :wage, label: 'Hourly wage', placeholder: "Enter numbers only" %></div>
   </div>
 
+  <div class="row">
+    <div class='col-xs-12 col-md-4'><%= f.text_field :positions, label: 'No. of vacancies', placeholder: "Enter numbers only" %></div>
+  </div>
+
   <%= f.hidden_field :employer_id, value: current_user.employer_id %>
   <%= f.submit "Submit", class: 'btn btn-success' %>
 <% end %>

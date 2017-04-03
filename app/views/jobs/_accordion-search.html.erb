@@ -1,0 +1,42 @@
+<div class="container-fluid">
+  <% jobs_searched.each do |job_searched| %>
+  <div id="accordion3" role="tablist" aria-multiselectable="true">
+    <div class="card">
+      <div class="card-header" role="tab" id="headingOne">
+        <h5 class="mb-0">
+          <a data-toggle="collapse" data-parent="#accordion3" href="#collapse<%=job_searched.id.to_s%>" aria-expanded="true" aria-controls="collapseOne">
+            <%= job_searched.title %>
+          </a>
+        </h5>
+      </div>
+
+      <div id="collapse<%=job_searched.id.to_s%>" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+        <div class="card-block">
+            <p>Company: <%= job_searched.employer.company %></p>
+            <p>Description: <%= job_searched.description %></p>
+            <p>Salary: <%= job_searched.wage %></p>
+            <% hired_count = JobApplication.where(job_id: job_searched.id, status: 'Successful').count %>
+            <p>No. of vacancies: <%= (job_searched.positions - hired_count) %></p>
+            <% has_applied = false %>
+            <% job_searched.job_applications.each do |job_applic| %>
+            <% if job_applic.employee_id == current_user.employee_id %>
+              <% has_applied = true %>
+                <p>Status: <%= job_applic.status%> </p>
+                <p><%= link_to "View Job Application", job_application_path(job_applic.id), class: "btn btn-primary" %></p>
+            <% end %>
+            <% end %>
+            <% if has_applied == false %>
+                <%= form_for :job_application, url: job_applications_path do |f| %>
+                <%= f.text_field :coverletter %>
+                <%= f.hidden_field :job_id, value: job_searched.id %>
+                <%= f.hidden_field :employee_id, value: current_user.employee_id %>
+                <%= f.hidden_field :status, value: "In Progress" %>
+                <p><%= f.submit 'Apply', class:"btn btn-primary" %></p>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
