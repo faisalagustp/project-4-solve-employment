@@ -77,8 +77,10 @@
                   <p>Description: <%= job_new.description %></p>
                   <p>Salary: <%= job_new.wage %></p>
 
+
                 <%= form_for :job_application, url: job_applications_path do |f| %>
-                <%= f.text_field :coverletter %>
+                <p>Please provide a short Coverletter in the text box below: <br>
+                  <%= f.text_area :coverletter, size: "40x5" %></p>
                 <%= f.hidden_field :job_id, value: job_new.id %>
                 <%= f.hidden_field :employee_id, value: current_user.employee_id %>
                 <%= f.hidden_field :status, value: "In Progress" %>
