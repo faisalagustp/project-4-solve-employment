@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170401171911) do
+ActiveRecord::Schema.define(version: 20170329092457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20170401171911) do
 
   create_table "employees", force: :cascade do |t|
     t.string   "name"
-    t.integer  "job_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -43,6 +42,7 @@ ActiveRecord::Schema.define(version: 20170401171911) do
   create_table "employers", force: :cascade do |t|
     t.string   "name"
     t.string   "company"
+    t.string   "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -51,8 +51,12 @@ ActiveRecord::Schema.define(version: 20170401171911) do
     t.text     "coverletter"
     t.integer  "job_id"
     t.integer  "employee_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "rating_employee"
+    t.integer  "rating_employer"
+    t.text     "review_employer"
+    t.text     "review_employee"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "status"
     t.index ["employee_id"], name: "index_job_applications_on_employee_id", using: :btree
     t.index ["job_id"], name: "index_job_applications_on_job_id", using: :btree
@@ -61,22 +65,24 @@ ActiveRecord::Schema.define(version: 20170401171911) do
   create_table "jobs", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.decimal  "wage"
+    t.integer  "wage"
     t.integer  "employer_id"
-    t.integer  "employee_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "contact_person"
+    t.string   "contact_number"
+    t.string   "contact_email"
+    t.text     "device"
+    t.text     "software"
+    t.text     "skills"
+    t.string   "job_type"
+    t.string   "duration"
+    t.decimal  "time_commitment"
+    t.text     "training"
+    t.text     "location"
+    t.integer  "positions"
+    t.string   "start_date"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.index ["employer_id"], name: "index_jobs_on_employer_id", using: :btree
-  end
-
-  create_table "reviews", force: :cascade do |t|
-    t.integer  "rating"
-    t.text     "review"
-    t.integer  "employer_id"
-    t.integer  "employee_id"
-    t.string   "review_for"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
