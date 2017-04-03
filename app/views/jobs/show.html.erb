@@ -62,7 +62,7 @@
         <p><strong>Email:</strong></p>
         <p><%=job_app.employee.user.email%></p>
         <% if job_app.status == "In Progress" %>
-        <p><%=link_to "Hire", job_application_path(job_app.id, "job_application[status]"=>"Successful"), method: :patch, class:"btn btn-primary"%></p>
+        <p><%= link_to 'Hire Her', hire_path(job_app.id, "job_application[status]"=>"Successful"), method: :post, class:"btn btn-primary" %></p>
         <% elsif job_app.status == "Successful" %>
         <p><%= link_to "Submit a Review", edit_job_application_path, class: "btn btn-primary" %></p>
         <% end %>
