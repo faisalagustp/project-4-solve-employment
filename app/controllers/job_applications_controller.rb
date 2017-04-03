@@ -7,7 +7,7 @@ class JobApplicationsController < ApplicationController
   # employee can only create 1 application for each job
   before_action :already_applied?, only: [:create]
   # only employer of the job can change the status of the employee's job application
-  before_action :employers_job?, only: [:update]
+  before_action :employee_employer?, only: [:edit, :update]
 
 
   # GET /job_applications
@@ -23,7 +23,6 @@ class JobApplicationsController < ApplicationController
   # GET /job_applications/1
   # GET /job_applications/1.json
   def show
-
   end
 
   # GET /job_applications/new
@@ -33,8 +32,8 @@ class JobApplicationsController < ApplicationController
 
   # GET /job_applications/1/edit
   # employees cannot edit their job applications
-  # def edit
-  # end
+  def edit
+  end
 
   # POST /job_applications
   # POST /job_applications.json
@@ -56,13 +55,33 @@ class JobApplicationsController < ApplicationController
   end
   end
 
+  def hire
+    respond_to do |format|
+    @job_application = JobApplication.find(params[:id])
+    if @job_application.update(hire_params)
+      EmployeeMailer.hire_notification(@job_application.employee, @job_application.job).deliver
+      @job = Job.find(@job_application.job_id)
+      @hired = JobApplication.where(status: "Successful", job_id: @job.id)
+      @vacancies = @job.positions
+      if @hired.length == @vacancies
+        @job_apps_rejected = JobApplication.where(status: "In Progress", job_id: @job.id)
+        @job_apps_rejected.each do |job_app_rej|
+          job_app_rej.update(status: "Unsuccessful")
+        end
+      end
+      format.html { redirect_to jobs_path, notice: 'Email has been sent to the successful applicant' }
+      format.json { render :show, status: :ok, location: @job }
+    else
+      format.html { render :edit }
+      format.json { render json: @job_application.errors, status: :unprocessable_entity }
+    end
+  end
+  end
   # PATCH/PUT /job_applications/1
   # PATCH/PUT /job_applications/1.json
   def update
     respond_to do |format|
       if @job_application.update(job_application_params)
-
-        EmployeeMailer.hire_notification(@job_application.employee, @job_application.job).deliver
         @job = Job.find(@job_application.job_id)
         @hired = JobApplication.where(status: "Successful", job_id: @job.id)
         @vacancies = @job.positions
@@ -99,7 +118,11 @@ class JobApplicationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_application_params
-      params.require(:job_application).permit(:coverletter, :job_id, :employee_id, :status)
+      params.require(:job_application).permit(:coverletter, :job_id, :employee_id, :status, :review_employee, :rating_employee, :rating_employer, :review_employer)
+    end
+
+    def hire_params
+      params.require(:job_application).permit(:status)
     end
 
     def employee?
@@ -117,11 +140,17 @@ class JobApplicationsController < ApplicationController
       end
     end
 
-    def employers_job?
-      if @job_application.job.employer != current_user.employer
+    def employee_employer?
+      if current_user.role == "employer"
+        if @job_application.job.employer != current_user.employer
         redirect_to :jobs, :alert => "Sorry, access denied!"
       end
+    elsif current_user.role == "employee"
+      if @job_application.employee != current_user.employee
+        redirect_to :jobs, :alert => "Sorry, access denied!"
     end
+  end
+end
 
 
 end
