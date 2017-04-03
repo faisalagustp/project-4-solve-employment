@@ -23,7 +23,7 @@ class JobsController < ApplicationController
           @jobs_not_applied << job
         end
       end
-      
+
       @job_opportunities = []
       @jobs_not_applied.each do |job|
         hired_count = JobApplication.where(job_id: job.id, status: 'Successful').count
@@ -38,7 +38,7 @@ class JobsController < ApplicationController
       else
         @jobs_searched = search(params[:search])
       end
-
+      puts "jobs searched are #{@jobs_searched.inspect}"
     else
       @jobs = current_user.employer.jobs
       @hired_list = []
