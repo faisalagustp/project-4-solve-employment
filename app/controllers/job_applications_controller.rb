@@ -60,8 +60,8 @@ class JobApplicationsController < ApplicationController
   def update
     respond_to do |format|
       if @job_application.update(job_application_params)
-
-        format.html { redirect_to @job_application, notice: 'Job application was successfully updated.' }
+        EmployeeMailer.hire_notification(@job_application.employee, @job_application.job).deliver
+        format.html { redirect_to @job_application, notice: 'Email has been sent to the successful applicant.' }
         format.json { render :show, status: :ok, location: @job_application }
       else
         format.html { render :edit }
@@ -112,5 +112,5 @@ class JobApplicationsController < ApplicationController
       end
     end
 
-    
+
 end

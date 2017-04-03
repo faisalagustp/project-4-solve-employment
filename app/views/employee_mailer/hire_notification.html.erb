@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <h1>Congratulations, <%= @employee.name %>!</h1>
+   <p>
+     Your job application for the following job has been successful:<br>
+     <ul>
+       <li>Title: <%=@job.title%></li>
+       <li>Description: <%=@job.description%></li>
+       <li>Company: <%=@job.employer.company%></li>
+       <li>Duration: <%=@job.duration%></li>
+     </ul>
+     For more information on the job, just follow this link <%=@url+"/jobs/#{@job.id}"%>.
+   </p>
+   <p><%=@job.contact_person%> will be contacting you via email shortly to provide more details your starting date.</p>
+   <p>Well done!</p>
+  </body>
+</html>
