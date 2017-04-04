@@ -10,6 +10,7 @@ class EmployeesController < ApplicationController
   # GET /employees/1
   # GET /employees/1.json
   def show
+    average_rating_employee
   end
 
   # GET /employees/new
@@ -71,4 +72,20 @@ class EmployeesController < ApplicationController
     def employee_params
       params.require(:employee).permit(:name)
     end
+
+    def average_rating_employee
+      @employee = Employee.find(params[:id])
+      @total_rating = 0
+      @total_reviews = 0
+      @employee.job_applications.where("status" == "successful").each do |application|
+          @total_rating += application.rating_employee.to_i
+          if application.rating_employee
+          @total_reviews += 1
+          end
+      end
+      p @total_rating
+      p @total_reviews
+      @average_rating = (@total_rating / @total_reviews).round(2)
+    end
+
 end

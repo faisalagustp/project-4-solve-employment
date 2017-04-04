@@ -17,6 +17,7 @@ body {
     webkit-tap-highlight-color: #222;
     padding-top: 95px;
     margin: 0;
+    background-image: url("https://www.xmple.com/wallpaper/gradient-white-blue-linear-1920x1080-c2-87ceeb-ffffff-a-45-f-14.svg");
 }
 
 /* workaround modal-open padding issue */
@@ -118,7 +119,7 @@ footer {
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 35px;
-  background-color: #f5f5f5;
+  background-color: rgba(#fff, 1);
   text-align: center;
   padding-top: 8px;
   z-index: -1;
@@ -130,7 +131,7 @@ footer h4, footer h6 {
 
 .navbar {
     border-color: rgba(35,35,35,.05);
-    background-color: #f5f5f5;
+    background-color: rgba(#fff, 1);
     -webkit-transition: all .4s;
     -moz-transition: all .4s;
     transition: all .4s;
@@ -191,7 +192,7 @@ footer h4, footer h6 {
 @media(min-width:48em) {
     .navbar {
         border-color: transparent;
-        background-color: #f5f5f5;
+        background-color: #rgba(#fff, 1);
         min-height: 60px;
     }
 
@@ -235,18 +236,17 @@ header {
 header .header-content {
     position: relative;
     width: 100%;
-    padding: 100px 15px;
     text-align: center;
     z-index: 2;
+    background-color: rgba(#ffffff, 0.75);
 }
 
 header .header-content .inner h1 {
-    margin-top: 0;
+    margin-top: 550px;
     margin-bottom: 0;
 }
 
 header .header-content .inner p {
-    margin-bottom: 50px;
     font-size: 16px;
     font-weight: 300;
     color: #222;

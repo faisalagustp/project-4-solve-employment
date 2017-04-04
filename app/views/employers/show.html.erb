@@ -10,5 +10,10 @@
   <%= @employer.company %>
 </p>
 
+<p><strong>Average Employer Rating:</strong>
+  <span id="star-rating"></span><span id="rating">  <%= @average_rating %></span>
+</p>
+
+
 <%= link_to 'Edit', edit_employer_path(@employer) %> |
 <%= link_to 'Back', employers_path %>
