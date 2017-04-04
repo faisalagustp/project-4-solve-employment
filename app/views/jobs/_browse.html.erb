@@ -1,0 +1,35 @@
+
+  <%if @jobs_not_applied.length ==0%>
+<br><h6>No jobs currently available</h6><br>
+<%else%>
+<% @job_opportunities.each do |job_new| %>
+<div id="accordion2" role="tablist" aria-multiselectable="true">
+<div class="card">
+  <div class="card-header" role="tab" id="headingOne">
+    <h5 class="mb-0">
+      <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo<%=job_new.id.to_s%>" aria-expanded="true" aria-controls="collapseOne">
+        <%= job_new.title %>
+      </a>
+    </h5>
+  </div>
+
+  <div id="collapseTwo<%=job_new.id.to_s%>" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+    <div class="card-block">
+
+        <p>Company: <%= job_new.employer.company %></p>
+        <p>Description: <%= job_new.description %></p>
+        <p>Salary: <%= job_new.wage %></p>
+        <p>No. of vacancies: <%= job_new.positions %></p>
+      <%= form_for(:job_application, method: 'post', url: job_applications_path, remote: true) do |f| %>
+      <%= f.text_field :coverletter %>
+      <%= f.hidden_field :job_id, value: job_new.id %>
+      <%= f.hidden_field :employee_id, value: current_user.employee_id %>
+      <%= f.hidden_field :status, value: "In Progress" %>
+      <p><%= f.submit 'Apply', class:"btn btn-primary"%></p>
+      <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+<% end %>
