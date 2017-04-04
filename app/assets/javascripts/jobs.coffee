@@ -20,7 +20,7 @@ $ ->
              Title: <strong>{{title}}</strong>
            {{/if}}
            {{#if description}}
-             location: <strong>{{description}}</strong>
+             description: <strong>{{description}}</strong>
            {{/if}}
          </div>
        ")

@@ -125,8 +125,7 @@ class JobsController < ApplicationController
   def autocomplete
     jobs = Job.all.map do |job|
       {
-        title: job.title,
-        description: job.description
+        title: job.title
       }
     end
     render json: jobs
@@ -157,7 +156,7 @@ class JobsController < ApplicationController
 
     def search(search)
     if search
-      Job.where('title ILIKE ? OR location ILIKE ?', "%#{search}%", "%#{search}%")
+      Job.where('title ILIKE ?', "%#{search}%")
     end
     end
 
