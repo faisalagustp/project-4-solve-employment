@@ -120,6 +120,16 @@ class JobsController < ApplicationController
     end
   end
 
+  def autocomplete
+    jobs = Job.all.map do |job|
+      {
+        title: job.title,
+        location: job.location
+      }
+    end
+    render json: jobs
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_job
@@ -140,12 +150,12 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:title, :description, :wage, :employer_id, :employee_id, :positions)
+      params.require(:job).permit(:title, :description, :wage, :employer_id, :employee_id, :positions, :location)
     end
 
     def search(search)
     if search
-      Job.where('title ILIKE ?', "%#{search}%")
+      Job.where('title ILIKE ? OR location ILIKE ?', "%#{search}%", "%#{search}%")
     end
     end
 

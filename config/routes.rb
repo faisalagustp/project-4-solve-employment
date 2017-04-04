@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :job_applications
   get "/search-results" => 'jobs#searched'
+  get "/autocomplete" => "jobs#autocomplete"
   # devise_for :employers, :controllers => {:registrations => "users/registrations"}
   # devise_for :employees
   resources :employers

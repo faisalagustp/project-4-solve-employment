@@ -26,7 +26,7 @@
     <%= render :partial => 'employee-profile' %>
       <%= form_tag(search_results_path, method: 'get', remote: true) do %>
         <p>
-          <%= text_field_tag :search, params[:search] %>
+          <%= text_field_tag :search, params[:search], class: "js-jobs-autocomplete"%>
           <%= submit_tag "Search Jobs", :title => nil%>
         </p>
       <% end %>

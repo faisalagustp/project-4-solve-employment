@@ -5,7 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+
 # Our custom gem
+gem 'handlebars_assets'
+gem 'bootstrap-typeahead-rails'
 gem 'devise'
 gem 'pry'
 gem 'rails-erd'

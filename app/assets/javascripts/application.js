@@ -15,3 +15,5 @@
 // = require turbolinks
 // = require rating
 // = require_tree .
+// = require bootstrap-typeahead-rails
+// = require handlebars

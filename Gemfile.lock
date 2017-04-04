@@ -41,6 +41,8 @@ GEM
     arel (7.1.4)
     bcrypt (3.1.11)
     bcrypt (3.1.11-x64-mingw32)
+    bootstrap-typeahead-rails (0.10.5.1)
+      railties (>= 3.0)
     bootstrap_form (2.6.0)
     builder (3.2.3)
     byebug (9.0.6)
@@ -67,6 +69,11 @@ GEM
     ffi (1.9.18-x64-mingw32)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    handlebars_assets (0.23.1)
+      execjs (~> 2.0)
+      multi_json (~> 1.0)
+      sprockets (>= 2.0.0)
+      tilt (>= 1.2)
     i18n (0.8.1)
     jbuilder (2.6.3)
       activesupport (>= 3.0.0, < 5.2)
@@ -188,10 +195,12 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  bootstrap-typeahead-rails
   bootstrap_form
   byebug
   coffee-rails (~> 4.2)
   devise
+  handlebars_assets
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
@@ -209,4 +218,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.14.5
+   1.14.6
