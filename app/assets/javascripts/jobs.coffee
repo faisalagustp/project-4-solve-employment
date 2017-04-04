@@ -2,7 +2,7 @@ $ ->
  initialize_jobs_typeahead = ->
    jobs_typeahead = new Bloodhound(
      datumTokenizer: Bloodhound.tokenizers.obj.whitespace(
-       "title", "location"
+       "title", "description"
      ),
      queryTokenizer: Bloodhound.tokenizers.whitespace,
      prefetch: "/autocomplete"
@@ -19,8 +19,8 @@ $ ->
            {{#if title}}
              Title: <strong>{{title}}</strong>
            {{/if}}
-           {{#if location}}
-             location: <strong>{{location}}</strong>
+           {{#if description}}
+             location: <strong>{{description}}</strong>
            {{/if}}
          </div>
        ")

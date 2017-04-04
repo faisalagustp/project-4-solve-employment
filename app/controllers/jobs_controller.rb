@@ -124,7 +124,7 @@ class JobsController < ApplicationController
     jobs = Job.all.map do |job|
       {
         title: job.title,
-        location: job.location
+        description: job.description
       }
     end
     render json: jobs
