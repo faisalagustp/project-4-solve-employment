@@ -1,4 +1,8 @@
 <div class="container-fluid">
+
+  <% if jobs_searched.empty? %>
+  <p>No jobs match your search</p>
+  <%else%>
   <% jobs_searched.each do |job_searched| %>
   <div id="accordion3" role="tablist" aria-multiselectable="true">
     <div class="card">
@@ -38,5 +42,6 @@
           </div>
         </div>
       </div>
+      <% end %>
       <% end %>
     </div>
