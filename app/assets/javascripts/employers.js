@@ -1,5 +1,8 @@
 document.addEventListener("turbolinks:load", function() {
-$(function () {
-  $('.star-rating').rating() //Call the rating plugin
-})
+  var num = $('#rating').html()
+  var star = "<span></span>"
+  for(i = 0; i< num; i++){
+    $("#star-rating").append(star)
+  }
+
 })

@@ -11,8 +11,8 @@
 </p>
 
 <p><strong>Average Employer Rating:</strong>
-<%= render_stars(@average_rating) %>
-  <%= @average_rating %></p>
+  <span id="star-rating"></span><small id="rating">  <%= @average_rating %></small>
+</p>
 
 
 <%= link_to 'Edit', edit_employer_path(@employer) %> |
