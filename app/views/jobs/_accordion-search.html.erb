@@ -18,7 +18,19 @@
         <div class="card-block">
             <p>Company: <%= job_searched.employer.company %></p>
             <p>Description: <%= job_searched.description %></p>
-            <p>Salary: <%= job_searched.wage %></p>
+            <p>Salary: <%= job_searched.wage %> / hr</p>
+            <p>Contact person: <%= job_searched.contact_person %></p>
+            <p>Contact number: <%= job_searched.contact_number %></p>
+            <p>Contact email: <%= job_searched.contact_email %></p>
+            <p>Device required: <%= job_searched.device %></p>
+            <p>Software required: <%= job_searched.software %></p>
+            <p>Skills required: <%= job_searched.skills %></p>
+            <p>Job type: <%= job_searched.job_type %></p>
+            <p>Job duration: <%= job_searched.duration %></p>
+            <p>Time Commitment: <%= job_searched.time_commitment %> hrs / day</p>
+            <p>Training required: <%= job_searched.training %></p>
+            <p>Location: <%= job_searched.location %></p>
+            <p>Start date: <%= job_searched.start_date %></p>
             <% hired_count = JobApplication.where(job_id: job_searched.id, status: 'Successful').count %>
             <p>No. of vacancies: <%= (job_searched.positions - hired_count) %></p>
             <% has_applied = false %>
@@ -29,9 +41,10 @@
                 <p><%= link_to "View Job Application", job_application_path(job_applic.id), class: "btn btn-primary" %></p>
             <% end %>
             <% end %>
-            <% if has_applied == false %>
+            <% if has_applied == false && job_searched.positions - hired_count != 0 %>
                 <%= form_for :job_application, url: job_applications_path do |f| %>
-                <%= f.text_field :coverletter %>
+                <p>Please provide a short Coverletter in the text box below: <br>
+                <%= f.text_area :coverletter, size: "40x5" %></p>
                 <%= f.hidden_field :job_id, value: job_searched.id %>
                 <%= f.hidden_field :employee_id, value: current_user.employee_id %>
                 <%= f.hidden_field :status, value: "In Progress" %>
