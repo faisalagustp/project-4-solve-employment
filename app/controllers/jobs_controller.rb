@@ -44,6 +44,8 @@ class JobsController < ApplicationController
         @vacancies_list << job.positions - hired_count
       end
     end
+    @all_jobs = []
+    @jobs.each { |job| @all_jobs.push(job.title) }
   end
 
   def searched
