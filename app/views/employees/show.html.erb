@@ -5,5 +5,9 @@
   <%= @employee.name %>
 </p>
 
+<p>
+  <strong>Average Employee Rating:</strong>
+  <%= @average_rating %>
+</p>
 <%= link_to 'Edit', edit_employee_path(@employee) %> |
 <%= link_to 'Back', employees_path %>

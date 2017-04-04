@@ -10,6 +10,7 @@ class EmployersController < ApplicationController
   # GET /employers/1
   # GET /employers/1.json
   def show
+   average_rating
   end
 
   # GET /employers/new
@@ -70,5 +71,22 @@ class EmployersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def employer_params
       params.require(:employer).permit(:name, :company)
+    end
+
+    def average_rating
+      @employer = Employer.find(params[:id])
+      @total_rating = 0
+      @total_reviews = 0
+      @employer.jobs.each do |job|
+        job.job_applications.where("status" == "successful").each do |application|
+          @total_rating += application.rating_employer.to_i
+          if application.rating_employer
+          @total_reviews += 1
+          end
+        end
+      end
+      p @total_rating
+      p @total_reviews
+      @average_rating = (@total_rating / @total_reviews).round(2)
     end
 end
