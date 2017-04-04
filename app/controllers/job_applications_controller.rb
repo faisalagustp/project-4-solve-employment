@@ -8,6 +8,8 @@ class JobApplicationsController < ApplicationController
   before_action :already_applied?, only: [:create]
   # only employer of the job can change the status of the employee's job application
   before_action :employee_employer?, only: [:edit, :update]
+  #only when status of the application is successful then can employers/employees go in to review
+  before_action :successful_application?, only: [:edit]
 
 
   # GET /job_applications
@@ -82,16 +84,7 @@ class JobApplicationsController < ApplicationController
   def update
     respond_to do |format|
       if @job_application.update(job_application_params)
-        @job = Job.find(@job_application.job_id)
-        @hired = JobApplication.where(status: "Successful", job_id: @job.id)
-        @vacancies = @job.positions
-        if @hired.length == @vacancies
-          @job_apps_rejected = JobApplication.where(status: "In Progress", job_id: @job.id)
-          @job_apps_rejected.each do |job_app_rej|
-            job_app_rej.update(status: "Unsuccessful")
-          end
-        end
-        format.html { redirect_to job_path, notice: 'The employee was successfully hired' }
+        format.html { redirect_to jobs_path, notice: 'Your review has been submitted' }
         format.json { render :show, status: :ok, location: @job }
       else
         format.html { render :edit }
@@ -150,7 +143,13 @@ class JobApplicationsController < ApplicationController
         redirect_to :jobs, :alert => "Sorry, access denied!"
     end
   end
-end
+  end
+
+  def successful_application?
+    if @job_application.status == "Successful"
+      true
+    end
+  end
 
 
 end
