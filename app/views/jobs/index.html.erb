@@ -58,7 +58,19 @@
                 <div class="card-block">
                     <p>Company: <%= job_app.job.employer.company %></p>
                     <p>Description: <%= job_app.job.description %></p>
-                    <p>Salary: <%= job_app.job.wage %></p>
+                    <p>Salary: <%= job_app.job.wage %> / hr</p>
+                    <p>Contact person: <%= job_app.job.contact_person %></p>
+                    <p>Contact number: <%= job_app.job.contact_number %></p>
+                    <p>Contact email: <%= job_app.job.contact_email %></p>
+                    <p>Device required: <%= job_app.job.device %></p>
+                    <p>Software required: <%= job_app.job.software %></p>
+                    <p>Skills required: <%= job_app.job.skills %></p>
+                    <p>Job type: <%= job_app.job.job_type %></p>
+                    <p>Job duration: <%= job_app.job.duration %></p>
+                    <p>Time Commitment: <%= job_app.job.time_commitment %> hrs / day</p>
+                    <p>Training required: <%= job_app.job.training %></p>
+                    <p>Location: <%= job_app.job.location %></p>
+                    <p>Start date: <%= job_app.job.start_date %></p>
                     <p>Status: <%= job_app.status%> </p>
                     <p><%= link_to "View Job Application", job_application_path(job_app.id), class: "btn btn-primary"%></p>
                     </div>
@@ -74,7 +86,7 @@
             <%if @jobs_not_applied.length ==0%>
           <br><h6>No jobs currently available</h6><br>
           <%else%>
-          <% @job_opportunities.each do |job_new| %>
+          <% @job_opportunities.each_with_index do |job_new, i| %>
           <div id="accordion2" role="tablist" aria-multiselectable="true">
           <div class="card">
             <div class="card-header" role="tab" id="headingOne">
@@ -90,10 +102,23 @@
 
                   <p>Company: <%= job_new.employer.company %></p>
                   <p>Description: <%= job_new.description %></p>
-                  <p>Salary: <%= job_new.wage %></p>
-                  <p>No. of vacancies: <%= job_new.positions %></p>
+                  <p>Salary: <%= job_new.wage %> / hr</p>
+                  <p>Contact person: <%= job_new.contact_person %></p>
+                  <p>Contact number: <%= job_new.contact_number %></p>
+                  <p>Contact email: <%= job_new.contact_email %></p>
+                  <p>Device required: <%= job_new.device %></p>
+                  <p>Software required: <%= job_new.software %></p>
+                  <p>Skills required: <%= job_new.skills %></p>
+                  <p>Job type: <%= job_new.job_type %></p>
+                  <p>Job duration: <%= job_new.duration %></p>
+                  <p>Time Commitment: <%= job_new.time_commitment %> hrs / day</p>
+                  <p>Training required: <%= job_new.training %></p>
+                  <p>Location: <%= job_new.location %></p>
+                  <p>Start date: <%= job_new.start_date %></p>
+                  <p>No. of vacancies: <%= @vacancies[i] %></p>
                 <%= form_for :job_application, url: job_applications_path do |f| %>
-                <%= f.text_field :coverletter %>
+                <p>Please provide a short Coverletter in the text box below: <br>
+                  <%= f.text_area :coverletter, size: "40x5" %></p>
                 <%= f.hidden_field :job_id, value: job_new.id %>
                 <%= f.hidden_field :employee_id, value: current_user.employee_id %>
                 <%= f.hidden_field :status, value: "In Progress" %>
