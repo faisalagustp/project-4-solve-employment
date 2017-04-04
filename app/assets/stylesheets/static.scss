@@ -17,7 +17,6 @@ body {
     webkit-tap-highlight-color: #222;
     padding-top: 95px;
     margin: 0;
-    background-image: url("https://www.xmple.com/wallpaper/gradient-white-blue-linear-1920x1080-c2-87ceeb-ffffff-a-45-f-14.svg");
 }
 
 /* workaround modal-open padding issue */
@@ -107,6 +106,7 @@ p {
 
 section {
     padding: 70px 0;
+    background-image: url("https://www.xmple.com/wallpaper/gradient-white-blue-linear-1920x1080-c2-87ceeb-ffffff-a-45-f-14.svg");
 }
 
 aside {
@@ -119,7 +119,7 @@ footer {
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 35px;
-  background-color: rgba(#fff, 1);
+  background-color: rgba(#edeaea, .4);
   text-align: center;
   padding-top: 8px;
   z-index: -1;
@@ -131,7 +131,7 @@ footer h4, footer h6 {
 
 .navbar {
     border-color: rgba(35,35,35,.05);
-    background-color: rgba(#fff, 1);
+    background-color: rgba(#edeaea, .4);
     -webkit-transition: all .4s;
     -moz-transition: all .4s;
     transition: all .4s;
@@ -238,11 +238,10 @@ header .header-content {
     width: 100%;
     text-align: center;
     z-index: 2;
-    background-color: rgba(#ffffff, 0.75);
 }
 
 header .header-content .inner h1 {
-    margin-top: 550px;
+    margin-top: 500px;
     margin-bottom: 0;
 }
 
