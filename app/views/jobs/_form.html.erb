@@ -13,7 +13,7 @@
   <% end %>
 
   <div class="row">
-    <div class='col-xs-12 col-md-4'><%= f.text_field :title, label: 'Job title', placeholder: 'title' %></div>
+    <div class='col-xs-12 col-md-6'><%= f.text_field :title, label: 'Job title' %></div>
   </div>
 
   <div class="row">
@@ -21,59 +21,59 @@
   </div>
 
   <div class="row">
-    <div class='col-xs-12 col-md-4'><%= f.text_field :wage, label: 'Hourly wage', placeholder: "Enter numbers only" %></div>
+    <div class='col-xs-12 col-md-6'><%= f.text_field :wage, label: 'Hourly wage', placeholder: "Enter numbers only" %></div>
   </div>
 
   <div class="row">
-    <div class='col-xs-12 col-md-4'><%= f.text_field :contact_person, label: 'Contact Person', placeholder: "Enter contact person name" %></div>
+    <div class='col-xs-12 col-md-6'><%= f.text_field :contact_person, label: 'Contact Person'%></div>
   </div>
 
   <div class="row">
-    <div class='col-xs-12 col-md-4'><%= f.text_field :contact_number, label: 'Contact Number', placeholder: "Enter contact number" %></div>
+    <div class='col-xs-12 col-md-6'><%= f.text_field :contact_number, label: 'Contact Number' %></div>
   </div>
 
   <div class="row">
-    <div class='col-xs-12 col-md-4'><%= f.text_field :contact_email, label: 'Contact Email', placeholder: "Enter contact email" %></div>
+    <div class='col-xs-12 col-md-6'><%= f.text_field :contact_email, label: 'Contact Email'%></div>
   </div>
 
   <div class="row">
-    <div class='col-xs-12 col-md-4'><%= f.text_area :device, label: 'Device required', placeholder: "Eg. Computers, handphone etc." %></div>
+    <div class='col-xs-12 col-md-6'><%= f.text_area :device, label: 'Device required', placeholder: "Eg. Computers, handphone etc." %></div>
   </div>
 
   <div class="row">
-    <div class='col-xs-12 col-md-4'><%= f.text_area :software, label: 'Software required' %></div>
+    <div class='col-xs-12 col-md-6'><%= f.text_area :software, label: 'Software required' %></div>
   </div>
 
   <div class="row">
-    <div class='col-xs-12 col-md-4'><%= f.text_area :skills, label: 'Skills required', placeholder: "Eg. Able to speak basic English" %></div>
+    <div class='col-xs-12 col-md-6'><%= f.text_area :skills, label: 'Skills required', placeholder: "Eg. Able to speak basic English" %></div>
   </div>
 
   <div class="row">
-    <div class='col-xs-12 col-md-4'><%= f.text_field :job_type, label: 'Job Type', placeholder: "Eg. Ongoing or one-time job" %></div>
+    <div class='col-xs-12 col-md-6'><%= f.text_field :job_type, label: 'Job Type', placeholder: "Eg. Ongoing or one-time job" %></div>
   </div>
 
   <div class="row">
-    <div class='col-xs-12 col-md-4'><%= f.text_field :duration, label: 'Job duration', placeholder: "Eg. 3 months"%></div>
+    <div class='col-xs-12 col-md-6'><%= f.text_field :duration, label: 'Job duration', placeholder: "Eg. 3 months"%></div>
   </div>
 
   <div class="row">
-    <div class='col-xs-12 col-md-4'><%= f.text_field :time_commitment, label: 'Time Commitment (hours per day)', placeholder: "Enter numbers only"%></div>
+    <div class='col-xs-12 col-md-6'><%= f.text_field :time_commitment, label: 'Time Commitment (hours per day)', placeholder: "Enter numbers only"%></div>
   </div>
 
   <div class="row">
-    <div class='col-xs-12 col-md-4'><%= f.text_area :training, label: 'Specific training required'%></div>
+    <div class='col-xs-12 col-md-6'><%= f.text_area :training, label: 'Specific training required'%></div>
   </div>
 
   <div class="row">
-    <div class='col-xs-12 col-md-4'><%= f.text_area :location, label: 'Job Location'%></div>
+    <div class='col-xs-12 col-md-6'><%= f.text_area :location, label: 'Job Location'%></div>
   </div>
 
   <div class="row">
-    <div class='col-xs-12 col-md-4'><%= f.text_field :positions, label: 'No. of vacancies', placeholder: "Enter numbers only" %></div>
+    <div class='col-xs-12 col-md-6'><%= f.text_field :positions, label: 'No. of vacancies', placeholder: "Enter numbers only" %></div>
   </div>
 
   <div class="row">
-    <div class='col-xs-12 col-md-4'><%= f.text_field :start_date, label: 'Expected Start date', placeholder: "Eg. Immediate" %></div>
+    <div class='col-xs-12 col-md-6'><%= f.text_field :start_date, label: 'Expected Start date', placeholder: "Eg. Immediate" %></div>
   </div>
 
   <%= f.hidden_field :employer_id, value: current_user.employer_id %>

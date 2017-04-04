@@ -119,10 +119,13 @@ footer {
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 35px;
-  background-color: rgba(#edeaea, .4);
+  background-color: rgba(#f1f1f1, 1);
   text-align: center;
   padding-top: 8px;
   z-index: -1;
+  -moz-box-shadow: 0px -2px 3px rgba(#f1f1f1, .5);
+  -webkit-box-shadow: 0px -2px 3px rgba(#f1f1f1,.5);
+  box-shadow: 0px -2px 3px rgba(#f1f1f1,.5);
 }
 
 footer h4, footer h6 {
@@ -131,10 +134,13 @@ footer h4, footer h6 {
 
 .navbar {
     border-color: rgba(35,35,35,.05);
-    background-color: rgba(#edeaea, .4);
+    background-color: rgba(#f1f1f1, 1);
     -webkit-transition: all .4s;
     -moz-transition: all .4s;
     transition: all .4s;
+    -moz-box-shadow: 0px 2px 3px rgba(#f1f1f1, .5);
+    -webkit-box-shadow: 0px 2px 3px rgba(#f1f1f1,.5);
+    box-shadow: 0px 2px 3px rgba(#f1f1f1,.5);
 }
 
 .navbar-brand {
@@ -356,4 +362,8 @@ img::-moz-selection {
 
 .container {
   padding-bottom: 50px;
+}
+
+.badge-middle {
+    vertical-align: middle;
 }
