@@ -42,10 +42,6 @@ class JobsController < ApplicationController
         @vacancies_list << job.positions - hired_count
       end
     end
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   def searched
