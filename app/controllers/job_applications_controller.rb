@@ -59,7 +59,7 @@ class JobApplicationsController < ApplicationController
     respond_to do |format|
     @job_application = JobApplication.find(params[:id])
     if @job_application.update(hire_params)
-      EmployeeMailer.hire_notification(@job_application.employee, @job_application.job).deliver
+      EmployeeMailer.hire_notification(@job_application.employee, @job_application.job).deliver_later
       @job = Job.find(@job_application.job_id)
       @hired = JobApplication.where(status: "Successful", job_id: @job.id)
       @vacancies = @job.positions
@@ -144,13 +144,13 @@ class JobApplicationsController < ApplicationController
       if current_user.role == "employer"
         if @job_application.job.employer != current_user.employer
         redirect_to :jobs, :alert => "Sorry, access denied!"
-      end
+        end
     elsif current_user.role == "employee"
       if @job_application.employee != current_user.employee
         redirect_to :jobs, :alert => "Sorry, access denied!"
+      end
+      end
     end
-  end
-end
 
 
 end
