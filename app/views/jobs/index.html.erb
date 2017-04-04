@@ -1,4 +1,5 @@
   <%if current_user.role == 'employer'%>
+  <%= render :partial => 'employer-profile' %>
     <div class="container-fluid">
       <h4>JOB LIST
         <%= link_to new_job_path, class: "btn btn-default" do %>
@@ -22,7 +23,7 @@
       <%end%>
     </div>
     <%elsif current_user.role == 'employee'%>
-
+    <%= render :partial => 'employee-profile' %>
       <%= form_tag(search_results_path, method: 'get', remote: true) do %>
         <p>
           <%= text_field_tag :search, params[:search] %>
