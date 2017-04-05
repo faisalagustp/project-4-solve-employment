@@ -3,13 +3,11 @@
 jobone:
   title: "Assistant"
   description: "I need an assistant to help me pick up calls"
-  wage: 9.99
+  wage: 9
   employer: :one
-  employee_id:
 
 jobtwo:
   title: "Driver"
   description: "I need a driver to drive my bicycle"
-  wage: 9.99
-  employer:
-  employee_id:
+  wage: 9
+  employer: :two

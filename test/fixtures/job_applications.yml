@@ -1,11 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+job_app_one:
   coverletter: "I would like to apply for this job"
-  job: :one
-  employee: :one
-
-two:
-  coverletter: "I want this job so bad"
-  job: :one
-  employee: 
+  job: jobone
+  employee: one
+  status: "Successful"
+  rating_employee: 4
