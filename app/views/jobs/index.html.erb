@@ -22,12 +22,13 @@
       <%end%>
     </div>
     <%elsif current_user.role == 'employee'%>
-
+    <div id="the-basics">
       <%= form_tag(search_results_path, method: 'get', remote: true) do %>
         <p>
-          <%= text_field_tag :search, params[:search] %>
+          <%= text_field_tag :search, params[:search], class:"typeahead" %>
           <%= submit_tag "Search Jobs", :title => nil%>
         </p>
+      </div>
       <% end %>
 
       <%#= render :partial => 'accordion-search', :collection => @jobs_searched %>
@@ -131,3 +132,29 @@
           <% end %>
         </div>
       <% end %>
+
+<script>
+var substringMatcher = function(strs) {
+  return function findMatches(q, cb) {
+    var matches, substringRegex;
+    matches = [];
+    substrRegex = new RegExp(q, 'i');
+    $.each(strs, function(i, str) {
+      if (substrRegex.test(str)) {
+        matches.push(str);
+      }
+    });
+    cb(matches);
+  };
+};
+
+$('#the-basics .typeahead').typeahead({
+  hint: true,
+  highlight: true,
+  minLength: 1
+},
+{
+  name: 'title',
+  source: substringMatcher(<%=@all_jobs.to_json.html_safe%>)
+});
+</script>

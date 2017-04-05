@@ -80,7 +80,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def employer_params
-    params.permit(:name,:company)
+    params.permit(:name,:company, :address)
   end
 
   def employee_params
