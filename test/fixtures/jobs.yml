@@ -3,17 +3,37 @@
 jobone:
   title: "Assistant"
   description: "I need an assistant to help me pick up calls"
-  wage: 9.587656856
+  wage: 9
   employer: one
+  contact_person: "stacey"
+  contact_number: "+2423435345345"
+  contact_email: "ee@ee.com"
+  device: "phone"
+  software: "Windows"
+  skills: "communication skills"
+  job_type: "Contract"
+  duration: "3 months"
+  time_commitment: 8
+  training: "No"
+  location: "Indonesia"
+  positions: 3
+  start_date: "Immediate"
 
 jobtwo:
   title: "Driver"
   description: "I need a driver to drive my bicycle"
-  wage: 9
+  wage: "hello"
   employer: two
-
-jobthree:
-  title: 9
-  description: "Assistant for the store"
-  wage: <div>
-  employer: two
+  contact_person: "stacey2"
+  contact_number: "+2487875345"
+  contact_email: "ee@ee.com"
+  device: "phone"
+  software: "not required"
+  skills: "driving license"
+  job_type: "Contract"
+  duration: "3 months"
+  time_commitment: 8
+  training: "No"
+  location: "Singapore"
+  positions: ''
+  start_date: "Immediate"
