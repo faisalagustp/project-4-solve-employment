@@ -1,5 +1,6 @@
 <h3>Your Profile</h3>
 <div class="container-fluid">
+  <p>Profile Picture: <img src="<%= current_user.employer.image %>" height="150px"></p>
   <p>Email Address: <%= current_user.email %></p>
   <p>Company name: <%= current_user.employer.company %></p>
   <p>Address : <%= current_user.employer.address %></p>
