@@ -3,6 +3,8 @@ require 'test_helper'
 class JobApplicationTest < ActiveSupport::TestCase
   def setup
     @job_application_one = job_applications(:job_app_one)
+    @job_application_two = job_applications(:job_app_two)
+
   end
 
   test "the cover letters must match" do
@@ -29,6 +31,11 @@ class JobApplicationTest < ActiveSupport::TestCase
     assert_equal 4,
     @job_application_one.rating_employee, 'doesnt have rating 4 for employee'
   end
+
+  test "Cover letter cannot be empty" do
+    assert_not @job_application_two.valid?, 'the cover letter is not empty'
+  end
+
 
   # test "the truth" do
   #   assert true

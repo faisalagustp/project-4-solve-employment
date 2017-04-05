@@ -3,11 +3,17 @@
 jobone:
   title: "Assistant"
   description: "I need an assistant to help me pick up calls"
-  wage: 9
-  employer: :one
+  wage: 9.587656856
+  employer: one
 
 jobtwo:
   title: "Driver"
   description: "I need a driver to drive my bicycle"
   wage: 9
-  employer: :two
+  employer: two
+
+jobthree:
+  title: 9
+  description: "Assistant for the store"
+  wage: <div>
+  employer: two

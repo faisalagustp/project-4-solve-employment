@@ -6,3 +6,10 @@ job_app_one:
   employee: one
   status: "Successful"
   rating_employee: 4
+
+job_app_two:
+  coverletter: ''
+  job: jobtwo
+  employee: three
+  status: "In Progress"
+  rating_employee: 4
