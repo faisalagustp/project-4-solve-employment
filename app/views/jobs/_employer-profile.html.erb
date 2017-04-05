@@ -1,0 +1,8 @@
+<h3>Your Profile</h3>
+<div class="container-fluid">
+  <p>Email Address: <%= current_user.email %></p>
+  <p>Company name: <%= current_user.employer.company %></p>
+  <p>Address : <%= current_user.employer.address %></p>
+  <p>Total Number of job postings: <%= current_user.employer.jobs.count %></p>
+  <p>Average Rating: </p>
+</div>
