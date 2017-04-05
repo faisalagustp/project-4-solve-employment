@@ -17,9 +17,9 @@
     </span>
     <span class="navbar-text">
       <% if user_signed_in? && current_user.role == "employer" %>
-      <%= link_to current_user.employer.name, edit_user_registration_path, class:"nav-link" %>
+      <%= link_to current_user.employer.name, employer_path(current_user.employer_id), class:"nav-link" %>
       <% elsif user_signed_in? && current_user.role == "employee" %>
-      <%= link_to current_user.employee.name, edit_user_registration_path, class:"nav-link" %>
+      <%= link_to current_user.employee.name, employee_path(current_user.employee_id), class:"nav-link" %>
       <% end %>
     </span>
     <span class="navbar-text">
