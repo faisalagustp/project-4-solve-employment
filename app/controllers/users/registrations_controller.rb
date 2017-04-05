@@ -80,11 +80,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def employer_params
-    params.permit(:name,:company)
+    params.permit(:name,:company, :image)
   end
 
   def employee_params
-    params.permit(:name)
+    params.permit(:name, :image)
   end
 
   def after_sign_up_path_for(resource)
