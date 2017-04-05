@@ -5,6 +5,7 @@
           <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
         <% end %>
       </h4>
+
       <% @jobs.each_with_index do |job,i|%>
         <div class="container-fluid">
           <div class="card card-block">
@@ -14,13 +15,15 @@
             <% if @vacancies_list[i] == 0 %>
               <span class="badge badge-pill badge-success">Filled</span>
             <%else%>
-              <span class="badge badge-pill badge-danger"><%= @hired_list[i] %> / <%= job.positions %></span>
+              <span class="badge badge-pill badge-warning col-xs-1 col-md-1 pull-right"><%= @hired_list[i] %> / <%= job.positions %></span>
             <% end %>
           </h4>
           </div>
         </div>
       <%end%>
+
     </div>
+
     <%elsif current_user.role == 'employee'%>
     <div id="the-basics">
       <%= form_tag(search_results_path, method: 'get', remote: true) do %>
