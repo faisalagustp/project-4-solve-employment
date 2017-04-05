@@ -5,7 +5,11 @@
 </p>
 
 <p><strong>Average Employee Rating:</strong>
+  <%if @average_rating.to_i == 0%>
+  <span> No ratings yet!</span>
+  <%else%>
   <span id="star-rating"></span><span id="rating">  <%= @average_rating %></span>
+  <%end%>
 </p>
 
 <%= link_to 'Edit', edit_employee_path(@employee) %> |

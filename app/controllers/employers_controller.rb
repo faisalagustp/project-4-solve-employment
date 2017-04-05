@@ -85,8 +85,11 @@ class EmployersController < ApplicationController
           end
         end
       end
-      p @total_rating
-      p @total_reviews
+
+      if @total_reviews.to_i > 0
       @average_rating = (@total_rating / @total_reviews).round(2)
+      else
+        @average_rating = 0
+      end
     end
 end
