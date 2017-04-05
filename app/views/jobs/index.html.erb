@@ -1,108 +1,165 @@
-
-<%if current_user.role == 'employer'%>
-  <div class="container-fluid">
-    <h4>JOB LIST
-      <%= link_to new_job_path, class: "btn btn-default" do %>
-        <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
-      <% end %>
-    </h4>
-    <% @jobs.each_with_index do |job,i|%>
-      <div class="container-fluid">
-        <div class="card card-block">
-        <h4 class="card-title">
-          <span class="badge badge-pill badge-success"><%=job.job_applications.count%></span>
-          <%= link_to job.title, job_path(job) %>
-          <% if @vacancies_list[i] == 0 %>
-            <span class="badge badge-pill badge-success">Filled</span>
-          <%else%>
-            <span class="badge badge-pill badge-danger"><%= @hired_list[i] %> / <%= job.positions %></span>
-          <% end %>
-        </h4>
-        </div>
-      </div>
-    <%end%>
-  </div>
-  <%elsif current_user.role == 'employee'%>
-    <%= form_tag jobs_path, :method => 'get' do %>
-      <p>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Search Jobs", :title => nil %>
-      </p>
-    <% end %>
-
-    <%#= render :partial => 'accordion-search', :collection => @jobs_searched %>
-    <%= render :partial => 'accordion-search', :locals => {:jobs_searched => @jobs_searched} %>
-
+  <%if current_user.role == 'employer'%>
+  <%= render 'partials/employer-profile' %>
     <div class="container-fluid">
-      <h4>MY APPLICATIONS</h4>
-      <% @job_applications_made.each do |job_app| %>
-        <div id="accordion1" role="tablist" aria-multiselectable="true">
+      <h4>JOB LIST
+        <%= link_to new_job_path, class: "btn btn-default" do %>
+          <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
+        <% end %>
+      </h4>
+
+      <% @jobs.each_with_index do |job,i|%>
+        <div class="container-fluid">
+          <div class="card card-block">
+          <h4 class="card-title">
+            <span class="badge badge-pill badge-success"><%=job.job_applications.count%></span>
+            <%= link_to job.title, job_path(job) %>
+            <% if @vacancies_list[i] == 0 %>
+              <span class="badge badge-pill badge-success">Filled</span>
+            <%else%>
+              <span class="badge badge-pill badge-warning col-xs-1 col-md-1 pull-right"><%= @hired_list[i] %> / <%= job.positions %></span>
+            <% end %>
+          </h4>
+          </div>
+        </div>
+      <%end%>
+
+    </div>
+
+    <%elsif current_user.role == 'employee'%>
+    <%= render 'partials/employee-profile' %>
+    <div id="the-basics">
+      <%= form_tag(search_results_path, method: 'get', remote: true) do %>
+        <p>
+          <%= text_field_tag :search, params[:search], class:"typeahead" %>
+          <%= submit_tag "Search Jobs", :title => nil%>
+        </p>
+      </div>
+      <% end %>
+
+      <%#= render :partial => 'accordion-search', :collection => @jobs_searched %>
+      <div id="jobs-searched"></div>
+
+      <div class="container-fluid">
+        <h4>MY APPLICATIONS</h4>
+        <% @job_applications_made.each do |job_app| %>
+          <div id="accordion1" role="tablist" aria-multiselectable="true">
+            <div class="card">
+              <div class="card-header" role="tab" id="headingOne">
+                <h5 class="mb-0">
+                  <a data-toggle="collapse" data-parent="#accordion1" href="#collapseOne<%=job_app.job.id.to_s%>" aria-expanded="true" aria-controls="collapseOne">
+                    <%= job_app.job.title %>
+                    <% if job_app.status == "Successful" %>
+                    <span class="badge badge-success">Hired</span>
+                    <%elsif job_app.status == "In Progress" %>
+                    <span class="badge badge-warning">Pending</span>
+                    <%else%>
+                    <span class="badge badge-danger">Unsuccessful</span>
+                    <%end%>
+                  </a>
+                </h5>
+              </div>
+
+              <div id="collapseOne<%= job_app.job.id.to_s%>" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+                <div class="card-block">
+                    <p>Company: <%= job_app.job.employer.company %></p>
+                    <p>Description: <%= job_app.job.description %></p>
+                    <p>Salary: <%= job_app.job.wage %> / hr</p>
+                    <p>Contact person: <%= job_app.job.contact_person %></p>
+                    <p>Contact number: <%= job_app.job.contact_number %></p>
+                    <p>Contact email: <%= job_app.job.contact_email %></p>
+                    <p>Device required: <%= job_app.job.device %></p>
+                    <p>Software required: <%= job_app.job.software %></p>
+                    <p>Skills required: <%= job_app.job.skills %></p>
+                    <p>Job type: <%= job_app.job.job_type %></p>
+                    <p>Job duration: <%= job_app.job.duration %></p>
+                    <p>Time Commitment: <%= job_app.job.time_commitment %> hrs / day</p>
+                    <p>Training required: <%= job_app.job.training %></p>
+                    <p>Location: <%= job_app.job.location %></p>
+                    <p>Start date: <%= job_app.job.start_date %></p>
+                    <p>Status: <%= job_app.status%> </p>
+                    <p><%= link_to "View Job Application", job_application_path(job_app.id), class: "btn btn-primary" %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <br/>
+      <div class="container-fluid">
+          <h4>BROWSE JOBS</h4>
+
+            <%if @jobs_not_applied.length ==0%>
+          <br><h6>No jobs currently available</h6><br>
+          <%else%>
+          <% @job_opportunities.each_with_index do |job_new, i| %>
+          <div id="accordion2" role="tablist" aria-multiselectable="true">
           <div class="card">
             <div class="card-header" role="tab" id="headingOne">
               <h5 class="mb-0">
-                <a data-toggle="collapse" data-parent="#accordion1" href="#collapseOne<%=job_app.job.id.to_s%>" aria-expanded="true" aria-controls="collapseOne">
-                  <%= job_app.job.title %>
-                  <% if job_app.status == "Successful" %>
-                  <span class="badge badge-success">Hired</span>
-                  <%elsif job_app.status == "In Progress" %>
-                  <span class="badge badge-warning">Pending</span>
-                  <%else%>
-                  <span class="badge badge-danger">Unsuccessful</span>
-                  <%end%>
+                <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo<%=job_new.id.to_s%>" aria-expanded="true" aria-controls="collapseOne">
+                  <%= job_new.title %>
                 </a>
               </h5>
             </div>
 
-            <div id="collapseOne<%= job_app.job.id.to_s%>" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div id="collapseTwo<%=job_new.id.to_s%>" class="collapse" role="tabpanel" aria-labelledby="headingOne">
               <div class="card-block">
-                  <p>Company: <%= job_app.job.employer.company %></p>
-                  <p>Description: <%= job_app.job.description %></p>
-                  <p>Salary: <%= job_app.job.wage %></p>
-                  <p>Status: <%= job_app.status%> </p>
-                  <p><%= link_to "View Job Application", job_application_path(job_app.id), class: "btn btn-primary" %></p>
+
+                  <p>Company: <%= job_new.employer.company %></p>
+                  <p>Description: <%= job_new.description %></p>
+                  <p>Salary: <%= job_new.wage %> / hr</p>
+                  <p>Contact person: <%= job_new.contact_person %></p>
+                  <p>Contact number: <%= job_new.contact_number %></p>
+                  <p>Contact email: <%= job_new.contact_email %></p>
+                  <p>Device required: <%= job_new.device %></p>
+                  <p>Software required: <%= job_new.software %></p>
+                  <p>Skills required: <%= job_new.skills %></p>
+                  <p>Job type: <%= job_new.job_type %></p>
+                  <p>Job duration: <%= job_new.duration %></p>
+                  <p>Time Commitment: <%= job_new.time_commitment %> hrs / day</p>
+                  <p>Training required: <%= job_new.training %></p>
+                  <p>Location: <%= job_new.location %></p>
+                  <p>Start date: <%= job_new.start_date %></p>
+                  <p>No. of vacancies: <%= @vacancies[i] %></p>
+                <%= form_for :job_application, url: job_applications_path do |f| %>
+                <p>Please provide a short Coverletter in the text box below: <br>
+                  <%= f.text_area :coverletter, size: "40x5" %></p>
+                <%= f.hidden_field :job_id, value: job_new.id %>
+                <%= f.hidden_field :employee_id, value: current_user.employee_id %>
+                <%= f.hidden_field :status, value: "In Progress" %>
+                <p><%= f.submit 'Apply', class:"btn btn-primary"%></p>
+                <% end %>
                   </div>
                 </div>
               </div>
             </div>
+            <% end %>
           <% end %>
         </div>
-      <br/>
-    <div class="container-fluid">
-        <h4>BROWSE JOBS</h4>
-        <%if @jobs_not_applied.length ==0%>
-        <br><h6>No jobs currently available</h6><br>
-        <%else%>
-      <% @job_opportunities.each do |job_new| %>
-      <div id="accordion2" role="tablist" aria-multiselectable="true">
-        <div class="card">
-          <div class="card-header" role="tab" id="headingOne">
-            <h5 class="mb-0">
-              <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo<%=job_new.id.to_s%>" aria-expanded="true" aria-controls="collapseOne">
-                <%= job_new.title %>
-              </a>
-            </h5>
-          </div>
+      <% end %>
 
-          <div id="collapseTwo<%=job_new.id.to_s%>" class="collapse" role="tabpanel" aria-labelledby="headingOne">
-            <div class="card-block">
+<script>
+var substringMatcher = function(strs) {
+  return function findMatches(q, cb) {
+    var matches, substringRegex;
+    matches = [];
+    substrRegex = new RegExp(q, 'i');
+    $.each(strs, function(i, str) {
+      if (substrRegex.test(str)) {
+        matches.push(str);
+      }
+    });
+    cb(matches);
+  };
+};
 
-                <p>Company: <%= job_new.employer.company %></p>
-                <p>Description: <%= job_new.description %></p>
-                <p>Salary: <%= job_new.wage %></p>
-                <p>No. of vacancies: <%= job_new.positions %></p>
-              <%= form_for :job_application, url: job_applications_path do |f| %>
-              <p>Please provide a short Coverletter in the text box below: <br>
-                <%= f.text_area :coverletter, size: "40x5" %></p>
-              <%= f.hidden_field :job_id, value: job_new.id %>
-              <%= f.hidden_field :employee_id, value: current_user.employee_id %>
-              <%= f.hidden_field :status, value: "In Progress" %>
-              <p><%= f.submit 'Apply', class:"btn btn-primary" %></p>
-              <% end %>
-                </div>
-              </div>
-            </div>
-          </div>
-          <% end %>
-        <% end %>
-        </div>
-<%end%>
+$('#the-basics .typeahead').typeahead({
+  hint: true,
+  highlight: true,
+  minLength: 1
+},
+{
+  name: 'title',
+  source: substringMatcher(<%=@all_jobs.to_json.html_safe%>)
+});
+</script>

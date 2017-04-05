@@ -25,20 +25,15 @@ class JobsController < ApplicationController
       end
 
       @job_opportunities = []
+      @vacancies = []
       @jobs_not_applied.each do |job|
         hired_count = JobApplication.where(job_id: job.id, status: 'Successful').count
         if (job.positions - hired_count > 0)
           @job_opportunities << job
+          @vacancies << job.positions - hired_count
         end
       puts "the jobs not applied array is #{@jobs_not_applied}"
       end
-
-      if params[:search] == '' || params[:search] == nil
-        @jobs_searched = []
-      else
-        @jobs_searched = search(params[:search])
-      end
-      puts "jobs searched are #{@jobs_searched.inspect}"
     else
       @jobs = current_user.employer.jobs
       @hired_list = []
@@ -49,6 +44,25 @@ class JobsController < ApplicationController
         @vacancies_list << job.positions - hired_count
       end
     end
+    @all_jobs = []
+    @jobs.each { |job| @all_jobs.push(job.title) }
+  end
+
+  def searched
+    if params[:search] == '' || params[:search] == nil
+      @jobs_searched = []
+      respond_to do |format|
+        format.html
+        format.js
+      end
+    else
+      @jobs_searched = search(params[:search])
+      respond_to do |format|
+        format.html
+        format.js
+      end
+    end
+    puts "jobs searched are #{@jobs_searched.inspect}"
   end
 
   # GET /jobs/1
@@ -130,7 +144,7 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:title, :description, :wage, :employer_id, :employee_id, :positions)
+      params.require(:job).permit(:title, :description, :wage, :employer_id, :contact_person, :contact_number, :contact_email, :device, :software, :skills, :job_type, :duration, :time_commitment, :training, :location, :positions, :start_date)
     end
 
     def search(search)

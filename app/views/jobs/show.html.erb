@@ -5,27 +5,87 @@
 </p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @job.description %>
-</p>
-
-<p>
-  <strong>Wage:</strong>
-  <%= @job.wage %>
-</p>
-
-<p>
   <strong>Company:</strong>
   <%= @job.employer.company %>
 </p>
 
 <p>
-  <strong>No. of vacancies:</strong>
+  <strong>Description:</strong>
+  <%= @job.description %>
+</p>
+
+<p>
+  <strong>Hourly Wage:</strong>
+  <%= @job.wage %>
+</p>
+
+<p>
+  <strong>Contact Person:</strong>
+  <%= @job.contact_person %>
+</p>
+
+<p>
+  <strong>Contact Number:</strong>
+  <%= @job.contact_number %>
+</p>
+
+<p>
+  <strong>Contact Email:</strong>
+  <%= @job.contact_email %>
+</p>
+
+<p>
+  <strong>Devise required:</strong>
+  <%= @job.device %>
+</p>
+
+<p>
+  <strong>Software required:</strong>
+  <%= @job.software %>
+</p>
+
+<p>
+  <strong>Skills required:</strong>
+  <%= @job.skills %>
+</p>
+
+<p>
+  <strong>Job type:</strong>
+  <%= @job.job_type %>
+</p>
+
+<p>
+  <strong>Job duration:</strong>
+  <%= @job.duration %>
+</p>
+
+<p>
+  <strong>Time commitment (hours per day):</strong>
+  <%= @job.time_commitment %>
+</p>
+
+<p>
+  <strong>Specific training required:</strong>
+  <%= @job.training %>
+</p>
+
+<p>
+  <strong>Job location:</strong>
+  <%= @job.location %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @job.start_date %>
+</p>
+
+<p>
+  <strong>Number of vacancies:</strong>
   <%= @vacancies %>
 </p>
 
 <p>
-  <strong>No. hired:</strong>
+  <strong>Number hired:</strong>
   <%= @hired.length %>
 </p>
 
@@ -61,9 +121,9 @@
         <%=job_app.coverletter%>
         <p><strong>Email:</strong> <%=job_app.employee.user.email%></p>
         <% if job_app.status == "In Progress" %>
-        <p><%=link_to "Hire", job_application_path(job_app.id, "job_application[status]"=>"Successful"), method: :patch, class:"btn btn-primary"%></p>
+        <p><%= link_to 'Hire', hire_path(job_app.id, "job_application[status]"=>"Successful"), method: :post, class:"btn btn-primary" %></p>
         <% elsif job_app.status == "Successful" %>
-
+        <p><%= link_to "Submit a Review", edit_job_application_path, class: "btn btn-primary" %></p>
         <% end %>
       </div>
     </div>

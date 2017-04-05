@@ -12,6 +12,7 @@ gem 'rails-erd'
 gem 'bootstrap_form'
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'twitter-typeahead-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'

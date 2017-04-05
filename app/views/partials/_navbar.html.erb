@@ -11,6 +11,11 @@
     <ul class="navbar-nav mr-auto">
     </ul>
     <span class="navbar-text">
+      <% if current_user.nil? %>
+      <%= link_to "Login", new_user_session_path, class:"nav-link" %>
+      <% end %>
+    </span>
+    <span class="navbar-text">
       <% if user_signed_in? && current_user.role == "employer" %>
       <%= link_to current_user.employer.name, edit_user_registration_path, class:"nav-link" %>
       <% elsif user_signed_in? && current_user.role == "employee" %>

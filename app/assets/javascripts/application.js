@@ -12,5 +12,7 @@
 //
 // = require jquery
 // = require jquery_ujs
+// = require twitter/typeahead.min
 // = require turbolinks
+// = require rating
 // = require_tree .

@@ -1,0 +1,8 @@
+<h3>Your Profile</h3>
+<div class="container-fluid">
+  <p>Profile Picture: <img src="<%= current_user.employee.image %>"></p>
+  <p>Name:</p>
+  <p>Email Address: <%= current_user.email %></p>
+  <p>Total Number of job applications: <%= current_user.employee.job_applications.count %></p>
+  <p>Average Rating: </p>
+</div>

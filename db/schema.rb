@@ -53,8 +53,12 @@ ActiveRecord::Schema.define(version: 20170405020419) do
     t.text     "coverletter"
     t.integer  "job_id"
     t.integer  "employee_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "rating_employee"
+    t.integer  "rating_employer"
+    t.text     "review_employer"
+    t.text     "review_employee"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "status"
     t.index ["employee_id"], name: "index_job_applications_on_employee_id", using: :btree
     t.index ["job_id"], name: "index_job_applications_on_job_id", using: :btree

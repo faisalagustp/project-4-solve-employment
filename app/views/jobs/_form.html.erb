@@ -12,63 +12,123 @@
     </div>
   <% end %>
 
-  <div class="row">
-    <div class='col-xs-12 col-md-4'><%= f.text_field :title, label: 'Job title', placeholder: 'title' %></div>
-  </div>
-
-  <div class="row">
-    <div class='col-xs-12 col-md-6'><%= f.text_area :description, label: 'Description', placeholder: "Please provide details of the job scope" %></div>
-  </div>
-
-  <div class="row">
-    <div class='col-xs-12 col-md-4'><%= f.text_field :wage, label: 'Hourly wage', placeholder: "Enter numbers only" %></div>
-  </div>
-
-  <div class="row">
-    <div class='col-xs-12 col-md-4'><%= f.text_field :contact_person, label: 'Contact Person', placeholder: "Enter contact person name" %></div>
-  </div>
-
-  <div class="row">
-    <div class='col-xs-12 col-md-4'><%= f.text_field :contact_number, label: 'Contact Number', placeholder: "Enter contact number" %></div>
-  </div>
-
-  <div class="row">
-    <div class='col-xs-12 col-md-4'><%= f.text_field :contact_email, label: 'Contact Email', placeholder: "Enter contact email" %></div>
-  </div>
-
-  <div class="row">
-    <div class='col-xs-12 col-md-4'><%= f.text_field :device, label: 'Device required' %></div>
-  </div>
-
-  <div class="row">
-    <div class='col-xs-12 col-md-4'><%= f.text_field :software, label: 'Software required' %></div>
-  </div>
-
-  <div class="row">
-    <div class='col-xs-12 col-md-4'><%= f.text_field :job_type, label: 'Job Type' %></div>
-  </div>
-
-  <div class="row">
-    <div class='col-xs-12 col-md-4'><%= f.text_field :duration, label: 'Job duration', placeholder: "Eg. 3 months"%></div>
-  </div>
-
-  <div class="row">
-    <div class='col-xs-12 col-md-4'><%= f.text_field :time_commitment, label: 'Time Commitment', placeholder: "Eg. 8 hours daily"%></div>
-  </div>
-
-  <div class="row">
-    <div class='col-xs-12 col-md-4'><%= f.text_field :training, label: 'Training needed'%></div>
-  </div>
-
-  <div class="row">
-    <div class='col-xs-12 col-md-4'><%= f.text_field :location, label: 'location'%></div>
-  </div>
-
-  <div class="row">
-    <div class='col-xs-12 col-md-4'><%= f.text_field :positions, label: 'No. of vacancies', placeholder: "Enter numbers only" %></div>
-  </div>
-
   <%= f.hidden_field :employer_id, value: current_user.employer_id %>
+
+  <br/>
+  <div id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="card">
+      <div class="card-header" role="tab" id="headingOne">
+        <h5 class="mb-0">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Job Details
+          </a>
+        </h5>
+      </div>
+
+      <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+        <div class="card-block">
+          <div class="row">
+            <div class='col-xs-12 col-md-6'><%= f.text_field :title, label: 'Job title', placeholder: 'title' %></div>
+          </div>
+
+          <div class="row">
+            <div class='col-xs-12 col-md-6'><%= f.text_area :description, label: 'Description', placeholder: "Please provide details of the job scope" %></div>
+          </div>
+
+          <div class="row">
+            <div class='col-xs-12 col-md-6'><%= f.text_area :location, label: 'Job Location'%></div>
+          </div>
+
+          <div class="row">
+            <div class='col-xs-12 col-md-6'><%= f.text_field :wage, label: 'Hourly wage', placeholder: "Enter numbers only" %></div>
+          </div>
+
+          <div class="row">
+            <div class='col-xs-12 col-md-6'>
+              <%= label :job_type, "Job Type" %>
+              <%= f.radio_button :job_type, "Full-time" %>Full-time
+              <%= f.radio_button :job_type, "Contract" %>Contract
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class='col-xs-12 col-md-6'><%= f.text_field :duration, label: 'Job duration (under contract)'%>Months</div>
+          </div>
+          <br />
+          <div class="row">
+            <div class='col-xs-12 col-md-6'><%= f.text_field :time_commitment, label: 'Working hours'%>Hours</div>
+          </div>
+          <br />
+
+          <div class="row">
+            <div class='col-xs-12 col-md-6'><%= f.text_field :positions, label: 'No. of vacancies', placeholder: "Enter numbers only" %></div>
+          </div>
+
+          <div class="row">
+            <div class='col-xs-12 col-md-6'><%= f.text_field :start_date, label: 'Expected Start date', placeholder: "Eg. Immediate" %></div>
+          </div>
+
+          </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" role="tab" id="headingTwo">
+        <h5 class="mb-0">
+          <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Skills Required
+          </a>
+        </h5>
+      </div>
+      <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+        <div class="card-block">
+          <div class="row">
+            <div class='col-xs-12 col-md-6'><%= f.text_area :device, label: 'Device required', placeholder: "Eg. Computers, handphone etc." %></div>
+          </div>
+
+          <div class="row">
+            <div class='col-xs-12 col-md-6'><%= f.text_area :software, label: 'Software required' %></div>
+          </div>
+
+          <div class="row">
+            <div class='col-xs-12 col-md-6'><%= f.text_area :skills, label: 'Skills required', placeholder: "Eg. Able to speak basic English" %></div>
+          </div>
+
+
+          <div class="row">
+            <div class='col-xs-12 col-md-6'><%= f.text_area :training, label: 'Specific training required'%></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" role="tab" id="headingThree">
+        <h5 class="mb-0">
+          <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Contact Details
+          </a>
+        </h5>
+      </div>
+      <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+        <div class="card-block">
+          <div class="row">
+            <div class='col-xs-12 col-md-6'><%= f.text_field :contact_person, label: 'Contact Person'%></div>
+          </div>
+
+          <div class="row">
+            <div class='col-xs-12 col-md-6'><%= f.text_field :contact_number, label: 'Contact Number' %></div>
+          </div>
+
+          <div class="row">
+            <div class='col-xs-12 col-md-6'><%= f.text_field :contact_email, label: 'Contact Email' %></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <br/>
+
   <%= f.submit "Submit", class: 'btn btn-success' %>
 <% end %>
 <% else %>
