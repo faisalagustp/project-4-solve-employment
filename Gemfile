@@ -14,6 +14,7 @@ gem 'carrierwave'
 gem 'cloudinary'
 gem 'twitter-typeahead-rails'
 
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
 
@@ -43,6 +44,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 group :production do
   gem 'pg'
+  gem 'rails_12factor'
 end
 
 group :development, :test do
