@@ -1,16 +1,6 @@
 
-<p>
-  <strong>Name:</strong>
-  <%= @employee.name %>
-</p>
-
-<p><strong>Average Employee Rating:</strong>
-  <%if @average_rating.to_i == 0%>
-  <span> No ratings yet!</span>
-  <%else%>
-  <span id="star-rating"></span><span id="rating">  <%= @average_rating %></span>
-  <%end%>
-</p>
-
-<%= link_to 'Edit', edit_employee_path(@employee) %> |
-<%= link_to 'Back', employees_path %>
+<%= render '/partials/employee-profile' %>
+<div class="container-fluid">
+  <%= link_to 'Edit', edit_user_registration_path(@employee), :class =>"btn btn-primary"%> |
+  <%= link_to 'Back', jobs_path, :class =>"btn btn-primary"%>
+</div>

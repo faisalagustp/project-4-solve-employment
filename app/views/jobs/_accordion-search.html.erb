@@ -43,7 +43,7 @@
             <% end %>
             <% if has_applied == false && job_searched.positions - hired_count != 0 %>
                 <%= form_for :job_application, url: job_applications_path do |f| %>
-                <p>Please provide a short Coverletter in the text box below: <br>
+                <%= label :coverletter, "Please provide a short Coverletter in the text box below:", :class => "required"%>
                 <%= f.text_area :coverletter, size: "40x5" %></p>
                 <%= f.hidden_field :job_id, value: job_searched.id %>
                 <%= f.hidden_field :employee_id, value: current_user.employee_id %>

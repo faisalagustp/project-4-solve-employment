@@ -11,5 +11,5 @@ class Job < ApplicationRecord
   validates :job_type, presence: true
   validates :time_commitment, numericality: true
   validates :location, presence: true
-  validates :positions, numericality: { only_integer: true }
+  validates :positions, presence: true, numericality: { only_integer: true }
 end

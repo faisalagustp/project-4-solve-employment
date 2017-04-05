@@ -26,7 +26,6 @@
     </div>
 
     <%elsif current_user.role == 'employee'%>
-    <%= render 'partials/employee-profile' %>
     <div id="the-basics">
       <%= form_tag(search_results_path, method: 'get', remote: true) do %>
         <p>
@@ -122,8 +121,8 @@
                   <p>Start date: <%= job_new.start_date %></p>
                   <p>No. of vacancies: <%= @vacancies[i] %></p>
                 <%= form_for :job_application, url: job_applications_path do |f| %>
-                <p>Please provide a short Coverletter in the text box below: <br>
-                  <%= f.text_area :coverletter, size: "40x5" %></p>
+                <%= label :coverletter, "Please provide a short Coverletter in the text box below:", :class => "required"%>
+                <%= f.text_area :coverletter, size: "40x5" %></p>
                 <%= f.hidden_field :job_id, value: job_new.id %>
                 <%= f.hidden_field :employee_id, value: current_user.employee_id %>
                 <%= f.hidden_field :status, value: "In Progress" %>
