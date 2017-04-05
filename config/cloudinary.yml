@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dgothmws6
+  api_key: '315334321911541'
+  api_secret: TVgeCE3gPSX_wKf2-FpMUXxA8gM
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dgothmws6
+  api_key: '315334321911541'
+  api_secret: TVgeCE3gPSX_wKf2-FpMUXxA8gM
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dgothmws6
+  api_key: '315334321911541'
+  api_secret: TVgeCE3gPSX_wKf2-FpMUXxA8gM
+  enhance_image_tag: true
+  static_image_support: false

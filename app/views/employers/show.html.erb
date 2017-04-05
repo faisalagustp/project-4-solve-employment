@@ -11,7 +11,11 @@
 </p>
 
 <p><strong>Average Employer Rating:</strong>
+  <%if @average_rating.to_i == 0%>
+  <span> No ratings yet!</span>
+  <%else%>
   <span id="star-rating"></span><span id="rating">  <%= @average_rating %></span>
+  <%end%>
 </p>
 
 

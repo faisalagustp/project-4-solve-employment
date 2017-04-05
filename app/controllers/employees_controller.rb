@@ -70,7 +70,7 @@ class EmployeesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
-      params.require(:employee).permit(:name)
+      params.require(:employee).permit(:name, :image)
     end
 
     def average_rating_employee
@@ -83,9 +83,11 @@ class EmployeesController < ApplicationController
           @total_reviews += 1
           end
       end
-      p @total_rating
-      p @total_reviews
+      if @total_reviews.to_i > 0
       @average_rating = (@total_rating / @total_reviews).round(2)
+      else
+        @average_rating = 0
+      end
     end
 
 end

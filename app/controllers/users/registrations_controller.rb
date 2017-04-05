@@ -29,13 +29,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
     super
-    if resource.persisted?
       if resource.role == 'employer'
-        @employer = Employer.update(employer_params)
+        @employer = resource.employer.update(employer_params)
       elsif resource.role == 'employee'
-        @employee = Employee.create(employee_params)
+        @employee = resource.employee.update(employee_params)
       end
-    end
   end
 
   # DELETE /resource
@@ -80,11 +78,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def employer_params
-    params.permit(:name,:company, :address)
+    params.permit(:name, :company, :address, :image)
   end
-
+  
   def employee_params
-    params.permit(:name)
+    params.permit(:name, :image)
   end
 
   def after_sign_up_path_for(resource)
