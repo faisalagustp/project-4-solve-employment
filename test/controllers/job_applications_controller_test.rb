@@ -17,7 +17,7 @@ class JobApplicationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create job_application" do
     assert_difference('JobApplication.count') do
-      post job_applications_url, params: { job_application: { coverletter: @job_application.coverletter, employee_id: @job_application.employee_id, job_id: @job_application.job_id } }
+      post job_applications_url, params: { job_application: { coverletter: @job_application.coverletter, employee_id: @job_application.employee_id, job_id: @job_application.job_id, rating_employer: @job_application.rating_employer, rating_employee: @job_application.rating_employee, review_employer: @job_application.review_employer, review_employee: @job_application.review_employee } }
     end
 
     assert_redirected_to job_application_url(JobApplication.last)
@@ -34,7 +34,7 @@ class JobApplicationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update job_application" do
-    patch job_application_url(@job_application), params: { job_application: { coverletter: @job_application.coverletter, employee_id: @job_application.employee_id, job_id: @job_application.job_id } }
+    patch job_application_url(@job_application), params: { job_application: { coverletter: @job_application.coverletter, employee_id: @job_application.employee_id, job_id: @job_application.job_id, rating_employer: @job_application.rating_employer, rating_employee: @job_application.rating_employee, review_employer: @job_application.review_employer, review_employee: @job_application.review_employee  } }
     assert_redirected_to job_application_url(@job_application)
   end
 
