@@ -28,7 +28,7 @@
       <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
         <div class="card-block">
           <div class="row">
-            <div class='col-xs-12 col-md-6'><%= f.text_field :title, label: 'Job title', placeholder: 'title' %></div>
+            <div class='col-xs-12 col-md-6'><%= f.text_field :title, label: 'Job title' , placeholder: 'title' %></div>
           </div>
 
           <div class="row">
@@ -44,10 +44,10 @@
           </div>
 
           <div class="row">
-            <div class='col-xs-12 col-md-6'>
-              <%= label :job_type, "Job Type" %>
-              <%= f.radio_button :job_type, "Full-time" %>Full-time
-              <%= f.radio_button :job_type, "Contract" %>Contract
+            <div class='col-lg-6'>
+              <%= label :job_type, "Job Type", :class => "required"%>
+              <span class="input-group"><%= f.radio_button :job_type, "Full-time" %> Full-time</span>
+              <span class="input-group"><%= f.radio_button :job_type, "Contract" %> Contract</span>
             </div>
           </div>
           <br />

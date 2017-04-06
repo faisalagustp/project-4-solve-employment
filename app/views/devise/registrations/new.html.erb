@@ -14,7 +14,7 @@
         <%= render 'partials/error_messages', object: resource %>
 
         <div class="form-group row">
-          <%= f.label :email, :class => "col-sm-1 col-form-label"%>
+          <%= f.label :email, :class => "col-sm-1 col-form-label required"%>
           <div class="col-sm-3">
             <%= f.email_field :email, autofocus: true, :class => "form-control" %>
           </div>
@@ -44,7 +44,7 @@
         <%end%>
 
         <div class="form-group row">
-          <%= f.label :password, :class => "col-sm-1 col-form-label"%>
+          <%= f.label :password, :class => "col-sm-1 col-form-label required"%>
           <div class="col-sm-3">
             <%= f.password_field :password, autocomplete: "off", autofocus: true, :class => "form-control" %>
           </div>
@@ -54,7 +54,7 @@
         </div>
 
         <div class="form-group row">
-          <%= f.label :password_confirmation, :class => "col-sm-1 col-form-label"%>
+          <%= f.label :password_confirmation, :class => "col-sm-1 col-form-label required"%>
           <div class="col-sm-3">
             <%= f.password_field :password_confirmation, autocomplete: "off", autofocus: true, :class => "form-control" %>
           </div>

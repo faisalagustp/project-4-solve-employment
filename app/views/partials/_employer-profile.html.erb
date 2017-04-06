@@ -1,9 +1,36 @@
-<h3>Your Profile</h3>
+<h3>Your Employer Profile</h3>
+
 <div class="container-fluid">
-  <p>Profile Picture: <img src="<%= current_user.employer.image %>" height="150px"></p>
-  <p>Email Address: <%= current_user.email %></p>
-  <p>Company name: <%= current_user.employer.company %></p>
-  <p>Address : <%= current_user.employer.address %></p>
-  <p>Total Number of job postings: <%= current_user.employer.jobs.count %></p>
-  <p>Average Rating: </p>
+
+<div class="row col-sm-1 col-md-8 box">
+  <div class="col-sm-1 col-md-4" >
+  <p><strong>Profile Picture:</strong><br>
+    <% if !current_user.employer.image? %>
+    <img src="http://api.adorable.io/avatar/<%= current_user.email %>" height="170px"></p>
+    <% else %>
+    <img src="<%= current_user.employer.image%>" height="170px"></p>
+    <% end %>
+  </div>
+  <div class="col-sm-1 col-md-8">
+    <br><br>
+    <p><strong>Average Rating:</strong>
+      <%if @average_rating.to_i == 0%>
+      <span> No ratings yet!</span>
+      <%else%>
+      <span id="star-rating"></span><span id="rating">  <%= @average_rating %></span>
+      <%end%>
+    </p>
+    <p><strong>Company name:</strong> <%= current_user.employer.company %></p>
+    <p><strong>Email Address:</strong> <%= current_user.email %></p>
+  </div>
+</div>
+<br>
+
+<p>
+  <strong>Job postings: </strong>
+  <span class="badge badge-pill badge-info"><%= current_user.employer.jobs.count %></span>
+  <br>
+  <strong>Address :</strong> <%= current_user.employer.address %>
+</p>
+
 </div>
