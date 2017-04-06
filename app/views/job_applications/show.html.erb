@@ -15,8 +15,9 @@
   <%= @job_application.status%>
 </p>
 
-<% if @job_application.status == "Successful" %>
-
+<% if @job_application.status == "Successful" && !@job_application.rating_employer%>
 <p><%= link_to "Submit a Review", edit_job_application_path, class: "btn btn-primary" %></p>
+<% elsif @job_application.status == "Successful" && @job_application.rating_employer%>
+<p><%= link_to "Edit Your Review", edit_job_application_path, class: "btn btn-primary" %></p>
 <% end %>
 <%= link_to 'Back to All Jobs', jobs_path %>
