@@ -25,7 +25,7 @@
     </div>
 
     <%elsif current_user.role == 'employee'%>
-    <div id="the-basics" class="container-fluid">
+    <div id="the-basics" class="row">
       <%= form_tag(search_results_path, method: 'get', remote: true) do %>
         <p>
           <%= text_field_tag :search, params[:search], class:"typeahead" %>
@@ -34,8 +34,8 @@
       </div>
       <% end %>
 
-      <%#= render :partial => 'accordion-search', :collection => @jobs_searched %>
       <div id="jobs-searched"></div>
+      <br>
 
       <div class="container-fluid">
         <h4>MY APPLICATIONS</h4>
