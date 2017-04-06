@@ -23,29 +23,11 @@ class JobTest < ActiveSupport::TestCase
 
     test "wage must be an integer" do
       p @jobtwo.wage
-      assert_equal Integer, @jobtwo.wage.class, 'It is not an integer'
+      assert_equal Integer, @jobtwo.wage.class, 'Wage is not an integer'
     end
 
     test "should not be valid if required fields absent" do
       assert_not @jobtwo.valid?, 'job is valid even if required fields absent'
 
     end
-
-
-
-
-    # test "standin must be present for accepted requests" do
-    #   assert_equal 'JR Tolkien', @lunch.standin.name,  'The requestor name is not found'
-    # end
-    #
-    # test " request should not be valid without an requestor" do
-    #   assert_not @nil_requestor.valid?,  'the request should not be valid without a requestor'
-    # end
-    #
-    #
-    # test " request should not be validate without an event" do
-    #   p @nil_event.event
-    #   assert_not @nil_event.valid?,  'the request should not be valid'
-    # end
-
 end

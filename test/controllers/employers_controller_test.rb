@@ -17,7 +17,7 @@ class EmployersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create employer" do
     assert_difference('Employer.count') do
-      post employers_url, params: { employer: { company: @employer.company, name: @employer.name } }
+      post employers_url, params: { employer: { company: @employer.company, name: @employer.name, address: @employer.address } }
     end
 
     assert_redirected_to employer_url(Employer.last)
@@ -34,7 +34,7 @@ class EmployersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update employer" do
-    patch employer_url(@employer), params: { employer: { company: @employer.company, name: @employer.name } }
+    patch employer_url(@employer), params: { employer: { company: @employer.company, name: @employer.name, address: @employer.address } }
     assert_redirected_to employer_url(@employer)
   end
 
