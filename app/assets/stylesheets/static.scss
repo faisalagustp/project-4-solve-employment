@@ -102,11 +102,12 @@ p {
 
 .text-primary {
     color: #007FFF;
+    height: 900px;
 }
 
-section {
-    padding: 70px 0;
-    background-image: url("https://www.xmple.com/wallpaper/gradient-white-blue-linear-1920x1080-c2-87ceeb-ffffff-a-45-f-14.svg");
+.blue-bg {
+    padding-top: 50px;
+   background-image: url("https://www.xmple.com/wallpaper/gradient-white-blue-linear-1920x1080-c2-87ceeb-ffffff-a-45-f-14.svg");
 }
 
 aside {
@@ -244,11 +245,12 @@ header .header-content {
     width: 100%;
     text-align: center;
     z-index: 2;
+    margin-top: 250px;
 }
 
 header .header-content .inner h1 {
-    margin-top: 500px;
-    margin-bottom: 0;
+    margin-bottom: 0px;
+    padding-top: 50px
 }
 
 header .header-content .inner p {
@@ -264,6 +266,7 @@ header .header-content .inner p {
 
     header {
         min-height: 100%;
+        margin-top: 0;
     }
 
     header .header-content {
@@ -283,6 +286,7 @@ header .header-content .inner p {
 
     header .header-content .inner h1 {
         font-size: 53px;
+        padding-top: 20px;
     }
 
     header .header-content .inner p {
@@ -387,4 +391,8 @@ img::-moz-selection {
 
 .text-blue2 {
   color: #007FFF;
+}
+
+.inner {
+  margin: 100px 0;
 }
