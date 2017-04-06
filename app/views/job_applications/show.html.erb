@@ -1,4 +1,5 @@
 
+<h2>My Job Application</h2>
 <p>
   <strong>Coverletter:</strong>
   <%= @job_application.coverletter %>
@@ -10,8 +11,8 @@
 </p>
 
 <p>
-  <strong>Employee:</strong>
-  <%= @job_application.employee.name %>
+  <strong>Status:</strong>
+  <%= @job_application.status%>
 </p>
 
 <% if @job_application.status == "Successful" %>
