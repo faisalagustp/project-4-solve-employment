@@ -14,14 +14,14 @@
         <%= render 'partials/error_messages', object: resource %>
 
         <div class="form-group row">
-          <%= f.label :email, :class => "col-sm-1 col-form-label required"%>
+          <%= f.label :email, :class => "col-sm-2 col-form-label required"%>
           <div class="col-sm-3">
             <%= f.email_field :email, autofocus: true, :class => "form-control" %>
           </div>
         </div>
 
         <div class="form-group row">
-          <%= label_tag :name, nil, :class => "col-sm-1 col-form-label"%>
+          <%= label_tag :name, nil, :class => "col-sm-2 col-form-label"%>
           <div class="col-sm-3">
           <%= text_field_tag :name, nil, autofocus: true, :class => "form-control" %>
           </div>
@@ -29,14 +29,14 @@
 
         <% if params[:role] == 'employer' %>
         <div class="form-group row">
-          <%= label_tag :company, nil, :class => "col-sm-1 col-form-label"%>
+          <%= label_tag :company, nil, :class => "col-sm-2 col-form-label"%>
           <div class="col-sm-3">
           <%= text_field_tag :company, nil, autofocus: true, :class => "form-control" %>
           </div>
         </div>
 
         <div class="form-group row">
-          <%= label_tag :address, nil, :class => "col-sm-1 col-form-label"%>
+          <%= label_tag :address, nil, :class => "col-sm-2 col-form-label"%>
           <div class="col-sm-3">
           <%= text_area_tag :address, nil, autofocus: true, :class => "form-control" %>
           </div>
@@ -44,7 +44,7 @@
         <%end%>
 
         <div class="form-group row">
-          <%= f.label :password, :class => "col-sm-1 col-form-label required"%>
+          <%= f.label :password, :class => "col-sm-2 col-form-label required"%>
           <div class="col-sm-3">
             <%= f.password_field :password, autocomplete: "off", autofocus: true, :class => "form-control" %>
           </div>
@@ -54,7 +54,7 @@
         </div>
 
         <div class="form-group row">
-          <%= f.label :password_confirmation, :class => "col-sm-1 col-form-label required"%>
+          <%= f.label :password_confirmation, :class => "col-sm-2 col-form-label required"%>
           <div class="col-sm-3">
             <%= f.password_field :password_confirmation, autocomplete: "off", autofocus: true, :class => "form-control" %>
           </div>

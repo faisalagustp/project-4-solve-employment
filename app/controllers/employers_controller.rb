@@ -11,6 +11,7 @@ class EmployersController < ApplicationController
   # GET /employers/1.json
   def show
    average_rating
+   latest_three_reviews
   end
 
   # GET /employers/new

@@ -16,6 +16,8 @@
 <%end%>
 <br />
 <div class="container-fluid">
+  <% if current_user.id == @employee.user.id %>
   <%= link_to 'Edit', edit_user_registration_path(@employee), :class =>"btn btn-primary"%> |
+  <% end %>
   <%= link_to 'Back', jobs_path, :class =>"btn btn-primary"%>
 </div>
