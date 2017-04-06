@@ -1,23 +1,8 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @employer.name %>
-</p>
+<%= render 'partials/employer-profile' %>
 
-<p>
-  <strong>Company:</strong>
-  <%= @employer.company %>
-</p>
+<div class="container-fluid">
 
-<p><strong>Average Employer Rating:</strong>
-  <%if @average_rating.to_i == 0%>
-  <span> No ratings yet!</span>
-  <%else%>
-  <span id="star-rating"></span><span id="rating">  <%= @average_rating %></span>
-  <%end%>
-</p>
-
-
-<%= link_to 'Edit', edit_employer_path(@employer) %> |
-<%= link_to 'Back', employers_path %>
+<%= link_to 'Edit', edit_user_registration_path(@employer), :class => "btn btn-primary" %>
+<%= link_to 'Back', jobs_path, :class => "btn btn-primary" %>
+</div>

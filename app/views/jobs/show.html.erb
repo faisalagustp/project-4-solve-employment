@@ -1,100 +1,69 @@
 
-<p>
-  <strong>Title:</strong>
-  <%= @job.title %>
-</p>
+<div class="card">
+  <div class="card-header">
+  <h3><%= @job.title %></h3>
+  <p class="text-normal margin"><%= @job.description %></p>
+  </div>
 
-<p>
-  <strong>Company:</strong>
-  <%= @job.employer.company %>
-</p>
+<div class="card-block">
 
-<p>
-  <strong>Description:</strong>
-  <%= @job.description %>
-</p>
+  <p class="card-text text-normal"><strong>Company:</strong>
+  <%= @job.employer.company %></p>
 
-<p>
-  <strong>Hourly Wage:</strong>
-  <%= @job.wage %>
-</p>
+  <p class="card-text text-normal"><strong>Hourly Wage:</strong>
+  <%= @job.wage %></p>
 
-<p>
-  <strong>Contact Person:</strong>
-  <%= @job.contact_person %>
-</p>
+  <p class="card-text text-normal"><strong>Contact Person:</strong>
+  <%= @job.contact_person %></p>
 
-<p>
-  <strong>Contact Number:</strong>
-  <%= @job.contact_number %>
-</p>
+  <p class="card-text text-normal"><strong>Software required:</strong>
+  <%= @job.software %></p>
 
-<p>
-  <strong>Contact Email:</strong>
-  <%= @job.contact_email %>
-</p>
+  <p class="card-text text-normal"><strong>Skills required:</strong>
+  <%= @job.skills %></p>
 
-<p>
-  <strong>Devise required:</strong>
-  <%= @job.device %>
-</p>
+  <p class="card-text text-normal"><strong>Job type:</strong>
+  <%= @job.job_type %></p>
 
-<p>
-  <strong>Software required:</strong>
-  <%= @job.software %>
-</p>
+  <p class="card-text text-normal"><strong>Job duration:</strong>
+  <%= @job.duration %></p>
 
-<p>
-  <strong>Skills required:</strong>
-  <%= @job.skills %>
-</p>
+  <p class="card-text text-normal"><strong>Time commitment (hours per day):</strong>
+  <%= @job.time_commitment %></p>
 
-<p>
-  <strong>Job type:</strong>
-  <%= @job.job_type %>
-</p>
+  <p class="card-text text-normal"><strong>Specific training required:</strong>
+  <%= @job.training %></p>
 
-<p>
-  <strong>Job duration:</strong>
-  <%= @job.duration %>
-</p>
+  <p class="card-text text-normal"><strong>Job location:</strong>
+  <%= @job.location %></p>
 
-<p>
-  <strong>Time commitment (hours per day):</strong>
-  <%= @job.time_commitment %>
-</p>
+  <p class="card-text text-normal"><strong>Start date:</strong>
+  <%= @job.start_date %></p>
 
-<p>
-  <strong>Specific training required:</strong>
-  <%= @job.training %>
-</p>
+  <p class="card-text text-normal"><strong>Contact Number:</strong>
+  <%= @job.contact_number %></p>
 
-<p>
-  <strong>Job location:</strong>
-  <%= @job.location %>
-</p>
+  <p class="card-text text-normal"><strong>Contact Email:</strong>
+  <%= @job.contact_email %></p>
 
-<p>
-  <strong>Start date:</strong>
-  <%= @job.start_date %>
-</p>
+  <p class="card-text text-normal"><strong>Devise required:</strong>
+  <%= @job.device %></p>
 
-<p>
-  <strong>Number of vacancies:</strong>
-  <%= @vacancies %>
-</p>
+  <p class="card-text text-normal"><strong>Number of vacancies:</strong>
+  <%= @vacancies %></p>
 
-<p>
-  <strong>Number hired:</strong>
-  <%= @hired.length %>
-</p>
+  <p class="card-text text-normal"><strong>Number hired:</strong>
+  <%= @hired.length %></p>
 
-<p>
-  <strong>Applicants:</strong>
-  <%if @job_applications.length == 0%>
-  No applicants yet.
-  <%end%>
-</p>
+  <p class="card-text text-normal"><strong>Applicants:</strong>
+    <%if @job_applications.length == 0%>
+    No applicants yet.
+    <%end%>
+  </p>
+
+  </div>
+
+</div>
 
 
 <% @job_applications.each_with_index do |job_app,index|%>
