@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :jobs
 
   resources :job_applications, :except => [:destroy]
+  post '/job_applications/:id', to: 'job_applications#hire', as: 'hire'
+  
   get "/search-results" => 'jobs#searched'
   # devise_for :employers, :controllers => {:registrations => "users/registrations"}
   # devise_for :employees
@@ -13,7 +15,6 @@ Rails.application.routes.draw do
 
   root "static#homepage"
 
-  post '/job_applications/:id', to: 'job_applications#hire', as: 'hire'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
