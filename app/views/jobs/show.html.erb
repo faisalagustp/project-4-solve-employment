@@ -1,73 +1,113 @@
 
 <div class="card">
+
   <div class="card-header">
-  <h3><%= @job.title %></h3>
-  <p class="text-normal margin"><%= @job.description %></p>
+    <h4><%= @job.title %></h4>
+    <h6 class="subtitle mb-2 text-muted margin"><%= @job.description %></p>
   </div>
 
-<div class="card-block row">
+  <div class="card-block row">
 
-  <p class="card-text text-normal"><strong>Hourly Wage:</strong>
-  <%= @job.wage %></p>
+    <div class="col-md-6">
+      <h4 class="card-title">Job Details</h4>
+      <h6 class="card-subtitle mb-2 text-muted">Basic job information</h6>
 
-  <p class="card-text text-normal"><strong>Software required:</strong>
-  <%= @job.software %></p>
+      <p>
+        <strong>Job location:</strong>
+        <span class="text-blue"><%= @job.location%></span>
+      </p>
 
-  <p class="card-text text-normal"><strong>Skills required:</strong>
-  <%= @job.skills %></p>
+      <p>
+        <strong>Hourly Wage:</strong>
+        <span class="text-blue">$<%= @job.wage %></span>
+      </p>
 
-  <p class="card-text text-normal"><strong>Job type:</strong>
-  <%= @job.job_type %></p>
+      <p>
+        <strong>Job type:</strong>
+        <span class="text-blue"><%= @job.job_type %></span>
+      </p>
 
-  <p class="card-text text-normal"><strong>Job duration:</strong>
-  <%= @job.duration %></p>
+      <p>
+        <strong>Job duration:</strong>
+        <span class="text-blue"><%= @job.duration %> Months</span>
+      </p>
 
-  <p class="card-text text-normal"><strong>Time commitment (hours per day):</strong>
-  <%= @job.time_commitment %></p>
+      <p>
+        <strong>Working Hours:</strong>
+        <span class="text-blue"><%= @job.time_commitment %> hours</span>
+      </p>
 
-  <p class="card-text text-normal"><strong>Specific training required:</strong>
-  <%= @job.training %></p>
+      <p>
+        <strong>Number of vacancies:</strong>
+        <span class="text-blue"><%= @vacancies %></span>
+      </p>
 
-  <p class="card-text text-normal"><strong>Job location:</strong>
-  <%= @job.location %></p>
+      <p>
+        <strong>Start date:</strong>
+        <span class="text-blue"><%= @job.start_date %></span>
+      </p>
 
-  <p class="card-text text-normal"><strong>Start date:</strong>
-  <%= @job.start_date %></p>
+    <h4 class="card-title">Skills</h4>
+    <h6 class="card-subtitle mb-2 text-muted">Technical and training requirements</h6>
 
+      <p>
+        <strong>Devise required:</strong>
+        <%= @job.device %>
+      </p>
 
-<div class="card">
-  <p class="card-text text-normal"><strong>Company:</strong>
-    <%= @job.employer.company %></p>
+      <p>
+        <strong>Software required:</strong>
+        <%= @job.software %>
+      </p>
 
-    <p class="card-text text-normal"><strong>Contact Person:</strong>
-      <%= @job.contact_person %></p>
+      <p>
+        <strong>Skills required:</strong>
+        <%= @job.skills %>
+      </p>
 
-    <p class="card-text text-normal"><strong>Contact Number:</strong>
-      <%= @job.contact_number %></p>
+      <p>
+        <strong>Specific training required:</strong>
+        <%= @job.training %>
+      </p>
 
-    <p class="card-text text-normal"><strong>Contact Email:</strong>
-        <%= @job.contact_email %></p>
-</div>
+    </div>
 
-  <p class="card-text text-normal"><strong>Devise required:</strong>
-  <%= @job.device %></p>
+    <div class="col-md-6">
+      <h4 class="card-title">Contact Information</h4>
 
-  <p class="card-text text-normal"><strong>Number of vacancies:</strong>
-  <%= @vacancies %></p>
+      <p>
+        <strong>Company:</strong>
+        <%= @job.employer.company %>
+      </p>
 
-  <p class="card-text text-normal"><strong>Number hired:</strong>
-  <%= @hired.length %></p>
+      <p>
+        <strong>Contact Person:</strong>
+        <%= @job.contact_person %>
+      </p>
 
-  <p class="card-text text-normal"><strong>Applicants:</strong>
-    <%if @job_applications.length == 0%>
-    No applicants yet.
-    <%end%>
-  </p>
+      <p>
+        <strong>Contact Number:</strong>
+        <%= @job.contact_number %>
+      </p>
 
+      <p>
+        <strong>Contact Email:</strong>
+        <%= @job.contact_email %>
+      </p>
+    </div>
+
+    <div class="card-text">
+      <p><strong>Number hired:</strong>
+        <%= @hired.length %></p>
+
+      <p><strong>Applicants:</strong>
+        <%if @job_applications.length == 0%>
+        No applicants yet.
+        <%end%>
+      </p>
+    </div>
   </div>
-
 </div>
-
 
 <% @job_applications.each_with_index do |job_app,index|%>
 <div id="accordion" role="tablist" aria-multiselectable="true">
@@ -102,4 +142,7 @@
   </div>
 <% end %>
 <br/>
+
+<%= link_to "Edit", edit_job_path, class: "btn btn-primary"%>
 <%= link_to 'Back', jobs_path, class: 'btn btn-primary' %>
+</div>

@@ -304,7 +304,9 @@ header .header-content .inner p {
 }
 
 textarea {
-    resize: none;
+    resize: true;
+    width: 300px;
+    height: 150px;
 }
 
 .call-to-action h2 {
@@ -376,4 +378,13 @@ img::-moz-selection {
 
 .margin {
   margin: 0;
+}
+
+.text-blue {
+  color: #007FFF;
+  font-size: 20px;
+}
+
+.text-blue2 {
+  color: #007FFF;
 }

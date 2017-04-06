@@ -102,26 +102,39 @@
 
             <div id="collapseTwo<%=job_new.id.to_s%>" class="collapse" role="tabpanel" aria-labelledby="headingOne">
               <div class="card-block">
+                <h4 class="card-title">Job Details</h4>
+                <h6 class="card-subtitle mb-2 text-muted">Basic job information</h6>
 
-                  <p>Company: <%= job_new.employer.company %></p>
-                  <p>Description: <%= job_new.description %></p>
-                  <p>Salary: <%= job_new.wage %> / hr</p>
-                  <p>Contact person: <%= job_new.contact_person %></p>
-                  <p>Contact number: <%= job_new.contact_number %></p>
-                  <p>Contact email: <%= job_new.contact_email %></p>
-                  <p>Device required: <%= job_new.device %></p>
-                  <p>Software required: <%= job_new.software %></p>
-                  <p>Skills required: <%= job_new.skills %></p>
-                  <p>Job type: <%= job_new.job_type %></p>
-                  <p>Job duration: <%= job_new.duration %></p>
-                  <p>Time Commitment: <%= job_new.time_commitment %> hrs / day</p>
-                  <p>Training required: <%= job_new.training %></p>
-                  <p>Location: <%= job_new.location %></p>
-                  <p>Start date: <%= job_new.start_date %></p>
-                  <p>No. of vacancies: <%= @vacancies[i] %></p>
+                <p><strong>Company: </strong><%= job_new.employer.company %></p>
+                <p><strong>Description: </strong><%= job_new.description %></p>
+                <p><strong>Location: </strong><%= job_new.location %></p>
+                <p><strong>Salary: </strong><%= job_new.wage %>/hr</p>
+                <p><strong>Job type: </strong><%= job_new.job_type %></p>
+                <p><strong>Job duration: </strong><%= job_new.duration %></p>
+                <p><strong>Time Commitment: </strong><%= job_new.time_commitment %> hrs / day</p>
+                <p><strong>No. of vacancies: </strong><%= @vacancies[i] %></p>
+                <p><strong>Start date: </strong><%= job_new.start_date %></p>
+
+                <h4 class="card-title">Skills</h4>
+                <h6 class="card-subtitle mb-2 text-muted">Technical and training requirements</h6>
+
+                <p><strong>Device required: </strong><%= job_new.device %></p>
+                <p><strong>Software required: </strong><%= job_new.software %></p>
+                <p><strong>Skills required: </strong><%= job_new.skills %></p>
+                <p><strong>Training required: </strong><%= job_new.training %></p>
+
+                <h4 class="card-title">Contact Information</h4>
+
+                <p><strong>Contact person: </strong><%= job_new.contact_person %></p>
+                <% if job_new.contact_number? %>
+                <p><strong>Contact number: </strong><%= job_new.contact_number %></p>
+                <% end %>
+                <p><strong>Contact email: </strong><%= job_new.contact_email %></p>
+
                 <%= form_for :job_application, url: job_applications_path do |f| %>
-                <%= label :coverletter, "Please provide a short Coverletter in the text box below:", :class => "required"%>
-                <%= f.text_area :coverletter, size: "40x5" %></p>
+                <h4 class="card-title">Coverletter</h4>
+                <%= label :coverletter, "Please provide a short Coverletter in the text box below to apply:", :class => "required"%>
+                <%= f.text_area :coverletter, :class => "coverletter-box"%></p>
                 <%= f.hidden_field :job_id, value: job_new.id %>
                 <%= f.hidden_field :employee_id, value: current_user.employee_id %>
                 <%= f.hidden_field :status, value: "In Progress" %>
