@@ -63,6 +63,11 @@
 .tt-suggestion p {
   margin: 0;
 }
+
+/* line 53, /Users/elainelim/code/wdi/project-4-solve-employment/app/assets/stylesheets/jobs.scss */
+input[type="radio"] {
+  margin: 0 10px 0 10px;
+}
 .star{background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAABQCAYAAAAZQFV3AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABOFJREFUeNrsmEFoHFUYx9/MdHfTJRKzUhBaFiL1YghZCFQUIV6UQJuLWCgr8eKpIoiFSqsHQYrmYj14KHqxKAl6MbA5eCgKRVAMBhpCwIJQCETRQzTsNtnO7s74+17fbGc3M7OzZhUsHfjzdvd97/++973vff99Y/m+rwb5WL0Idz60h2nckTc8Nw2hncLmAnhtIB7i3VGan8VD8Dhebh+U8FOaX8Bh4EB48R8TQlai+QnkgMTxD/AYpFt9EULk0EyBD8Dn4BPT9TZ4CrwD6Wos4V+XrUdpXzQk4tUEkAFXwNUu+1fAWWO7anADLDLJTkCYpf0K3DQe3Ui5oUI6B8ShlyBstZfMMiXoX4MV8GZKQgnJcXA6nKPtGJoE/gZ8Cy6mIJPwnIJsL3ZTIB2h+U6WANZjyE6Aj8Cz3WT7TooJ7HUwneDdc+BaFFnc0SuCzQTCTWOT+iwfN6cjWJ6clo9NzOS5Bcb6IZTZj5pU+syEYNV8XzA2Y6lOCptyhGbDeDFPnJa6TlGZ5rxJ/nxkSRPCACR5EUyHf4sCNjOgENVn/ecVe+CEy8vLWgJmZ2fd1IRra2vxSbe5eYlmu1gsXo6zmZycTKcpkEn6vC61kM+FQYiUeDdvauP5Ay0ZjyIlgKVv9bVkiBwQVJRX2YwWkKLxrhxB+qYSPaxUKrESANHVrh2PlQAzqSbskAA6UkkA5B0SICvRSzb5ddrMWu4jh8umSLwckLVjSKClWJ6SwsrM76fwLpCAM4x1I9OGjhrN8+AkAyYSyGTDnhEHjCPxeYhBagmIIvtXJOBQkgSY5Z01/76umAy4lbpiG5IqzQuG6Alz9LLmf+IP5hh+AfmxnoSQdUgAg5a6JuuQgMiSFi7fJHkR9JQAbGbA/SoBi4uLWgLK5XIqCdBpkyQBZne3sTm4BGxsbLQlgM+DkYBsNjucyWQKaSXATvCuZFnWHIQqlxMVUOeMx/0RMsgBWgIgcyBVgqwwIwH0JUvAwsJChwQwuOQ4jrJtO/CsfQBc11We56lWqyXfOySALNgJdlmuWzNSB/P5vBKyyJnxMjxBs9mc2tvbEye+DN1l7uYhuaZvAXg1LaQyOOkRL3d3d8XLishHOEd1DMfHx7UEYLjCrCop2aXP2Mht4QxjoyWADi0BxGddZm80GjpWYSL5TfpkYnHAOBK/yxhoCZAl1et1PbharWrUajX9m/SJBESRJUlAr6fvW0CvZyyxOIQPN4kbnv1mlwQERGPhMbHli/Q5Yv5lSdDnSYelrlLWIQGRJS1cvjk1RdBTArCZAferBPT7IkjvcuP7t3pKADaxEpB5+r10FXv3x3kKqqUlgM+DkQB76OFhKzdycAnAo5KynTlraFTZQ4/gqH3ursd9EjLIAVoC7KGCAxFWNqSjWgLoS5aAfS+C7EzJcrLKOjSkrNwoFu0ToPz6n8pv3dFQXjPyRdA9CbDsk/ZDx5SQxWiAsg4X7vE361NedQsn/P0SELwIgmzaHiZMtpMcKK+pWlUuVF6j0v0iSMcw/+QFLQF+y13xbv/GpF4CWUt5tV+FTEsAY6MlgA4tASxlnaUo362yLGLlh2Lo1iCjj4nFAeNI/H9sDHbYxesEfcK//XvSoq9Fkf0/JCDqDWfV3I+TJGCLne19CzAvgtoS8OBF0APC6OdvAQYAj2xzC/IfXBsAAAAASUVORK5CYII=');background-position:left -2px;display:block;width:20px;height:16px;line-height:16px;float:left;cursor:pointer;zoom:1}.fullStar{background-position:left -59px}.stars{overflow:hidden}.tmp_es{background-position:left -21px}.tmp_fs{background-position:left -40px}
 /* line 1, /Users/elainelim/code/wdi/project-4-solve-employment/app/assets/stylesheets/scaffolds.scss */
 body {
@@ -220,8 +225,6 @@ a:focus {
 /* line 58, /Users/elainelim/code/wdi/project-4-solve-employment/app/assets/stylesheets/static.scss */
 p {
   font-size: 17px;
-  line-height: 1.7;
-  margin-bottom: 20px;
   font-family: 'Fjalla One', 'Helvetica Neue',Arial,sans-serif;
 }
 
@@ -582,6 +585,18 @@ img::-moz-selection {
 .badge-middle {
   vertical-align: middle;
 }
+
+/* line 371, /Users/elainelim/code/wdi/project-4-solve-employment/app/assets/stylesheets/static.scss */
+.box {
+  border: solid 2px #d7d2d2;
+  border-radius: 3px;
+  box-shadow: 4px 4px 5px #b0aeae;
+}
+
+/* line 377, /Users/elainelim/code/wdi/project-4-solve-employment/app/assets/stylesheets/static.scss */
+.margin {
+  margin: 0;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -597,3 +612,8 @@ img::-moz-selection {
 
 
  */
+/* line 17, /Users/elainelim/code/wdi/project-4-solve-employment/app/assets/stylesheets/application.scss */
+label.required:after {
+  content: " *";
+  color: red;
+}
