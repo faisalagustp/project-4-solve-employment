@@ -59,22 +59,30 @@
 
               <div id="collapseOne<%= job_app.job.id.to_s%>" class="collapse" role="tabpanel" aria-labelledby="headingOne">
                 <div class="card-block">
-                    <p>Company: <%= job_app.job.employer.company %></p>
-                    <p>Description: <%= job_app.job.description %></p>
-                    <p>Salary: <%= job_app.job.wage %> / hr</p>
-                    <p>Contact person: <%= job_app.job.contact_person %></p>
-                    <p>Contact number: <%= job_app.job.contact_number %></p>
-                    <p>Contact email: <%= job_app.job.contact_email %></p>
-                    <p>Device required: <%= job_app.job.device %></p>
-                    <p>Software required: <%= job_app.job.software %></p>
-                    <p>Skills required: <%= job_app.job.skills %></p>
-                    <p>Job type: <%= job_app.job.job_type %></p>
-                    <p>Job duration: <%= job_app.job.duration %></p>
-                    <p>Time Commitment: <%= job_app.job.time_commitment %> hrs / day</p>
-                    <p>Training required: <%= job_app.job.training %></p>
-                    <p>Location: <%= job_app.job.location %></p>
-                    <p>Start date: <%= job_app.job.start_date %></p>
-                    <p>Status: <%= job_app.status%> </p>
+                  <h4 class="card-title">Job Details</h4>
+                  <h6 class="card-subtitle mb-2 text-muted">Basic job information</h6>
+
+                  <p><strong>Company: </strong><%= job_app.job.employer.company %></p>
+                  <p><strong>Description: </strong><%= job_app.job.description %></p>
+                  <p><strong>Location: </strong><%= job_app.job.location %></p>
+                  <p><strong>Salary: </strong><%= job_app.job.wage %>/hr</p>
+                  <p><strong>Job type: </strong><%= job_app.job.job_type %></p>
+                  <p><strong>Job duration: </strong><%= job_app.job.duration %></p>
+                  <p><strong>Time Commitment: </strong><%= job_app.job.time_commitment %> hrs / day</p>
+                  <p><strong>Start date: </strong><%= job_app.job.start_date %></p>
+
+                  <h4 class="card-title">Skills</h4>
+                  <h6 class="card-subtitle mb-2 text-muted">Technical and training requirements</h6>
+
+                  <p><strong>Device required: </strong><%= job_app.job.device %></p>
+                  <p><strong>Software required: </strong><%= job_app.job.software %></p>
+                  <p><strong>Skills required: </strong><%= job_app.job.skills %></p>
+                  <p><strong>Training required: </strong><%= job_app.job.training %></p>
+
+                  <h4 class="card-title">Contact Information</h4>
+
+                  <p><strong>Contact person: </strong><%= job_app.job.contact_person %></p>
+                  <p><strong>Contact email: </strong><%= job_app.job.contact_email %></p>
                     <p><%= link_to "View Job Application", job_application_path(job_app.id), class: "btn btn-primary" %></p>
                     </div>
                   </div>

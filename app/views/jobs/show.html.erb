@@ -129,9 +129,9 @@
 
     <div id="collapse<%= index.to_s %>" class="collapse" role="tabpanel" aria-labelledby="heading<%= index.to_s %>">
       <div class="card-block">
-        <p><strong>Cover letter: </strong><br>
-        <%=job_app.coverletter%>
-        <p><strong>Email:</strong> <%=job_app.employee.user.email%></p>
+        <h4 class="card-title">Coverletter</h4>
+        <p class="text-blue"><%=job_app.coverletter%></p>
+        <p><strong>Contact Email:</strong> <%=job_app.employee.user.email%></p>
         <% if job_app.status == "In Progress" %>
         <p><%= link_to 'Hire', hire_path(job_app.id, "job_application[status]"=>"Successful"), method: :post, class:"btn btn-primary" %></p>
         <% elsif job_app.status == "Successful" %>
