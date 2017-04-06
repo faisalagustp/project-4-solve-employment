@@ -51,7 +51,7 @@
     <h6 class="card-subtitle mb-2 text-muted">Technical and training requirements</h6>
 
       <p>
-        <strong>Devise required:</strong>
+        <strong>Device required:</strong>
         <%= @job.device %>
       </p>
 
@@ -133,9 +133,11 @@
         <p class="text-blue"><%=job_app.coverletter%></p>
         <p><strong>Contact Email:</strong> <%=job_app.employee.user.email%></p>
         <% if job_app.status == "In Progress" %>
-        <p><%= link_to 'Hire', hire_path(job_app.id, "job_application[status]"=>"Successful"), method: :post, class:"btn btn-primary" %></p>
+        <p><%= link_to 'View Profile', employee_path(job_app.employee_id), class:"btn btn-primary" %></p>
+        <%= link_to 'Hire', hire_path(job_app.id, "job_application[status]"=>"Successful"), method: :post, class:"btn btn-primary" %>
         <% elsif job_app.status == "Successful" %>
-        <p><%= link_to "Submit a Review", edit_job_application_path(job_app.id), class: "btn btn-primary" %></p>
+        <p><%= link_to 'View Profile', employee_path(job_app.employee_id), class:"btn btn-primary" %>
+        <%= link_to "Submit a Review", edit_job_application_path(job_app.id), class: "btn btn-primary" %></p>
         <% end %>
       </div>
     </div>

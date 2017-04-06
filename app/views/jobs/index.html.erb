@@ -59,6 +59,7 @@
 
               <div id="collapseOne<%= job_app.job.id.to_s%>" class="collapse" role="tabpanel" aria-labelledby="headingOne">
                 <div class="card-block">
+
                   <h4 class="card-title">Job Details</h4>
                   <h6 class="card-subtitle mb-2 text-muted">Basic job information</h6>
 
@@ -84,6 +85,7 @@
                   <p><strong>Contact person: </strong><%= job_app.job.contact_person %></p>
                   <p><strong>Contact email: </strong><%= job_app.job.contact_email %></p>
                     <p><%= link_to "View Job Application", job_application_path(job_app.id), class: "btn btn-primary" %></p>
+
                     </div>
                   </div>
                 </div>
@@ -113,7 +115,7 @@
                 <h4 class="card-title">Job Details</h4>
                 <h6 class="card-subtitle mb-2 text-muted">Basic job information</h6>
 
-                <p><strong>Company: </strong><%= job_new.employer.company %></p>
+                <p><strong>Company: <%=link_to "#{job_new.employer.company}", employer_path(job_new.employer.id)%></p>
                 <p><strong>Description: </strong><%= job_new.description %></p>
                 <p><strong>Location: </strong><%= job_new.location %></p>
                 <p><strong>Salary: </strong><%= job_new.wage %>/hr</p>
