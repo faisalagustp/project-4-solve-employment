@@ -50,13 +50,6 @@ class JobApplicationsController < ApplicationController
     end
   end
 
-  def upload
-  uploaded_io = params[:job_application][:coverletter]
-  File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
-    file.write(uploaded_io.read)
-  end
-  end
-
   def hire
     respond_to do |format|
     @job_application = JobApplication.find(params[:id])

@@ -13,7 +13,7 @@
             <span class="badge badge-pill badge-success"><%=job.job_applications.count%></span>
             <%= link_to job.title, job_path(job) %>
             <% if @vacancies_list[i] == 0 %>
-              <span class="badge badge-pill badge-success">Filled</span>
+              <span class="badge badge-pill badge-success pull-right">Filled</span>
             <%else%>
               <span class="badge badge-pill badge-warning col-xs-1 col-md-1 pull-right"><%= @hired_list[i] %> / <%= job.positions %></span>
             <% end %>

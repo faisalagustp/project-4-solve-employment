@@ -1,7 +1,6 @@
 
 <h2>My Job Application</h2>
 
-
 <div class="card-block">
   <h4 class="card-title">Job Title</h4>
   <h6 class="card-subtitle mb-2 text-muted"><%= @job_application.job.title %></h6>
@@ -9,14 +8,12 @@
 
 <div class="card-block">
   <h4 class="card-title"><strong>Coverletter:</strong>  </h4>
-  <p><%= @job_application.coverletter %></p>
+  <h6 class="card-subtitle mb-2 text-muted"><%= @job_application.coverletter %></h6>
 </div>
 
 <div class="card-block">
-  <p>
-    <strong>Status:</strong>
-    <%= @job_application.status%>
-  </p>
+  <h4 class="card-title">Status: </h4>
+  <h6 class="card-subtitle mb-2 text-muted"><%= @job_application.status%></h6>
 </div>
 
 <% if @job_application.status == "Successful" && !@job_application.rating_employer%>

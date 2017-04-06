@@ -38,6 +38,13 @@
         </div>
       </div>
 
+      <div class="form-group row">
+        <%= label_tag :address, nil, :class => "col-sm-2 col-form-label"%>
+        <div class="col-sm-5">
+          <%= text_field_tag :address, current_user.employer.address, autofocus: true, :class => "form-control" %>
+        </div>
+      </div>
+
       <%elsif current_user.role == 'employee'%>
       <div class="form-group row">
         <%= label_tag :name, nil, :class => "col-sm-2 col-form-label"%>
