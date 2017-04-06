@@ -5,16 +5,10 @@
   <p class="text-normal margin"><%= @job.description %></p>
   </div>
 
-<div class="card-block">
-
-  <p class="card-text text-normal"><strong>Company:</strong>
-  <%= @job.employer.company %></p>
+<div class="card-block row">
 
   <p class="card-text text-normal"><strong>Hourly Wage:</strong>
   <%= @job.wage %></p>
-
-  <p class="card-text text-normal"><strong>Contact Person:</strong>
-  <%= @job.contact_person %></p>
 
   <p class="card-text text-normal"><strong>Software required:</strong>
   <%= @job.software %></p>
@@ -40,11 +34,20 @@
   <p class="card-text text-normal"><strong>Start date:</strong>
   <%= @job.start_date %></p>
 
-  <p class="card-text text-normal"><strong>Contact Number:</strong>
-  <%= @job.contact_number %></p>
 
-  <p class="card-text text-normal"><strong>Contact Email:</strong>
-  <%= @job.contact_email %></p>
+<div class="card">
+  <p class="card-text text-normal"><strong>Company:</strong>
+    <%= @job.employer.company %></p>
+
+    <p class="card-text text-normal"><strong>Contact Person:</strong>
+      <%= @job.contact_person %></p>
+
+    <p class="card-text text-normal"><strong>Contact Number:</strong>
+      <%= @job.contact_number %></p>
+
+    <p class="card-text text-normal"><strong>Contact Email:</strong>
+        <%= @job.contact_email %></p>
+</div>
 
   <p class="card-text text-normal"><strong>Devise required:</strong>
   <%= @job.device %></p>
