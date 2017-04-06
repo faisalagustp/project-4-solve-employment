@@ -1,19 +1,23 @@
 
 <h2>My Job Application</h2>
-<p>
-  <strong>Coverletter:</strong>
-  <%= @job_application.coverletter %>
-</p>
 
-<p>
-  <strong>Job:</strong>
-  <%= @job_application.job.title %>
-</p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @job_application.status%>
-</p>
+<div class="card-block">
+  <h4 class="card-title">Job Title</h4>
+  <h6 class="card-subtitle mb-2 text-muted"><%= @job_application.job.title %></h6>
+</div>
+
+<div class="card-block">
+  <h4 class="card-title"><strong>Coverletter:</strong>  </h4>
+  <p><%= @job_application.coverletter %></p>
+</div>
+
+<div class="card-block">
+  <p>
+    <strong>Status:</strong>
+    <%= @job_application.status%>
+  </p>
+</div>
 
 <% if @job_application.status == "Successful" %>
 
