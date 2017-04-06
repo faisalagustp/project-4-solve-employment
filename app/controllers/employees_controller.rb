@@ -11,6 +11,7 @@ class EmployeesController < ApplicationController
   # GET /employees/1.json
   def show
     average_rating_employee
+    latest_three_reviews
   end
 
   # GET /employees/new
@@ -88,6 +89,18 @@ class EmployeesController < ApplicationController
       else
         @average_rating = 0
       end
+    end
+
+    def latest_three_reviews
+      @employee = Employee.find(params[:id])
+      @all_reviews = []
+      @employee.job_applications.each do |app|
+        if app.rating_employee
+          @all_reviews << app
+        end
+      end
+      @recent_reviews = @all_reviews.sort_by {|review| review.updated_at}
+      @recent_reviews.reverse!.take(3)
     end
 
 end

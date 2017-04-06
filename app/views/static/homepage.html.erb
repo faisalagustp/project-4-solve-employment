@@ -4,13 +4,66 @@
 <div class="header-content blue-bg">
     <div class="inner">
         <h1>Solve Employment</h1>
-        <p class="wow fadeIn text-normal wow fadeIn"><i> An employment portal by Solve Education </i></p>
-        <%= link_to "SIGN UP AS EMPLOYER", new_user_registration_path({:role=>"employer"}), class:"btn btn-primary-outline btn-xl page-scroll wow fadeInUp m-t-3", style: "margin:0" %>
-        <%= link_to "SIGN UP AS EMPLOYEE", new_user_registration_path({:role=>"employee"}), class:"btn btn-primary-outline btn-xl page-scroll wow fadeInUp m-t-3", style: "margin:0" %>
+        <p class="wow fadeIn text-normal wow fadeIn"><i> Founded by parents Solve Education, Solve Employment is a human resource portal that offers users of our existing education platform to find employment that leverages on their new language capabilities. </i></p>
+        <%= link_to "Signup for companies", new_user_registration_path({:role=>"employer"}), class:"btn btn-primary-outline btn-l page-scroll wow fadeInUp m-t-3", style: "margin:0" %>
+        <%= link_to "Sign up for job applicants", new_user_registration_path({:role=>"employee"}), class:"btn btn-primary-outline btn-l page-scroll wow fadeInUp m-t-3", style: "margin:0" %>
         <br><br>
         <div class="container">
-          <%= link_to "LOGIN", new_user_session_path, class:"btn btn-primary-outline btn-xl page-scroll wow fadeInUp m-t-3", style: "margin:0" %>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary btn-l" data-toggle="modal" data-target="#myModal">
+            Login
+          </button>
         </div>
     </div>
 </div>
 </header>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">LOGIN</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <%= form_for(:user, url: session_path(:user)) do |f| %>
+          <div class="form-group row">
+            <%= f.label :email, :class => "col-sm-2 col-form-label"%>
+            <div class="col-sm-5">
+            <%= f.text_field :email, autofocus: true, :class => "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <%= f.label :password, :class => "col-sm-2 col-form-label"%>
+            <div class="col-sm-5">
+            <%= f.password_field :password, autocomplete: "off", autofocus: true, :class => "form-control" %>
+            </div>
+          </div>
+
+          <% if devise_mapping.rememberable? -%>
+            <div class="form-inline">
+              <%= f.check_box :remember_me%>
+              <div class="col-sm-2">
+              <%= f.label :remember_me %>
+            </div>
+            </div>
+          <% end -%>
+          <br/>
+
+      </div>
+      <div class="modal-footer">
+        <div class="actions">
+          <%= f.submit "LOGIN", class:"btn btn-primary" %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>

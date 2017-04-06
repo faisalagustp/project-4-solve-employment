@@ -3,10 +3,10 @@
   <div class="row col-sm-1 col-md-8 box">
     <div class="col-sm-1 col-md-4">
     <p><strong>Profile Picture:</strong><br>
-    <% if !current_user.employee.image? %>
-    <img src="http://api.adorable.io/avatar/<%=current_user.email %>" height="170px">
+    <% if !@employee.image? %>
+    <img src="http://api.adorable.io/avatar/<%=@employee.user.email %>" height="170px">
       <% else %>
-    <img src="<%= current_user.employee.image %>" height="150px">
+    <img src="<%= @employee.image %>" height="150px">
     <% end %>
     </p>
     </div>
@@ -20,15 +20,15 @@
             <span id="star-rating"></span><span id="rating">  <%= @average_rating %></span>
             <%end%>
           </p>
-          <p><strong>Name:</strong> <%= current_user.employee.name %></p>
-          <p><strong>Email Address:</strong> <%= current_user.email %></p>
+          <p><strong>Name:</strong> <%= @employee.name %></p>
+          <p><strong>Email Address:</strong> <%= @employee.user.email %></p>
       </div>
     </div>
 
   <div class="col-sm-1 col-md-10">
     <p><strong>Total Number of job applications: </strong>
     <span class="badge badge-pill badge-info">
-    <%= current_user.employee.job_applications.count %>
+    <%= @employee.job_applications.count %>
     </span>
     </p>
   </div>

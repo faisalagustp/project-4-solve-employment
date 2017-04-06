@@ -5,10 +5,10 @@
 <div class="row col-sm-1 col-md-8 box">
   <div class="col-sm-1 col-md-4" >
   <p><strong>Profile Picture:</strong><br>
-    <% if !current_user.employer.image? %>
-    <img src="http://api.adorable.io/avatar/<%= current_user.email %>" height="170px"></p>
+    <% if !@employer.image? %>
+    <img src="http://api.adorable.io/avatar/<%= @employer.user.email %>" height="170px"></p>
     <% else %>
-    <img src="<%= current_user.employer.image%>" height="170px"></p>
+    <img src="<%= @employer.image%>" height="170px"></p>
     <% end %>
   </div>
   <div class="col-sm-1 col-md-8">
@@ -20,17 +20,17 @@
       <span id="star-rating"></span><span id="rating">  <%= @average_rating %></span>
       <%end%>
     </p>
-    <p><strong>Company name:</strong> <%= current_user.employer.company %></p>
-    <p><strong>Email Address:</strong> <%= current_user.email %></p>
+    <p><strong>Company name:</strong> <%= @employer.company %></p>
+    <p><strong>Email Address:</strong> <%= @employer.user.email %></p>
   </div>
 </div>
 <br>
 
 <p>
   <strong>Job postings: </strong>
-  <span class="badge badge-pill badge-info"><%= current_user.employer.jobs.count %></span>
+  <span class="badge badge-pill badge-info"><%= @employer.jobs.count %></span>
   <br>
-  <strong>Address :</strong> <%= current_user.employer.address %>
+  <strong>Address :</strong> <%= @employer.address %>
 </p>
 
 </div>
