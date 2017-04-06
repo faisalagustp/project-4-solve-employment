@@ -92,4 +92,19 @@ class EmployersController < ApplicationController
         @average_rating = 0
       end
     end
+
+    def latest_three_reviews
+      @employer = Employer.find(params[:id])
+      @all_reviews = []
+      @employer.jobs.each do |job|
+      job.job_applications.each do |app|
+        if app.rating_employer
+          @all_reviews << app
+        end
+      end
+    end
+      @recent_reviews = @all_reviews.sort_by {|review| review.updated_at}
+      @recent_reviews.reverse!.take(3)
+    end
+
 end
