@@ -25,7 +25,7 @@
     </div>
 
     <%elsif current_user.role == 'employee'%>
-    <div id="the-basics">
+    <div id="the-basics" class="container-fluid">
       <%= form_tag(search_results_path, method: 'get', remote: true) do %>
         <p>
           <%= text_field_tag :search, params[:search], class:"typeahead" %>

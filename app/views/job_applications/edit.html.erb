@@ -1,4 +1,8 @@
-<h1>Review</h1>
+<% if current_user.role == 'employer'%>
+  <h1>Review for <%=@job_application.employee.name%></h1>
+<% else %>
+  <h1>Review for <%=@job_application.job.employer.name%></h1>
+<%end%>
 
 <%= form_for(@job_application) do |f| %>
   <% if @job_application.errors.any? %>
@@ -51,7 +55,4 @@
   </div>
 <% end %>
 
-<%if current_user.role == "employee"%>
-<%= link_to 'Show', @job_application %> |
-<% end %>
-<%= link_to 'Back to all Job Applications', job_applications_path %>
+<%= link_to 'Back', job_application_path %>

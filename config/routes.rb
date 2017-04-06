@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :job_applications, :except => [:destroy]
   post '/job_applications/:id', to: 'job_applications#hire', as: 'hire'
-  
+
   get "/search-results" => 'jobs#searched'
   # devise_for :employers, :controllers => {:registrations => "users/registrations"}
   # devise_for :employees
