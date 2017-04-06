@@ -10,13 +10,13 @@ body {
   position: relative;
   height: 100%;
   width: 100%;
+  margin-top: 50px;
 }
 
 body {
     font-family: 'Raleway','Helvetica Neue',Arial,sans-serif;
     color: #001A33;
     webkit-tap-highlight-color: #222;
-    margin: 0;
 }
 
 /* workaround modal-open padding issue */
@@ -237,6 +237,7 @@ header {
     color: #001A33;
     width: 100%;
     background-color: #fff;
+
 }
 
 header .header-content {
