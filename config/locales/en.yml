@@ -20,4 +20,31 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      job:
+        title: "Job title"
+        description: "Job description"
+        wage: "Hourly wage"
+        positions: "Number of vacancies"
+        time_commitment: "Working hours (hours/day)"
+        location: "Job location"
+
+    errors:
+      models:
+        job:
+          attributes:
+            title:
+              blank: "is required"
+            description:
+              blank: "is required"
+            contact_person:
+              blank: "is required"
+            contact_email:
+              blank: "is required"
+            location:
+              blank: "is required"
+            positions:
+              blank: "needs to be filled in"
+            job_type:
+              blank: "is required"
