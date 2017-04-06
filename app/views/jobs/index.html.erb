@@ -28,7 +28,7 @@
     <div id="the-basics" class="row">
       <%= form_tag(search_results_path, method: 'get', remote: true) do %>
         <p>
-          <%= text_field_tag :search, params[:search], class:"typeahead" %>
+          <%= text_field_tag :search, params[:search], class:"typeahead", placeholder: "Enter job title" %>
           <%= submit_tag "Search Jobs", :title => nil, class:"btn btn-primary"%>
         </p>
       </div>
